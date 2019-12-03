@@ -10,19 +10,25 @@ public class CameraControl : MonoBehaviour
     [Header("Defualt FOV")]
     [SerializeField]
     [Range(20f, 55f)]
-    private float dFOV;
-
+    private float defaultFOV;
+    private float maxFOV, minFOV;
     private float yaw, pitch, scroll;
 
     Camera cam;
 
+    private void Awake()
+    {
+    }
     void Start()
     {
         cam = GetComponent<Camera>();
-        cam.fieldOfView = dFOV;
-        scroll = dFOV;
+        cam.fieldOfView = defaultFOV;
+        scroll = defaultFOV;
         //Stop mouse from moving as well as hides it
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked; 
+
+        maxFOV = PGM.Instance.maxFOV;
+        minFOV = PGM.Instance.minFOV;
     }
 
 
@@ -38,10 +44,10 @@ public class CameraControl : MonoBehaviour
         transform.eulerAngles = new Vector3(pitch, yaw, 0);
 
         scroll += SpeedS * Input.GetAxis("Mouse ScrollWheel");
-        if (scroll > 55)
-            scroll = 55;
-        if(scroll < 20)
-            scroll = 20;
+        if (scroll > maxFOV)
+            scroll = maxFOV;
+        if(scroll < minFOV)
+            scroll = minFOV;
 
         cam.fieldOfView = scroll;
         PGM.Instance.FOV = scroll;

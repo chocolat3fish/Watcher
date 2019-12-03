@@ -7,6 +7,10 @@ public class PGM : MonoBehaviour
     public static PGM Instance { get; private set; }
 
     public float FOV;
+    [Header("Camera Settings")]
+    public float maxFOV;
+    public float minFOV;
+
 
     private void Awake()
     {
