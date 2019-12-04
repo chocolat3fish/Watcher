@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Crosshair : MonoBehaviour
 {   
-
     enum Corner
     {
         TopL, 

@@ -52,12 +52,12 @@ public class CameraControl : MonoBehaviour
         cam.fieldOfView = scroll;
         PGM.Instance.FOV = scroll;
 
-        //<<Finds what the camera is looking at>>
-        //Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-        //RaycastHit hit;
-        //if (Physics.Raycast(ray, out hit))
-        //    print("I'm looking at " + hit.transform.name);
-        //else
-        //print("I'm looking at nothing!");
-    }
+        //Finds what the camera is looking at
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
+        {
+            PGM.Instance.selectedGameobject = hit.transform.gameObject;
+
+        }
+        Debug.DrawRay(transform.position, transform.forward);
+        }
 }
