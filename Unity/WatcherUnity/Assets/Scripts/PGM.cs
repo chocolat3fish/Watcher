@@ -14,6 +14,12 @@ public class PGM : MonoBehaviour
     [SerializeField]
     public Dictionary<string, int> Switches { get; private set;} = new Dictionary<string, int>();
 
+    [Header("Booleans")]
+    public bool levelComplete;
+
+    [Header("Object Tracking")]
+    public Transform puzzleCompleteObject;
+
     public void AdjustDictionary(string key, int data)
     {
         if(!Switches.ContainsKey(key))
