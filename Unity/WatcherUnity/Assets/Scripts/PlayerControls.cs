@@ -7,6 +7,10 @@ public class PlayerControls : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
 
+    public float rotateSpeed;
+    public Vector3 direction;
+    public float desiredRotation;
+
     public Quaternion playerRotation;
 
     public float pickupAngle;
@@ -39,6 +43,7 @@ public class PlayerControls : MonoBehaviour
         rb.velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * -moveSpeed;
         // player faces direction of motion
         transform.LookAt(transform.position + rb.velocity);
+         
 
         if (holdingObject == true)
         {
@@ -47,25 +52,17 @@ public class PlayerControls : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == false)
-        {
-            // pick up object
-
-            
+        {          
             if(FindNearestObject() != null)
             {
                pickUpObject = true;
             }
-             
-            
-
-            // currently just "if closest", will update to also account for look angle
             
             
 
         }
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == true)
         {
-            // drop object
             dropObject = true;
 
         }
