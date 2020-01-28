@@ -9,9 +9,6 @@ public class PlayerControls : MonoBehaviour
 
     public float rotateSpeed;
     public Vector3 direction;
-    public float desiredRotation;
-
-    public Quaternion playerRotation;
 
     public float pickupAngle;
 
@@ -40,10 +37,29 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * -moveSpeed;
-        // player faces direction of motion
-        transform.LookAt(rb.velocity);
-         
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            rb.velocity = transform.forward * moveSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.velocity = transform.forward * -moveSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(0f, -rotateSpeed * Time.deltaTime, 0f);
+        }      
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
+        }
+
+
+
 
         if (holdingObject == true)
         {
