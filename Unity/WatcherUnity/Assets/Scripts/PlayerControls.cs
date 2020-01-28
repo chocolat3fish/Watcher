@@ -42,7 +42,7 @@ public class PlayerControls : MonoBehaviour
     {
         rb.velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * -moveSpeed;
         // player faces direction of motion
-        transform.LookAt(transform.position + rb.velocity);
+        transform.LookAt(rb.velocity);
          
 
         if (holdingObject == true)
