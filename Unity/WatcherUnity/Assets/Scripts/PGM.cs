@@ -20,7 +20,8 @@ public class PGM : MonoBehaviour
     public bool levelComplete;
 
     [Header("Object Tracking")]
-    public Transform puzzleCompleteObject;
+    public string puzzleObject;
+
 
     [Header("Scenes")]
     public string DeskScene;
@@ -55,4 +56,5 @@ public class PGM : MonoBehaviour
             SceneManager.LoadSceneAsync(TestLevel, LoadSceneMode.Additive);
         }
     }
+
 }

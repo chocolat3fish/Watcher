@@ -48,4 +48,6 @@ MonoBehaviour:
   minFOV: 20
   selectedGameobject: {fileID: 0}
   levelComplete: 0
-  puzzleCompleteObject: {fileID: 0}
+  puzzleObject: Pickup
+  DeskScene: Desk
+  TestLevel: POC

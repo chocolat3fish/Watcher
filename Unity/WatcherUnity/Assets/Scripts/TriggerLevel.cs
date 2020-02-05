@@ -5,9 +5,9 @@ using UnityEngine;
 public class TriggerLevel : MonoBehaviour
 {
 
-    private void OnTriggerEnter(Collider puzzleObject)
+    private void OnTriggerEnter(Collider col)
     {
-        if (puzzleObject = PGM.Instance.puzzleCompleteObject.GetComponent<Collider>())
+        if (col.CompareTag("Pickup") == true)
         {
             PGM.Instance.levelComplete = true;
             print("level complete");

@@ -91,7 +91,12 @@ public class PlayerControls : MonoBehaviour
             GameObject nearestObject = FindNearestObject();
             objectBeingHeld = nearestObject;
             holdingObject = true;
-            objectBeingHeld.transform.parent = transform;
+            // set parent as player's hand to make the player "hold" the object
+            objectBeingHeld.transform.position = transform.Find("Hand.R").position;
+
+            objectBeingHeld.transform.parent = transform.Find("Hand.R");
+            objectBeingHeld.GetComponent<Rigidbody>().useGravity = false;
+            
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = true;
             pickUpObject = false;
             dropObject = false;
@@ -101,6 +106,7 @@ public class PlayerControls : MonoBehaviour
             holdingObject = false;
             objectBeingHeld.transform.parent = null;
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = false;
+            objectBeingHeld.GetComponent<Rigidbody>().useGravity = true;
             objectBeingHeld = null;
             pickUpObject = false;
             dropObject = false;
