@@ -109,6 +109,7 @@ public class PlayerControls : MonoBehaviour
             objectBeingHeld.transform.parent = null;
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = false;
             objectBeingHeld.GetComponent<Rigidbody>().useGravity = true;
+            objectBeingHeld.GetComponent<Rigidbody>().velocity = Vector3.zero;
             objectBeingHeld = null;
             pickUpObject = false;
             dropObject = false;

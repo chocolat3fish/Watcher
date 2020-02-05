@@ -49,7 +49,10 @@ public class PGM : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+    }
 
+    private void Start()
+    {
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == DeskScene)
         {
