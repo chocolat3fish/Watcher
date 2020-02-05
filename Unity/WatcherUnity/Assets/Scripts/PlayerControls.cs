@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -51,7 +52,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(0f, -rotateSpeed * Time.deltaTime, 0f);
-        }      
+        }
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -63,18 +64,16 @@ public class PlayerControls : MonoBehaviour
 
         if (holdingObject == true)
         {
-           
+
             //objectBeingHeld.transform.position = new Vector3(rb.transform.forward.x, rb.transform.forward.y, rb.transform.forward.z + 1);
         }
 
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == false)
-        {          
-            if(FindNearestObject() != null)
+        {
+            if (FindNearestObject() != null)
             {
-               pickUpObject = true;
+                pickUpObject = true;
             }
-            
-            
 
         }
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == true)
@@ -82,6 +81,11 @@ public class PlayerControls : MonoBehaviour
             dropObject = true;
 
         }
+
+        if (objectBeingHeld != null)
+        {
+            objectBeingHeld.transform.position = transform.Find("Hand.R").position;
+        }    
     }
 
     private void FixedUpdate()
@@ -91,12 +95,10 @@ public class PlayerControls : MonoBehaviour
             GameObject nearestObject = FindNearestObject();
             objectBeingHeld = nearestObject;
             holdingObject = true;
-            // set parent as player's hand to make the player "hold" the object
+            // set parent as player's hand to make the player "hold" the object        
             objectBeingHeld.transform.position = transform.Find("Hand.R").position;
-
             objectBeingHeld.transform.parent = transform.Find("Hand.R");
-            objectBeingHeld.GetComponent<Rigidbody>().useGravity = false;
-            
+            //objectBeingHeld.GetComponent<Rigidbody>().useGravity = false;
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = true;
             pickUpObject = false;
             dropObject = false;
@@ -125,10 +127,8 @@ public class PlayerControls : MonoBehaviour
 
             if (Vector3.Distance(pickup.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, pickup.transform.position - transform.position) < pickupAngle)
             {
-                // allows to pick up if the object is within an angle of the direction
-                
+                // allows to pick up if the object is within an angle of the direction           
                 nearest = pickup;
-               
             }
 
         }
