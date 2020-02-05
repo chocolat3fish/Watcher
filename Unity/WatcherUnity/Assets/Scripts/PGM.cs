@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+
 public class PGM : MonoBehaviour
 {
     public static PGM Instance { get; private set; }
@@ -19,6 +21,10 @@ public class PGM : MonoBehaviour
 
     [Header("Object Tracking")]
     public Transform puzzleCompleteObject;
+
+    [Header("Scenes")]
+    public string DeskScene;
+    public string TestLevel;
 
     public void AdjustDictionary(string key, int data)
     {
@@ -40,6 +46,13 @@ public class PGM : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == DeskScene)
+        {
+            SceneManager.LoadSceneAsync(TestLevel, LoadSceneMode.Additive);
         }
     }
 }
