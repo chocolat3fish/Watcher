@@ -7,6 +7,7 @@ public class PlayerControls : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public float acceleration;
 
     public float rotateSpeed;
     public Vector3 direction;
@@ -41,13 +42,33 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            rb.velocity = transform.forward * moveSpeed;
+            rb.velocity += transform.forward * acceleration;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            rb.velocity = transform.forward * -moveSpeed;
+
+            rb.velocity += transform.forward * -acceleration;
         }
+
+        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.S))
+        {
+           rb.velocity = transform.forward * -moveSpeed;
+        }
+
+        else if (rb.velocity.magnitude > moveSpeed)
+        {
+            rb.velocity = transform.forward * moveSpeed;
+        }
+
+
+
+
+
+
+
+
+
 
         if (Input.GetKey(KeyCode.A))
         {
