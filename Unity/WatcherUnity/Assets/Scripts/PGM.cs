@@ -14,13 +14,22 @@ public class PGM : MonoBehaviour
     public float minFOV;
     public GameObject selectedGameobject;
     [SerializeField]
-    public Dictionary<string, int> Switches { get; private set;} = new Dictionary<string, int>();
+    public Dictionary<string, int> Switches { get; private set; } = new Dictionary<string, int>();
 
     [Header("Booleans")]
     public bool levelComplete;
 
     [Header("Object Tracking")]
     public string puzzleObject;
+
+    public RenderTexture monitorScreen;
+    public RenderTexture hiddenScreen;
+
+    public GameObject primaryCamera;
+    public Camera activeCamera;
+    public List<Camera> camerasCanSee;
+
+    public PlayerControls player;
 
 
     [Header("Scenes")]
@@ -58,6 +67,12 @@ public class PGM : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(TestLevel, LoadSceneMode.Additive);
         }
+
+        //player = FindObjectOfType<PlayerControls>();
+        //activeCamera = GameObject.FindGameObjectWithTag("MonitorCamera");
+
+
+        //RoomCamControl.cameras = GameObject.FindGameObjectsWithTag("MonitorCamera");
     }
 
 }

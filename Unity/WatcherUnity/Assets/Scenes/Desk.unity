@@ -955,6 +955,11 @@ PrefabInstance:
       propertyPath: TestLevel
       value: POC
       objectReference: {fileID: 0}
+    - target: {fileID: 4852267753531455272, guid: 1abb95f5f64df4bf9ab3db56dbce8c67,
+        type: 3}
+      propertyPath: primaryCamera
+      value: 
+      objectReference: {fileID: 1568376239}
     - target: {fileID: 4852267753531455273, guid: 1abb95f5f64df4bf9ab3db56dbce8c67,
         type: 3}
       propertyPath: m_LocalPosition.x
