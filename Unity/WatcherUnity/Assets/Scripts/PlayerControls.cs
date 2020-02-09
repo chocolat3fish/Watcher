@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity;
+using UnityEngine.Animations;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class PlayerControls : MonoBehaviour
     public GameObject objectBeingHeld;
 
     public Rigidbody rb;
+    public Animator animator;
 
     public GameObject[] nearbyObjects;
 
@@ -34,6 +36,7 @@ public class PlayerControls : MonoBehaviour
     {
         nearbyObjects = GameObject.FindGameObjectsWithTag("Pickup");
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -47,7 +50,6 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-
             rb.velocity += transform.forward * -acceleration;
         }
 
@@ -61,13 +63,14 @@ public class PlayerControls : MonoBehaviour
             rb.velocity = transform.forward * moveSpeed;
         }
 
-
-
-
-
-
-
-
+        if (rb.velocity.magnitude != 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
 
 
         if (Input.GetKey(KeyCode.A))
@@ -80,14 +83,6 @@ public class PlayerControls : MonoBehaviour
             transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
 
-
-
-
-        if (holdingObject == true)
-        {
-
-            //objectBeingHeld.transform.position = new Vector3(rb.transform.forward.x, rb.transform.forward.y, rb.transform.forward.z + 1);
-        }
 
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == false)
         {
@@ -105,7 +100,7 @@ public class PlayerControls : MonoBehaviour
 
         if (objectBeingHeld != null)
         {
-            objectBeingHeld.transform.position = transform.Find("Hand.R").position;
+            objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position;
         }    
     }
 
@@ -117,8 +112,8 @@ public class PlayerControls : MonoBehaviour
             objectBeingHeld = nearestObject;
             holdingObject = true;
             // set parent as player's hand to make the player "hold" the object        
-            objectBeingHeld.transform.position = transform.Find("Hand.R").position;
-            objectBeingHeld.transform.parent = transform.Find("Hand.R");
+            objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position;
+            objectBeingHeld.transform.parent = GameObject.Find("Hand.R").transform;
             //objectBeingHeld.GetComponent<Rigidbody>().useGravity = false;
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = true;
             pickUpObject = false;
