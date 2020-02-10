@@ -21,8 +21,15 @@ public class PlayerControls : MonoBehaviour
     public bool pickUpObject;
     public bool dropObject;
 
+    public bool interactComputer;
+    public bool exitComputer;
+    public bool usingComputer;
+
+    public bool canMove;
+
     [Header("Objects")]
     public float reachDistance;
+    public float computerReachDistance;
 
     public GameObject objectBeingHeld;
 
@@ -30,55 +37,71 @@ public class PlayerControls : MonoBehaviour
     public Animator animator;
 
     public GameObject[] nearbyObjects;
+    public GameObject[] nearbyComputers;
 
  
     void Start()
     {
         nearbyObjects = GameObject.FindGameObjectsWithTag("Pickup");
+        nearbyComputers = GameObject.FindGameObjectsWithTag("Computer");
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        canMove = true;
+
+        animator.SetLayerWeight(1, 0f);
     }
 
 
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && canMove == true)
         {
             rb.velocity += transform.forward * acceleration;
+            animator.SetBool("movingForward", true);
+            animator.SetBool("movingBackward", false);
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && canMove == true)
         {
             rb.velocity += transform.forward * -acceleration;
+            animator.SetBool("movingBackward", true);
+            animator.SetBool("movingForward", false);
         }
 
         if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.S))
         {
-           rb.velocity = transform.forward * -moveSpeed;
+            rb.velocity = transform.forward * -moveSpeed;
+
         }
 
-        else if (rb.velocity.magnitude > moveSpeed)
+        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.W))
         {
             rb.velocity = transform.forward * moveSpeed;
+
         }
 
         if (rb.velocity.magnitude != 0)
         {
             animator.SetBool("isMoving", true);
         }
-        else
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             animator.SetBool("isMoving", false);
+            animator.SetBool("movingForward", false);
+            animator.SetBool("movingBackward", false);
         }
 
 
-        if (Input.GetKey(KeyCode.A))
+
+
+        if (Input.GetKey(KeyCode.A) && canMove == true)
         {
             transform.Rotate(0f, -rotateSpeed * Time.deltaTime, 0f);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && canMove == true)
         {
             transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
@@ -91,6 +114,11 @@ public class PlayerControls : MonoBehaviour
                 pickUpObject = true;
             }
 
+            if (FindNearestComputer() != null)
+            {
+                interactComputer = true;
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == true)
         {
@@ -98,29 +126,47 @@ public class PlayerControls : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.E) && usingComputer == true)
+        {
+            exitComputer = true;
+
+        }
+
         if (objectBeingHeld != null)
         {
-            objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position;
-        }    
+            objectBeingHeld.transform.position = //GameObject.Find("Hand.R").transform.position;
+            GameObject.Find("Hand.R").transform.position + (GameObject.Find("Hand.L").transform.position - GameObject.Find("Hand.R").transform.position) / 2;
+            animator.SetBool("holdingObject", true);
+            animator.SetLayerWeight(1, 1f);
+        }
+        
+        if (usingComputer)
+        {
+            canMove = false;
+        }
     }
 
     private void FixedUpdate()
     {
         if (pickUpObject)
         {
+            animator.SetTrigger("pickUpObject");
+
             GameObject nearestObject = FindNearestObject();
             objectBeingHeld = nearestObject;
             holdingObject = true;
             // set parent as player's hand to make the player "hold" the object        
             objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position;
             objectBeingHeld.transform.parent = GameObject.Find("Hand.R").transform;
-            //objectBeingHeld.GetComponent<Rigidbody>().useGravity = false;
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = true;
             pickUpObject = false;
             dropObject = false;
+           
         }   
         if (dropObject)
         {
+            animator.SetBool("holdingObject", false);
+            animator.SetLayerWeight(1, 0f);
             holdingObject = false;
             objectBeingHeld.transform.parent = null;
             objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = false;
@@ -129,6 +175,22 @@ public class PlayerControls : MonoBehaviour
             objectBeingHeld = null;
             pickUpObject = false;
             dropObject = false;
+        }
+
+        if (interactComputer)
+        {
+            animator.SetBool("usingComputer", true);
+            canMove = false;
+            usingComputer = true;
+        }
+
+        if (exitComputer)
+        {
+            interactComputer = false;
+            exitComputer = false;
+            usingComputer = false;
+            canMove = true;
+            animator.SetBool("usingComputer", false);
         }
     }
 
@@ -149,6 +211,32 @@ public class PlayerControls : MonoBehaviour
             }
 
         }
+
+
+        return nearest;
+
+    }
+
+
+    GameObject FindNearestComputer()
+    {
+        GameObject nearest = null;
+
+        Vector3 playerLocation = transform.position;
+        float minDistance = computerReachDistance;
+
+        foreach (GameObject computer in nearbyComputers)
+        {
+
+            if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < pickupAngle)
+            {
+                // allows to interact if computer is within an angle of the direction           
+                nearest = computer;
+            }
+
+        }
+
+
         return nearest;
 
     }
