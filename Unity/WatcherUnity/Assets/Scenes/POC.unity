@@ -1225,15 +1225,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbd60b2d6e37c84a91258e4edda4957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4
   acceleration: 0.5
   rotateSpeed: 200
   direction: {x: 0, y: 0, z: 0}
-  pickupAngle: 20
+  pickupAngle: 35
   holdingObject: 0
   pickUpObject: 0
   dropObject: 0
-  reachDistance: 2
+  reachDistance: 3
   objectBeingHeld: {fileID: 0}
   rb: {fileID: 0}
   animator: {fileID: 0}
@@ -1287,9 +1287,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.391345
+  m_Height: 2.434384
   m_Direction: 1
-  m_Center: {x: 0, y: 1.038722, z: 0}
+  m_Center: {x: 0, y: 1.0172025, z: 0}
 --- !u!54 &1049743974
 Rigidbody:
   m_ObjectHideFlags: 0

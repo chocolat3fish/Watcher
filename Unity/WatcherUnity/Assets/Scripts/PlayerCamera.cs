@@ -9,33 +9,55 @@ public class PlayerCamera : MonoBehaviour
 
     RaycastHit hit;
 
+    private void Awake()
+    {
+        PGM.Instance.activeCamera = GetComponent<Camera>();
 
+        PGM.Instance.allCameras.Add(GetComponent<Camera>());
+    }
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
 
-        PGM.Instance.activeCamera = GetComponent<Camera>();
-        print(GetComponent<Camera>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform);
+        if (PGM.Instance.manyCameras)
+        {
+            GetComponent<Camera>().targetTexture = PGM.Instance.monitorScreens[PGM.Instance.allCameras.IndexOf(GetComponent<Camera>())];
+        }
+
+        if (PGM.Instance.autoCameraSwitch)
+        {
+            transform.LookAt(player.transform);
+        }
+        
+        
+        // Ray is lifted up by 2 points so that it looks the player's head, stopping small things on the floor from getting in the way    
         Debug.DrawRay(transform.position, player.transform.position - transform.position + Vector3.up * 2, Color.blue);
         if (Physics.Raycast(transform.position, player.transform.position - transform.position + Vector3.up * 2, out hit, Mathf.Infinity))
         {
-            if (hit.collider.name != "Player")
+            if (hit.collider.name != "Player" && PGM.Instance.autoCameraSwitch)
             {
                 DisableCamera();
             }
 
-            if (hit.collider.name == "Player" && PGM.Instance.activeCamera != null)
+
+            if (hit.collider.name == "Player" && PGM.Instance.activeCamera != null && PGM.Instance.autoCameraSwitch) 
             {
                 EnableCamera();
             }
-            
+
+            if (hit.collider.name == "Player" && PGM.Instance.manyCameras)
+            {
+                Quaternion rotateToPlayer = Quaternion.LookRotation(player.transform.position - transform.position);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
+                //transform.LookAt(player.transform);
+            }
+
         }
     }
 
@@ -47,6 +69,11 @@ public class PlayerCamera : MonoBehaviour
         {
             GetComponent<Camera>().targetTexture = PGM.Instance.hiddenScreen;
             PGM.Instance.camerasCanSee.Remove(GetComponent<Camera>());
+            if (!PGM.Instance.inactiveCameras.Contains(GetComponent<Camera>()))
+            {
+                PGM.Instance.inactiveCameras.Add(GetComponent<Camera>());
+            }
+            
         }
 
     }
@@ -58,9 +85,10 @@ public class PlayerCamera : MonoBehaviour
         if (PGM.Instance.camerasCanSee.Contains(GetComponent<Camera>()) == false)
         {
             PGM.Instance.camerasCanSee.Add(GetComponent<Camera>());
+            PGM.Instance.inactiveCameras.Remove(GetComponent<Camera>());
         }
-        
-        GetComponent<Camera>().targetTexture = PGM.Instance.monitorScreen;
 
+        GetComponent<Camera>().targetTexture = PGM.Instance.monitorScreen;
+        
     }
 }

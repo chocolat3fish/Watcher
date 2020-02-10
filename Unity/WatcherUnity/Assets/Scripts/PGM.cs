@@ -12,6 +12,9 @@ public class PGM : MonoBehaviour
     [Header("Camera Settings")]
     public float maxFOV;
     public float minFOV;
+
+    public float monitorCamRotateSpeed;
+
     public GameObject selectedGameobject;
     [SerializeField]
     public Dictionary<string, int> Switches { get; private set; } = new Dictionary<string, int>();
@@ -19,15 +22,24 @@ public class PGM : MonoBehaviour
     [Header("Booleans")]
     public bool levelComplete;
 
+    public bool autoCameraSwitch;
+    public bool manyCameras;
+
+
     [Header("Object Tracking")]
     public string puzzleObject;
 
+    public List<RenderTexture> monitorScreens;
     public RenderTexture monitorScreen;
     public RenderTexture hiddenScreen;
 
+
+
     public GameObject primaryCamera;
     public Camera activeCamera;
+    public List<Camera> inactiveCameras;
     public List<Camera> camerasCanSee;
+    public List<Camera> allCameras = new List<Camera>(3);
 
     public PlayerControls player;
 

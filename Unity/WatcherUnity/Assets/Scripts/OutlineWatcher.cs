@@ -10,7 +10,8 @@ public class OutlineWatcher : MonoBehaviour
     public enum SwitchType
     {
         onOFF,
-        threePhase
+        threePhase,
+        button
     }
 
 
@@ -22,12 +23,14 @@ public class OutlineWatcher : MonoBehaviour
     Animator anim;
     public SwitchType type;
 
-    //All switch types data
+    // All switch types data
     public string switchName;
-    //OnOff Switch data
+    // OnOff Switch data
     public bool turnedOn;
-    //threePhase Switch data
+    // threePhase Switch data
     public int defaultValue;
+    // button Switch data
+    
 
     private void Awake()
     {
