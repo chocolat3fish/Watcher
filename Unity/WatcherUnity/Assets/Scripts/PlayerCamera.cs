@@ -16,14 +16,13 @@ public class PlayerCamera : MonoBehaviour
 
         PGM.Instance.allCameras.Add(GetComponent<Camera>());
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (PGM.Instance.manyCameras)
@@ -41,6 +40,7 @@ public class PlayerCamera : MonoBehaviour
         Debug.DrawRay(transform.position, player.transform.position - transform.position + Vector3.up * 2, Color.blue);
         if (Physics.Raycast(transform.position, player.transform.position - transform.position + Vector3.up * 2, out hit, Mathf.Infinity))
         {
+            // if a wall is in the way and only one monitor should display, don't use the camera
             if (hit.collider.name != "Player" && PGM.Instance.autoCameraSwitch)
             {
                 DisableCamera();
@@ -50,6 +50,7 @@ public class PlayerCamera : MonoBehaviour
             if (hit.collider.name == "Player" && PGM.Instance.activeCamera != null && PGM.Instance.autoCameraSwitch) 
             {
                 EnableCamera();
+                transform.LookAt(player.transform);
             }
 
             if (hit.collider.name == "Player" && PGM.Instance.manyCameras)
@@ -65,7 +66,7 @@ public class PlayerCamera : MonoBehaviour
 
     void DisableCamera()
     {
-        // if disabling this camera will leave a camera active
+        // if disabling this camera will leave a camera active (avoids frozen screens because of no cameras outputting)
         if (PGM.Instance.camerasCanSee.Count - 1 > 0 || PGM.Instance.activeCamera != GetComponent<Camera>())
         {
             GetComponent<Camera>().targetTexture = PGM.Instance.hiddenScreen;

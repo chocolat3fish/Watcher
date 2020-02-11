@@ -10,6 +10,7 @@ public class CameraObject : MonoBehaviour
 
     void Start()
     {
+        // To automate assigning a camera to the mesh, it finds the nearest one.
         allCameras = GameObject.FindGameObjectsWithTag("MonitorCamera");
         nearestCamera = FindNearestCamera();  
     }
@@ -17,8 +18,9 @@ public class CameraObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localRotation = nearestCamera.transform.localRotation;
-        //transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().player.transform.position);
+        // Looks toward the player (as defined by the nearest camera) to mimic the actual camera.
+        //transform.localRotation = nearestCamera.transform.localRotation;
+        transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().player.transform.position);
     }
 
 

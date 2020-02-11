@@ -48,7 +48,7 @@ public class PlayerControls : MonoBehaviour
         animator = GetComponent<Animator>();
 
         canMove = true;
-
+        // "disables" the layer for picking up objects, so that the top half of the idle animation doesn't override anything else
         animator.SetLayerWeight(1, 0f);
     }
 
@@ -134,9 +134,10 @@ public class PlayerControls : MonoBehaviour
 
         if (objectBeingHeld != null)
         {
-            objectBeingHeld.transform.position = //GameObject.Find("Hand.R").transform.position;
-            GameObject.Find("Hand.R").transform.position + (GameObject.Find("Hand.L").transform.position - GameObject.Find("Hand.R").transform.position) / 2;
+            // places object between left and right hand (fits with animation better/looks nicer)
+            objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position + (GameObject.Find("Hand.L").transform.position - GameObject.Find("Hand.R").transform.position) / 2;
             animator.SetBool("holdingObject", true);
+            // enables animation override while holding object so that the player can have the walk animation but keep the arms holding the object
             animator.SetLayerWeight(1, 1f);
         }
         
@@ -166,6 +167,7 @@ public class PlayerControls : MonoBehaviour
         if (dropObject)
         {
             animator.SetBool("holdingObject", false);
+            // stops the hold animation from overriding the other animations
             animator.SetLayerWeight(1, 0f);
             holdingObject = false;
             objectBeingHeld.transform.parent = null;
@@ -205,16 +207,14 @@ public class PlayerControls : MonoBehaviour
 
         foreach (GameObject pickup in nearbyObjects)
         {
-
+            // allows to pick up if the object is within an angle of the direction
             if (Vector3.Distance(pickup.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, pickup.transform.position - transform.position) < pickupAngle)
             {
-                // allows to pick up if the object is within an angle of the direction           
+                          
                 nearest = pickup;
             }
 
         }
-
-
         return nearest;
 
     }
@@ -229,10 +229,10 @@ public class PlayerControls : MonoBehaviour
 
         foreach (GameObject computer in nearbyComputers)
         {
-
+            // allows to interact if computer is within an angle of the direction  
             if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < pickupAngle)
             {
-                // allows to interact if computer is within an angle of the direction           
+         
                 nearest = computer;
             }
 

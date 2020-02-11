@@ -49,7 +49,7 @@ public class WatcherCamera : MonoBehaviour
 
     void Update()
     {
-        // from MouseLook.cs
+        // from MouseLook.cs (Found on google)
         // Read the mouse input axis
         rotationX += Input.GetAxis("Mouse X") * sensitivity;
         rotationY += Input.GetAxis("Mouse Y") * sensitivity;
@@ -62,6 +62,7 @@ public class WatcherCamera : MonoBehaviour
 
         transform.localRotation = originalRotation * xQuaternion * yQuaternion;
 
+        // no longer from MouseLook.cs
 
         scroll += scrollSpeed * Input.GetAxis("Mouse ScrollWheel");
         if (scroll > maxFOV)
@@ -72,7 +73,7 @@ public class WatcherCamera : MonoBehaviour
         cam.fieldOfView = scroll;
         PGM.Instance.FOV = scroll;
 
-        //Finds what the camera is looking at
+        // Finds what the camera is looking at
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
             PGM.Instance.selectedGameobject = hit.transform.gameObject;
@@ -82,6 +83,7 @@ public class WatcherCamera : MonoBehaviour
     }
 
     // from MouseLook.cs
+    // allows for a limit on rotation angle (e.g can't look up or down over 180 degrees)
     public static float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360F)
