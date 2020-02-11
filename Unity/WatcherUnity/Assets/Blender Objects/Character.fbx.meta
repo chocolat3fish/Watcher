@@ -442,8 +442,8 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 0.6
-    meshCompression: 1
-    addColliders: 0
+    meshCompression: 3
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
@@ -653,7 +653,7 @@ ModelImporter:
     - name: Head
       parentName: Neck
       position: {x: -2.0278093e-11, y: 0.008905921, z: 1.4694523e-10}
-      rotation: {x: 0.015666103, y: 0.00037119124, z: -0.0078085293, w: 0.99984676}
+      rotation: {x: 0.03341239, y: 0.71560115, z: -0.007744031, w: 0.6976666}
       scale: {x: 0.9999999, y: 0.9999998, z: 0.9999998}
     - name: Shoulder.L
       parentName: Spine
@@ -663,12 +663,12 @@ ModelImporter:
     - name: UpperArm.L
       parentName: Shoulder.L
       position: {x: 1.5646219e-10, y: 0.025361346, z: -0.0000000027744098}
-      rotation: {x: 0.0076759756, y: -0.22594024, z: 0.0011430234, w: 0.97411025}
+      rotation: {x: 0.0070859347, y: 0.044324342, z: 0.0031651559, w: 0.9989871}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: LowerArm.L
       parentName: UpperArm.L
       position: {x: -8.940697e-11, y: 0.030803349, z: 4.4703483e-10}
-      rotation: {x: -0.0011899979, y: 0.018704548, z: 0.031320248, w: 0.99933374}
+      rotation: {x: -0.00028410187, y: -0.010191107, z: 0.031341534, w: 0.99945676}
       scale: {x: 0.9999999, y: 1, z: 0.9999999}
     - name: Hand.L
       parentName: LowerArm.L
@@ -688,7 +688,7 @@ ModelImporter:
     - name: LowerArm.R
       parentName: UpperArm.R
       position: {x: -0.0000000010728836, y: 0.02594066, z: 0.0000000031292438}
-      rotation: {x: -0.016890435, y: -0.0013628777, z: -0.031781193, w: 0.9993512}
+      rotation: {x: -0.015038096, y: 0.056008406, z: -0.032698456, w: 0.9977814}
       scale: {x: 1, y: 0.99999994, z: 1}
     - name: Hand.R
       parentName: LowerArm.R
