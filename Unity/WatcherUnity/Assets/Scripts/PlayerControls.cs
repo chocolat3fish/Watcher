@@ -181,6 +181,7 @@ public class PlayerControls : MonoBehaviour
         {
             animator.SetBool("usingComputer", true);
             canMove = false;
+            PGM.Instance.usingComputer = true;
             usingComputer = true;
         }
 
@@ -189,6 +190,7 @@ public class PlayerControls : MonoBehaviour
             interactComputer = false;
             exitComputer = false;
             usingComputer = false;
+            PGM.Instance.usingComputer = false;
             canMove = true;
             animator.SetBool("usingComputer", false);
         }

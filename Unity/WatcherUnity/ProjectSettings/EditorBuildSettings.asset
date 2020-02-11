@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/POC.unity
     guid: e1e36c0ca9816454da399b8b4e499ea4
+  - enabled: 1
+    path: Assets/Scenes/ComPuzzleDisplay.unity
+    guid: 64c1ce74b29d34e20a939e32d383979c
   m_configObjects: {}

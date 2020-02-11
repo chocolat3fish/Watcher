@@ -9,6 +9,7 @@ public class PlayerCamera : MonoBehaviour
 
     RaycastHit hit;
 
+
     private void Awake()
     {
         PGM.Instance.activeCamera = GetComponent<Camera>();

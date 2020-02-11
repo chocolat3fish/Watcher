@@ -25,12 +25,16 @@ public class PGM : MonoBehaviour
     public bool autoCameraSwitch;
     public bool manyCameras;
 
+    public bool usingComputer;
 
     [Header("Object Tracking")]
     public string puzzleObject;
 
     public List<RenderTexture> monitorScreens;
+
+
     public RenderTexture monitorScreen;
+    public RenderTexture puzzleScreen;
     public RenderTexture hiddenScreen;
 
 
@@ -45,8 +49,9 @@ public class PGM : MonoBehaviour
 
 
     [Header("Scenes")]
-    public string DeskScene;
-    public string TestLevel;
+    public string deskScene;
+    public string testLevel;
+    public string computerScene;
 
 
     public void AdjustDictionary(string key, int data)
@@ -75,11 +80,14 @@ public class PGM : MonoBehaviour
 
     private void Start()
     {
+
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == DeskScene)
+        if (currentScene.name == deskScene)
         {
-            SceneManager.LoadSceneAsync(TestLevel, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(testLevel, LoadSceneMode.Additive);
         }
+
+        
 
         //player = FindObjectOfType<PlayerControls>();
         //activeCamera = GameObject.FindGameObjectWithTag("MonitorCamera");
@@ -87,5 +95,19 @@ public class PGM : MonoBehaviour
 
         //RoomCamControl.cameras = GameObject.FindGameObjectsWithTag("MonitorCamera");
     }
+
+    /*
+    private void FixedUpdate()
+    {
+        if (usingComputer && SceneManager.GetSceneByName(computerScene).isLoaded == false)
+        {
+            SceneManager.LoadSceneAsync(computerScene, LoadSceneMode.Additive);
+        }
+        if (usingComputer == false && SceneManager.GetSceneByName(computerScene).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(computerScene);
+        }
+    }
+    */
 
 }
