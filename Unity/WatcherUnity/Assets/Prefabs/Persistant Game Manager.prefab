@@ -49,9 +49,9 @@ MonoBehaviour:
   minFOV: 20
   monitorCamRotateSpeed: 2
   selectedGameobject: {fileID: 0}
-  levelComplete: 0
   autoCameraSwitch: 0
   manyCameras: 0
+  usingComputer: 0
   puzzleObject: Pickup
   monitorScreens:
   - {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
@@ -70,6 +70,19 @@ MonoBehaviour:
   deskScene: Desk
   testLevel: POC
   computerScene: ComPuzzleDisplay
+  currentPuzzle:
+    puzzleNumber: 0
+    sceneName: 
+    triggersToHit: 0
+    triggersBeenHit: 0
+    completed: 0
+  puzzleManager:
+  - puzzleNumber: 1
+    sceneName: PuzzleOne
+    triggersToHit: 2
+    triggersBeenHit: 0
+    completed: 0
+  puzzlesCompleted: 0
 --- !u!95 &-8910108579370357771
 Animator:
   serializedVersion: 3

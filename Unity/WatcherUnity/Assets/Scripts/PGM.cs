@@ -20,7 +20,7 @@ public class PGM : MonoBehaviour
     public Dictionary<string, int> Switches { get; private set; } = new Dictionary<string, int>();
 
     [Header("Booleans")]
-    public bool levelComplete;
+    //public bool levelComplete;
 
     public bool autoCameraSwitch;
     public bool manyCameras;
@@ -53,6 +53,14 @@ public class PGM : MonoBehaviour
     public string testLevel;
     public string computerScene;
 
+    [Header("Puzzles")]
+    public Puzzle currentPuzzle;
+
+    //public Dictionary<int, Puzzle> puzzleManager = new Dictionary<int, Puzzle>();
+    public Puzzle[] puzzleManager;
+
+    public int puzzlesCompleted;
+
 
     public void AdjustDictionary(string key, int data)
     {
@@ -80,22 +88,32 @@ public class PGM : MonoBehaviour
 
     private void Start()
     {
+        currentPuzzle = puzzleManager[puzzlesCompleted];
 
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == deskScene)
         {
-            SceneManager.LoadSceneAsync(testLevel, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(currentPuzzle.sceneName, LoadSceneMode.Additive);
         }
 
-        
-
-        //player = FindObjectOfType<PlayerControls>();
-        //activeCamera = GameObject.FindGameObjectWithTag("MonitorCamera");
 
 
-        //RoomCamControl.cameras = GameObject.FindGameObjectsWithTag("MonitorCamera");
     }
 
+    private void Update()
+    {
+
+        if (currentPuzzle.completed)
+        {
+            puzzlesCompleted += 1;
+            //currentPuzzle = puzzleManager[puzzlesCompleted];
+        }
+
+        if (currentPuzzle.triggersBeenHit == currentPuzzle.triggersToHit)
+        {
+            currentPuzzle.completed = true;
+        }
+    }
     /*
     private void FixedUpdate()
     {
