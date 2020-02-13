@@ -20,7 +20,10 @@ public class CameraObject : MonoBehaviour
     {
         // Looks toward the player (as defined by the nearest camera) to mimic the actual camera.
         //transform.localRotation = nearestCamera.transform.localRotation;
-        transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().player.transform.position);
+        if (PGM.Instance.camerasCanSee.Contains(nearestCamera))
+        {
+            transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().player.transform.position);
+        }
     }
 
 

@@ -55,9 +55,22 @@ public class PlayerCamera : MonoBehaviour
 
             if (hit.collider.name == "Player" && PGM.Instance.manyCameras)
             {
+                if (!PGM.Instance.camerasCanSee.Contains(GetComponent<Camera>()))
+                {
+                    PGM.Instance.camerasCanSee.Add(GetComponent<Camera>());
+                }
+
                 Quaternion rotateToPlayer = Quaternion.LookRotation(player.transform.position - transform.position);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
                 //transform.LookAt(player.transform);
+            }
+
+            if (hit.collider.name != "Player" && PGM.Instance.manyCameras)
+            {
+                if (PGM.Instance.camerasCanSee.Contains(GetComponent<Camera>()))
+                {
+                    PGM.Instance.camerasCanSee.Remove(GetComponent<Camera>());
+                }
             }
 
         }
