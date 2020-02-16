@@ -58,6 +58,15 @@ MonoBehaviour:
   - {fileID: 8400000, guid: 960632959f31041bb995822b29199f87, type: 2}
   - {fileID: 8400000, guid: bad5da9b1dd3c485ca576384af47b68a, type: 2}
   - {fileID: 8400000, guid: e15c871124a714e54851f89c68afe33b, type: 2}
+  - {fileID: 8400000, guid: 1d56eba0862384bc398f12b6990c481a, type: 2}
+  - {fileID: 8400000, guid: 3bd68fd4ac5514b2092d111a95d351a4, type: 2}
+  screenMaterials:
+  - {fileID: 2100000, guid: 10259cc12509a466fa040d29bd0469ec, type: 2}
+  - {fileID: 2100000, guid: 72e73e9a74116410ba87d55d4967ce63, type: 2}
+  - {fileID: 2100000, guid: bee07b89efe5b4b6abb859cb1315d46c, type: 2}
+  - {fileID: 2100000, guid: c688d37cd113c4e66b3d3b107ea33ce3, type: 2}
+  - {fileID: 2100000, guid: f0d4828866d5741fdb2e29dd76e67b5f, type: 2}
+  - {fileID: 2100000, guid: 393ed45ae0aab46059ccb3d18edaf8e6, type: 2}
   monitorScreen: {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
   puzzleScreen: {fileID: 8400000, guid: 61447df54ab5c4dfaa8c0e0ccf8765b5, type: 2}
   hiddenScreen: {fileID: 8400000, guid: 7dd128c4a0f054651829ac3c6304d4be, type: 2}
@@ -67,6 +76,10 @@ MonoBehaviour:
   camerasCanSee: []
   allCameras: []
   player: {fileID: 0}
+  monitorsObject: {fileID: 0}
+  highlightColour:
+    serializedVersion: 2
+    rgba: 63231
   deskScene: Desk
   testLevel: POC
   computerScene: ComPuzzleDisplay

@@ -31,13 +31,14 @@ public class PGM : MonoBehaviour
     public string puzzleObject;
 
     public List<RenderTexture> monitorScreens;
+    public List<Material> screenMaterials;
 
 
     public RenderTexture monitorScreen;
     public RenderTexture puzzleScreen;
     public RenderTexture hiddenScreen;
 
-
+    
 
     public GameObject primaryCamera;
     public Camera activeCamera;
@@ -47,6 +48,9 @@ public class PGM : MonoBehaviour
 
     public PlayerControls player;
 
+    public GameObject monitorsObject;
+
+    public Color32 highlightColour;
 
     [Header("Scenes")]
     public string deskScene;
@@ -84,6 +88,8 @@ public class PGM : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        monitorsObject = GameObject.Find("ManyMonitors");
+
     }
 
     private void Start()
@@ -96,6 +102,7 @@ public class PGM : MonoBehaviour
             SceneManager.LoadSceneAsync(currentPuzzle.sceneName, LoadSceneMode.Additive);
         }
 
+        
 
 
     }
@@ -113,7 +120,11 @@ public class PGM : MonoBehaviour
         {
             currentPuzzle.completed = true;
         }
+
+        
     }
+
+    
     /*
     private void FixedUpdate()
     {

@@ -9,12 +9,15 @@ public class PlayerCamera : MonoBehaviour
 
     RaycastHit hit;
 
+    public Camera cameraComponent;
 
     private void Awake()
     {
-        PGM.Instance.activeCamera = GetComponent<Camera>();
+        cameraComponent = GetComponent<Camera>();
 
-        PGM.Instance.allCameras.Add(GetComponent<Camera>());
+        PGM.Instance.activeCamera = cameraComponent;
+
+        PGM.Instance.allCameras.Add(cameraComponent);
     }
 
     void Start()
@@ -25,10 +28,21 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (PGM.Instance.manyCameras)
+        if (PGM.Instance.manyCameras && PGM.Instance.monitorScreens.Count >= PGM.Instance.allCameras.Count)
         {
-            GetComponent<Camera>().targetTexture = PGM.Instance.monitorScreens[PGM.Instance.allCameras.IndexOf(GetComponent<Camera>())];
+            cameraComponent.targetTexture = PGM.Instance.monitorScreens[PGM.Instance.allCameras.IndexOf(cameraComponent)];
         }
+        /*
+        if (PGM.Instance.manyCameras && PGM.Instance.monitorScreens.Count < PGM.Instance.allCameras.Count)
+        {
+            // if camera can see player that isn't currently displayed to a monitor
+            //if (PGM.Instance.camerasCanSee.Contains(PGM.Instance.allCameras[PGM.Instance.monitorScreens.Count]))
+            if (PGM.Instance.camerasCanSee.Contains(cameraComponent) && cameraComponent.targetTexture == PGM.Instance.hiddenScreen)
+            {
+                DisplayCamera();
+            }
+        }
+        */
 
         if (PGM.Instance.autoCameraSwitch)
         {
@@ -55,9 +69,9 @@ public class PlayerCamera : MonoBehaviour
 
             if (hit.collider.name == "Player" && PGM.Instance.manyCameras)
             {
-                if (!PGM.Instance.camerasCanSee.Contains(GetComponent<Camera>()))
+                if (!PGM.Instance.camerasCanSee.Contains(cameraComponent))
                 {
-                    PGM.Instance.camerasCanSee.Add(GetComponent<Camera>());
+                    PGM.Instance.camerasCanSee.Add(cameraComponent);
                 }
 
                 Quaternion rotateToPlayer = Quaternion.LookRotation(player.transform.position - transform.position);
@@ -67,9 +81,9 @@ public class PlayerCamera : MonoBehaviour
 
             if (hit.collider.name != "Player" && PGM.Instance.manyCameras)
             {
-                if (PGM.Instance.camerasCanSee.Contains(GetComponent<Camera>()))
+                if (PGM.Instance.camerasCanSee.Contains(cameraComponent))
                 {
-                    PGM.Instance.camerasCanSee.Remove(GetComponent<Camera>());
+                    PGM.Instance.camerasCanSee.Remove(cameraComponent);
                 }
             }
 
@@ -80,13 +94,13 @@ public class PlayerCamera : MonoBehaviour
     void DisableCamera()
     {
         // if disabling this camera will leave a camera active (avoids frozen screens because of no cameras outputting)
-        if (PGM.Instance.camerasCanSee.Count - 1 > 0 || PGM.Instance.activeCamera != GetComponent<Camera>())
+        if (PGM.Instance.camerasCanSee.Count - 1 > 0 || PGM.Instance.activeCamera != cameraComponent)
         {
-            GetComponent<Camera>().targetTexture = PGM.Instance.hiddenScreen;
-            PGM.Instance.camerasCanSee.Remove(GetComponent<Camera>());
-            if (!PGM.Instance.inactiveCameras.Contains(GetComponent<Camera>()))
+            cameraComponent.targetTexture = PGM.Instance.hiddenScreen;
+            PGM.Instance.camerasCanSee.Remove(cameraComponent);
+            if (!PGM.Instance.inactiveCameras.Contains(cameraComponent))
             {
-                PGM.Instance.inactiveCameras.Add(GetComponent<Camera>());
+                PGM.Instance.inactiveCameras.Add(cameraComponent);
             }
             
         }
@@ -96,14 +110,19 @@ public class PlayerCamera : MonoBehaviour
 
     void EnableCamera()
     {
-        PGM.Instance.activeCamera = GetComponent<Camera>();
-        if (PGM.Instance.camerasCanSee.Contains(GetComponent<Camera>()) == false)
+        PGM.Instance.activeCamera = cameraComponent;
+        if (PGM.Instance.camerasCanSee.Contains(cameraComponent) == false)
         {
-            PGM.Instance.camerasCanSee.Add(GetComponent<Camera>());
-            PGM.Instance.inactiveCameras.Remove(GetComponent<Camera>());
+            PGM.Instance.camerasCanSee.Add(cameraComponent);
+            PGM.Instance.inactiveCameras.Remove(cameraComponent);
         }
 
-        GetComponent<Camera>().targetTexture = PGM.Instance.monitorScreen;
+        cameraComponent.targetTexture = PGM.Instance.monitorScreen;
         
+    }
+
+    void DisplayCamera()
+    {
+
     }
 }
