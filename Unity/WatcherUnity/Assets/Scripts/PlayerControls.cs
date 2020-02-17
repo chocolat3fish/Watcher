@@ -82,7 +82,7 @@ public class PlayerControls : MonoBehaviour
 
         }
 
-        if (rb.velocity.magnitude != 0)
+        if (rb.velocity.magnitude > 0)
         {
             animator.SetBool("isMoving", true);
         }
@@ -114,9 +114,20 @@ public class PlayerControls : MonoBehaviour
                 pickUpObject = true;
             }
 
-            if (FindNearestComputer() != null)
+            if (FindNearestComputer() != null && PGM.Instance.usingComputer == false)
             {
                 interactComputer = true;
+
+                switch (PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate)
+                {
+                    case true:
+                        PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = false;
+                        break;
+
+                    case false:
+                        PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = true;
+                        break;
+                }
             }
 
         }
@@ -131,6 +142,8 @@ public class PlayerControls : MonoBehaviour
             exitComputer = true;
 
         }
+
+        
 
         if (objectBeingHeld != null)
         {
@@ -183,6 +196,8 @@ public class PlayerControls : MonoBehaviour
         {
             animator.SetBool("usingComputer", true);
             canMove = false;
+
+            //PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = true;
             PGM.Instance.usingComputer = true;
             usingComputer = true;
         }
@@ -193,8 +208,10 @@ public class PlayerControls : MonoBehaviour
             exitComputer = false;
             usingComputer = false;
             PGM.Instance.usingComputer = false;
+            PGM.Instance.computerBeingUsed = null;
             canMove = true;
             animator.SetBool("usingComputer", false);
+            
         }
     }
 
@@ -238,7 +255,9 @@ public class PlayerControls : MonoBehaviour
 
         }
 
+        PGM.Instance.computerBeingUsed = nearest;
 
+        
         return nearest;
 
     }

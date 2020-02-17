@@ -8,8 +8,9 @@ public class PGM : MonoBehaviour
 {
     public static PGM Instance { get; private set; }
 
-    public float FOV;
+
     [Header("Camera Settings")]
+    public float FOV;
     public float maxFOV;
     public float minFOV;
 
@@ -29,7 +30,13 @@ public class PGM : MonoBehaviour
 
     [Header("Object Tracking")]
     public string puzzleObject;
+    public PlayerControls player;
 
+    public GameObject monitorsObject;
+
+    public GameObject computerBeingUsed;
+
+    [Header("Screens")]
     public List<RenderTexture> monitorScreens;
     public List<Material> screenMaterials;
 
@@ -39,18 +46,17 @@ public class PGM : MonoBehaviour
     public RenderTexture hiddenScreen;
 
     
-
+    [Header("Cameras")]
     public GameObject primaryCamera;
     public Camera activeCamera;
     public List<Camera> inactiveCameras;
     public List<Camera> camerasCanSee;
     public List<Camera> allCameras = new List<Camera>(3);
 
-    public PlayerControls player;
 
-    public GameObject monitorsObject;
 
     public Color32 highlightColour;
+
 
     [Header("Scenes")]
     public string deskScene;
@@ -102,9 +108,6 @@ public class PGM : MonoBehaviour
             SceneManager.LoadSceneAsync(currentPuzzle.sceneName, LoadSceneMode.Additive);
         }
 
-        
-
-
     }
 
     private void Update()
@@ -119,6 +122,10 @@ public class PGM : MonoBehaviour
         if (currentPuzzle.triggersBeenHit == currentPuzzle.triggersToHit)
         {
             currentPuzzle.completed = true;
+        }
+        if (currentPuzzle.triggersBeenHit < currentPuzzle.triggersToHit)
+        {
+            currentPuzzle.completed = false;
         }
 
         

@@ -8,22 +8,39 @@ public class CameraObject : MonoBehaviour
 
     public GameObject[] allCameras;
 
+    public PlayerCamera cameraScript;
+
+
     void Start()
     {
         // To automate assigning a camera to the mesh, it finds the nearest one.
         allCameras = GameObject.FindGameObjectsWithTag("MonitorCamera");
-        nearestCamera = FindNearestCamera();  
+        nearestCamera = FindNearestCamera();
+
+        cameraScript = nearestCamera.GetComponent<PlayerCamera>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Looks toward the player (as defined by the nearest camera) to mimic the actual camera.
-        //transform.localRotation = nearestCamera.transform.localRotation;
-        if (PGM.Instance.camerasCanSee.Contains(nearestCamera))
+        
+        if (PGM.Instance.camerasCanSee.Contains(nearestCamera)) //&& nearestCamera.GetComponent<PlayerCamera>().watchTargetObject == false)
         {
-            transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().player.transform.position);
+            //transform.LookAt(cameraScript.player.transform.position);
+            Quaternion rotateToPlayer = Quaternion.LookRotation(cameraScript.player.transform.position - transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
+
         }
+
+        //if (PGM.Instance.camerasCanSee.Contains(nearestCamera) == false && nearestCamera.GetComponent<PlayerCamera>().watchTargetObject == true)
+        else if (cameraScript.watchTargetObject)
+        {
+            //transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().targetObject.transform.position);
+            Quaternion rotateToObject = Quaternion.LookRotation(cameraScript.targetObject.transform.position - transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotateToObject, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
+        }
+
     }
 
 

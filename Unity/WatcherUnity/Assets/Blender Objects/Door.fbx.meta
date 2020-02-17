@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: 0fde7ca57a6184eadb9806d67c0a8783
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      74: -6945817780151578514
+    second: FrameLeft|Close.001
+  - first:
+      74: -5375639973727028246
+    second: FrameLeft|OpenL
+  - first:
+      74: -1530800247751728360
+    second: FrameLeft|OpenR
+  - first:
+      74: 8321459946301910821
+    second: FrameRight|Close.001
+  - first:
+      74: -3121598991086458315
+    second: FrameRight|OpenL
+  - first:
+      74: -6756281668834622842
+    second: FrameRight|OpenR
+  - first:
+      74: 567724728058282985
+    second: DoorLeft|Close.001
+  - first:
+      74: 263369703437261885
+    second: DoorLeft|OpenL
+  - first:
+      74: -7894331171540733935
+    second: DoorLeft|OpenR
+  - first:
+      74: 353473392057882599
+    second: DoorRight|Close.001
+  - first:
+      74: -8007664505459420570
+    second: DoorRight|OpenL
+  - first:
+      74: -2925540446383560419
+    second: DoorRight|OpenR
+  - first:
+      74: 8846675697292050250
+    second: OpenL
+  - first:
+      74: -5163806354248728821
+    second: OpenR
+  - first:
+      74: -1954795250505187855
+    second: FrameLeft|ClosedL
+  - first:
+      74: -9012963518408059556
+    second: FrameLeft|ClosedR
+  - first:
+      74: -1262257976039414448
+    second: FrameRight|ClosedL
+  - first:
+      74: 8824593518941759835
+    second: FrameRight|ClosedR
+  - first:
+      74: 4339241861355511846
+    second: DoorLeft|ClosedL
+  - first:
+      74: -7627283667969395955
+    second: DoorLeft|ClosedR
+  - first:
+      74: 4459966695271510683
+    second: DoorRight|ClosedL
+  - first:
+      74: 1146635452349798603
+    second: DoorRight|ClosedR
+  - first:
+      74: -5007136494783040286
+    second: DoorLeft|Closed
+  - first:
+      74: 6604541476664179770
+    second: DoorLeft|FrameLeftAction
+  - first:
+      74: 280506669507245173
+    second: DoorLeft|FrameRightAction
+  - first:
+      74: -191368008963033680
+    second: DoorLeft|Open
+  - first:
+      74: 5984496454500463648
+    second: Open
+  - first:
+      74: -397910135213531111
+    second: Frame|Closed
+  - first:
+      74: -101464965139634478
+    second: Frame|Open
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
