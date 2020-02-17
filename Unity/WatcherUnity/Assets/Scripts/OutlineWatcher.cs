@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class OutlineWatcher : MonoBehaviour
 {
+    /*
     public int[] integers;
 
     public enum SwitchType
@@ -184,4 +185,5 @@ public class MyScriptEditor : Editor
 
 
     }
+    */
 }
