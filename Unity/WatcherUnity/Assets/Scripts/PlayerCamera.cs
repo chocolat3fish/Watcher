@@ -16,6 +16,9 @@ public class PlayerCamera : MonoBehaviour
 
     public bool watchTargetObject;
 
+    // the order in which the camera should cycle through
+    public int priority;
+
     private void Awake()
     {
         cameraComponent = GetComponent<Camera>();
@@ -30,6 +33,8 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
+
+        
 
     }
 
@@ -90,7 +95,7 @@ public class PlayerCamera : MonoBehaviour
 
                 Quaternion rotateToPlayer = Quaternion.LookRotation(player.transform.position - transform.position);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
-                //transform.LookAt(player.transform);
+                
             }
 
             if (hit.collider.name != "Player" && PGM.Instance.manyCameras)
@@ -106,7 +111,6 @@ public class PlayerCamera : MonoBehaviour
         Debug.DrawRay(transform.position, targetObject.transform.position - transform.position, Color.red);
         if (Physics.Raycast(transform.position, targetObject.transform.position - transform.position, out hit, Mathf.Infinity))
         {
-            print(hit.collider.name);
             if (hit.collider.gameObject != targetObject)
             {
                 watchTargetObject = false;

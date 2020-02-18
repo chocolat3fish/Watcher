@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class PGM : MonoBehaviour
@@ -28,6 +29,8 @@ public class PGM : MonoBehaviour
 
     public bool usingComputer;
 
+    public bool sortedCameras;
+
     [Header("Object Tracking")]
     public string puzzleObject;
     public PlayerControls player;
@@ -51,7 +54,7 @@ public class PGM : MonoBehaviour
     public Camera activeCamera;
     public List<Camera> inactiveCameras;
     public List<Camera> camerasCanSee;
-    public List<Camera> allCameras = new List<Camera>(3);
+    public List<Camera> allCameras;
 
 
 
@@ -108,10 +111,25 @@ public class PGM : MonoBehaviour
             SceneManager.LoadSceneAsync(currentPuzzle.sceneName, LoadSceneMode.Additive);
         }
 
+        
+
     }
 
     private void Update()
     {
+        if (sortedCameras == false && allCameras.Count > 0)
+        {
+
+
+            allCameras.Sort(delegate (Camera a, Camera b)
+            {
+                return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
+            });
+
+
+            sortedCameras = true;
+        }
+        
 
         if (currentPuzzle.completed)
         {

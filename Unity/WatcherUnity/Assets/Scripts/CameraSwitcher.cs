@@ -35,7 +35,7 @@ public class CameraSwitcher : MonoBehaviour
         //screenNumber = Convert.ToInt32(materialName.Substring(materialName.Length - 1));
 
         // m o n i t o r 1, number is 8th character
-        screenNumber = Convert.ToInt32(materialName[7]);
+        screenNumber = int.Parse(materialName[7].ToString());
         
         currentIndex = screenNumber - 1;
 
@@ -66,6 +66,7 @@ public class CameraSwitcher : MonoBehaviour
 
     void OutputForward()
     {
+        print(currentIndex);
         currentIndex += 1;
         if (currentIndex >= PGM.Instance.allCameras.Count)
         {
