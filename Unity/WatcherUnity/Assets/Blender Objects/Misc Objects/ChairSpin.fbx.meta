@@ -3,7 +3,17 @@ guid: 9372b98238c504bf1aa2bfe5f75d395f
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: 7fdc2d5a9492346b9af2479ecb5b0151, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cushion
+    second: {fileID: 2100000, guid: e3304f1f962744dd9afa47a269c5ae2b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

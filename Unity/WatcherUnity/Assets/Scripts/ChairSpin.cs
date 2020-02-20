@@ -7,6 +7,8 @@ public class ChairSpin : MonoBehaviour
 
     public Camera mainCamera;
 
+    public float spinSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,6 @@ public class ChairSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localRotation = Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0), spinSpeed);
     }
 }
