@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleOne.unity
     guid: 4425dbbd540c24c4bbe400f1b57b1c0d
+  - enabled: 1
+    path: Assets/Scenes/brokePuzzleOne.unity
+    guid: c8fe04100f36bd140a21012caa283b1c
   m_configObjects: {}
