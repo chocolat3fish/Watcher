@@ -19,11 +19,15 @@ public class CameraSwitcher : MonoBehaviour
 
     public Color32 oldColour;
 
+    public MeshRenderer meshRenderer;
+
 
 
     void Start()
     {
         buttonObject = transform.Find("Button").gameObject;
+
+        meshRenderer = buttonObject.GetComponent<MeshRenderer>();
         oldColour = buttonObject.GetComponent<MeshRenderer>().material.color;
 
         monitorName = transform.name.Substring(0, 2);
@@ -55,11 +59,13 @@ public class CameraSwitcher : MonoBehaviour
 
         if (PGM.Instance.selectedGameobject == buttonObject)
         {
-            buttonObject.GetComponent<MeshRenderer>().material.color =  PGM.Instance.highlightColour;
+            //meshRenderer.material.color =  PGM.Instance.highlightColour;
+            meshRenderer.material.SetColor("_BaseColor", PGM.Instance.highlightColour);
         }
         else
         {
-            buttonObject.GetComponent<MeshRenderer>().material.color = oldColour;
+            //buttonObject.GetComponent<MeshRenderer>().material.color = oldColour;
+            meshRenderer.material.SetColor("_BaseColor", oldColour);
         }
 
     }

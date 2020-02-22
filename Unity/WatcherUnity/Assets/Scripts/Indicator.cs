@@ -13,7 +13,8 @@ public class Indicator : MonoBehaviour
         material = GetComponent<MeshRenderer>().materials[2];
 
 
-        material.SetColor("_EmissionColor", red);
+        //material.SetColor("_EmissionColor", red);
+        material.SetColor("_EmissiveColor", red);
     }
 
    
@@ -21,11 +22,13 @@ public class Indicator : MonoBehaviour
     {
         if (PGM.Instance.currentPuzzle.completed)
         {
-            material.SetColor("_EmissionColor", green);
+            //material.SetColor("_EmissionColor", green);
+            material.SetColor("_EmissiveColor", green);
         }
         else
         {
-            material.SetColor("_EmissionColor", red);
+            //material.SetColor("_EmissionColor", red);
+            material.SetColor("_EmissiveColor", red);
         }
     }
 }
