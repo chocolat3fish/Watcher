@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    /*
     [Header("Mouse Adjust Speed")]
     [SerializeField]
     private float SpeedH, SpeedV, SpeedS;
@@ -60,4 +61,5 @@ public class CameraControl : MonoBehaviour
         }
         Debug.DrawRay(transform.position, transform.forward);
         }
+        */
 }

@@ -55,7 +55,7 @@ public class CameraSwitcher : MonoBehaviour
 
         if (PGM.Instance.selectedGameobject == buttonObject)
         {
-            buttonObject.GetComponent<MeshRenderer>().material.color = PGM.Instance.highlightColour;
+            buttonObject.GetComponent<MeshRenderer>().material.color =  PGM.Instance.highlightColour;
         }
         else
         {
@@ -66,7 +66,7 @@ public class CameraSwitcher : MonoBehaviour
 
     void OutputForward()
     {
-        print(currentIndex);
+        
         currentIndex += 1;
         if (currentIndex >= PGM.Instance.allCameras.Count)
         {
