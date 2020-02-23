@@ -227,8 +227,8 @@ public class PlayerControls : MonoBehaviour
 
         foreach (GameObject pickup in nearbyObjects)
         {
-            // allows to pick up if the object is within an angle of the direction
-            if (Vector3.Distance(pickup.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, pickup.transform.position - transform.position) < pickupAngle)
+            // allows to pick up if the object is within an angle of the direction, using Vector3.SignedAngle so that vertical angle has no effect
+            if (Vector3.Distance(pickup.transform.position, playerLocation) < minDistance && (Vector3.SignedAngle(transform.forward, pickup.transform.position - playerLocation, Vector3.left) < pickupAngle))
             {
                           
                 nearest = pickup;
