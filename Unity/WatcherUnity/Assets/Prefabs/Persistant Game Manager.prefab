@@ -49,9 +49,11 @@ MonoBehaviour:
   minFOV: 20
   monitorCamRotateSpeed: 2
   selectedGameobject: {fileID: 0}
+  loadedPuzzle: 0
   autoCameraSwitch: 0
-  manyCameras: 0
+  manyCameras: 1
   usingComputer: 0
+  sortedCameras: 0
   puzzleObject: Pickup
   player: {fileID: 0}
   monitorsObject: {fileID: 0}
@@ -97,6 +99,10 @@ MonoBehaviour:
     triggersBeenHit: 0
     completed: 0
   puzzlesCompleted: 0
+  settingsOpen: 0
+  qualityIndex: 0
+  resolutionX: 800200000005000000050000a0050000400600008007000080070000
+  resolutionY: e0010000d0020000c0030000840300008403000038040000b0040000
 --- !u!95 &-8910108579370357771
 Animator:
   serializedVersion: 3

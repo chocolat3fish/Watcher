@@ -59,14 +59,14 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) && canMove == true)
         {
-            rb.velocity += transform.forward * acceleration;
+            rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingForward", true);
             animator.SetBool("movingBackward", false);
         }
 
         if (Input.GetKey(KeyCode.S) && canMove == true)
         {
-            rb.velocity += transform.forward * -acceleration;
+            rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingBackward", true);
             animator.SetBool("movingForward", false);
         }

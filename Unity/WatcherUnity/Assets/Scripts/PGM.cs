@@ -23,6 +23,8 @@ public class PGM : MonoBehaviour
 
     [Header("Booleans")]
     //public bool levelComplete;
+    public bool loadedPuzzle;
+
 
     public bool autoCameraSwitch;
     public bool manyCameras;
@@ -77,6 +79,13 @@ public class PGM : MonoBehaviour
     [Header("UI")]
     public bool settingsOpen;
 
+
+    [Header("Settings")]
+    public int qualityIndex;
+    public int[] resolutionX;
+    public int[] resolutionY;
+
+
     public void AdjustDictionary(string key, int data)
     {
         if(!Switches.ContainsKey(key))
@@ -99,26 +108,27 @@ public class PGM : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        monitorsObject = GameObject.Find("ManyMonitors");
+        
 
     }
 
     private void Start()
     {
         currentPuzzle = puzzleManager[puzzlesCompleted];
-
+        /*
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == deskScene)
         {
             SceneManager.LoadSceneAsync(currentPuzzle.sceneName, LoadSceneMode.Additive);
         }
-
-        
+        */
 
     }
 
     private void Update()
     {
+        
+
         if (sortedCameras == false && allCameras.Count > 0)
         {
 
