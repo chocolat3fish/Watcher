@@ -74,6 +74,8 @@ public class PGM : MonoBehaviour
 
     public int puzzlesCompleted;
 
+    [Header("UI")]
+    public bool settingsOpen;
 
     public void AdjustDictionary(string key, int data)
     {

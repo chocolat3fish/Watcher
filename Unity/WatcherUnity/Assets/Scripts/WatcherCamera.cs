@@ -37,7 +37,7 @@ public class WatcherCamera : MonoBehaviour
         cam = GetComponent<Camera>();
         cam.fieldOfView = defaultFOV;
         scroll = defaultFOV;
-        //Stop mouse from moving as well as hides it
+        // Stop mouse from moving as well as hides it
         Cursor.lockState = CursorLockMode.Locked;
 
         maxFOV = PGM.Instance.maxFOV;

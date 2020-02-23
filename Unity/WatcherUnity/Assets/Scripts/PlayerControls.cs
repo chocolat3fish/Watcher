@@ -56,6 +56,7 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
 
+
         if (Input.GetKey(KeyCode.W) && canMove == true)
         {
             rb.velocity += transform.forward * acceleration;
@@ -162,6 +163,8 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+
         if (pickUpObject)
         {
             animator.SetTrigger("pickUpObject");
