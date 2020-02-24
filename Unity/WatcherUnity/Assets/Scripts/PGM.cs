@@ -108,13 +108,13 @@ public class PGM : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        
+        currentPuzzle = puzzleManager[puzzlesCompleted];
 
     }
 
     private void Start()
     {
-        currentPuzzle = puzzleManager[puzzlesCompleted];
+
         /*
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == deskScene)

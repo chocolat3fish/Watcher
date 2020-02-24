@@ -78,7 +78,6 @@ public class WatcherCamera : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
             PGM.Instance.selectedGameobject = hit.transform.gameObject;
-            print(PGM.Instance.selectedGameobject.name);
 
         }
         Debug.DrawRay(transform.position, transform.forward);
