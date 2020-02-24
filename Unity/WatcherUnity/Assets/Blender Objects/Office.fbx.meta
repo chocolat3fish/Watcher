@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Celing
+    second: {fileID: 2100000, guid: 976e40222b71a4b63b7af43a98b39085, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Walls
     second: {fileID: 2100000, guid: e201451394cd2dc4fa3bc04652035893, type: 2}
   materials:
