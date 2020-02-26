@@ -50,29 +50,35 @@ public class WatcherCamera : MonoBehaviour
 
     void Update()
     {
-        // from MouseLook.cs (Found on google)
-        // Read the mouse input axis
-        rotationX += Input.GetAxis("Mouse X") * sensitivity;
-        rotationY += Input.GetAxis("Mouse Y") * sensitivity;
 
-        rotationX = ClampAngle(rotationX, minimumX, maximumX);
-        rotationY = ClampAngle(rotationY, minimumY, maximumY);
+        if (PGM.Instance.settingsOpen == false)
+        {
 
-        Quaternion xQuaternion = Quaternion.AngleAxis(rotationX, Vector3.up);
-        Quaternion yQuaternion = Quaternion.AngleAxis(rotationY, Vector3.left);
+            // from MouseLook.cs (Found on google)
+            // Read the mouse input axis
+            rotationX += Input.GetAxis("Mouse X") * sensitivity;
+            rotationY += Input.GetAxis("Mouse Y") * sensitivity;
 
-        transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+            rotationX = ClampAngle(rotationX, minimumX, maximumX);
+            rotationY = ClampAngle(rotationY, minimumY, maximumY);
 
-        // no longer from MouseLook.cs
+            Quaternion xQuaternion = Quaternion.AngleAxis(rotationX, Vector3.up);
+            Quaternion yQuaternion = Quaternion.AngleAxis(rotationY, Vector3.left);
 
-        scroll += scrollSpeed * Input.GetAxis("Mouse ScrollWheel");
-        if (scroll > maxFOV)
-            scroll = maxFOV;
-        if (scroll < minFOV)
-            scroll = minFOV;
+            transform.localRotation = originalRotation * xQuaternion * yQuaternion;
 
-        cam.fieldOfView = scroll;
-        PGM.Instance.FOV = scroll;
+            // no longer from MouseLook.cs
+
+            scroll += scrollSpeed * Input.GetAxis("Mouse ScrollWheel");
+            if (scroll > maxFOV)
+                scroll = maxFOV;
+            if (scroll < minFOV)
+                scroll = minFOV;
+
+            cam.fieldOfView = scroll;
+            PGM.Instance.FOV = scroll;
+        }
+
 
         // Finds what the camera is looking at
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))

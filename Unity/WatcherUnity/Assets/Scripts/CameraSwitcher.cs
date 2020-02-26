@@ -32,9 +32,7 @@ public class CameraSwitcher : MonoBehaviour
 
         materialName = assignedScreen.GetComponent<MeshRenderer>().material.name;
 
-        //screenNumber = Convert.ToInt32(materialName.Substring(materialName.Length - 1));
-
-        // m o n i t o r 1, number is 8th character
+        // Monitor has 7 letters, 7th index is the number after it. Didn't just use length as the initial material has "(Instance)" at the end of it
         screenNumber = int.Parse(materialName[7].ToString());
         
         currentIndex = screenNumber - 1;

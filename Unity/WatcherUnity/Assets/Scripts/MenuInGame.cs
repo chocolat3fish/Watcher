@@ -4,22 +4,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+public class MenuInGame : MonoBehaviour
 {
-
-    public GameObject mainMenu;
     public GameObject settingsMenu;
-    public GameObject background;
 
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown fullscreenDropdown;
-    
+
+
     void Start()
     {
-        mainMenu = GameObject.Find("MainMenu");
         settingsMenu = GameObject.Find("SettingsMenu");
-        background = GameObject.Find("Background");
 
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
@@ -31,34 +27,49 @@ public class MenuController : MonoBehaviour
     
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape) && settingsMenu.activeSelf == false)
+        {
+            ContinueGame();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && settingsMenu.activeSelf == true)
+        {
+            settingsMenu.SetActive(false);
+        }
     }
 
 
-    public void StartGame()
+    public void ContinueGame()
     {
-        SceneManager.LoadScene(PGM.Instance.deskScene);
+        PGM.Instance.settingsOpen = false;
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.UnloadSceneAsync(PGM.Instance.pauseScene);
+    }
+
+
+    public void OpenSettings()
+    {
+
+        settingsMenu.SetActive(true);
+    }
+
+
+    public void CloseSettings()
+    {
+        settingsMenu.SetActive(false);
+    }
+
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene(PGM.Instance.mainMenuScene);
+        // reset PGM settings also
     }
 
 
     public void QuitGame()
     {
         Application.Quit();
-
-    }
-
-
-    public void OpenSettings()
-    {
-        
-        settingsMenu.SetActive(true);
-    }
-
-
-    public void OpenMainMenu()
-    {
-        settingsMenu.SetActive(false);
-        
     }
 
 
@@ -71,7 +82,7 @@ public class MenuController : MonoBehaviour
 
     public void ChangeResolutionSetting()
     {
-        
+
         Screen.SetResolution(PGM.Instance.resolutionX[resolutionDropdown.value], PGM.Instance.resolutionY[resolutionDropdown.value], Screen.fullScreenMode);
     }
 

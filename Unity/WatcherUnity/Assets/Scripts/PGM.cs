@@ -68,6 +68,8 @@ public class PGM : MonoBehaviour
     public string testLevel;
     public string computerScene;
     public string eventsScene;
+    public string mainMenuScene;
+    public string pauseScene;
 
     [Header("Puzzles")]
     public Puzzle currentPuzzle;
@@ -79,7 +81,7 @@ public class PGM : MonoBehaviour
 
     [Header("UI")]
     public bool settingsOpen;
-
+    public bool unloadSettingsScene;
 
     [Header("Settings")]
     public int qualityIndex;

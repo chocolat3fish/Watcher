@@ -87,6 +87,8 @@ MonoBehaviour:
   testLevel: POC
   computerScene: ComPuzzleDisplay
   eventsScene: EventsDisplay
+  mainMenuScene: Main Menu
+  pauseScene: InGameMenu
   currentPuzzle:
     puzzleNumber: 0
     sceneName: 
@@ -101,6 +103,7 @@ MonoBehaviour:
     completed: 0
   puzzlesCompleted: 0
   settingsOpen: 0
+  unloadSettingsScene: 0
   qualityIndex: 0
   resolutionX: 800200000005000000050000a0050000400600008007000080070000
   resolutionY: e0010000d0020000c0030000840300008403000038040000b0040000

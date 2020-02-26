@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -55,7 +56,13 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape) && PGM.Instance.settingsOpen == false)
+        {
+            PGM.Instance.settingsOpen = true;
+            SceneManager.LoadSceneAsync(PGM.Instance.pauseScene, LoadSceneMode.Additive);
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+        }
 
         if (Input.GetKey(KeyCode.W) && canMove == true)
         {
