@@ -21,6 +21,7 @@ public class DoorControl : MonoBehaviour
         if (computer.activate)
         {
             doorAnimator.SetBool("isOpen", true);
+
         }
 
         if (computer.activate == false)

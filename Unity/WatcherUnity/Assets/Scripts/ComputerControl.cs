@@ -23,10 +23,12 @@ public class ComputerControl : MonoBehaviour
         {
             case true:
                 activate = false;
+                
                 break;
 
             case false:
                 activate = true;
+                
                 break;
         }
     }

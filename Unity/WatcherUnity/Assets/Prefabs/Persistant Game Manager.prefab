@@ -47,7 +47,7 @@ MonoBehaviour:
   FOV: 90
   maxFOV: 90
   minFOV: 20
-  monitorCamRotateSpeed: 2
+  monitorCamRotateSpeed: 1
   selectedGameobject: {fileID: 0}
   loadedPuzzle: 0
   autoCameraSwitch: 0
@@ -86,6 +86,7 @@ MonoBehaviour:
   deskScene: Desk
   testLevel: POC
   computerScene: ComPuzzleDisplay
+  eventsScene: EventsDisplay
   currentPuzzle:
     puzzleNumber: 0
     sceneName: 
@@ -103,6 +104,13 @@ MonoBehaviour:
   qualityIndex: 0
   resolutionX: 800200000005000000050000a0050000400600008007000080070000
   resolutionY: e0010000d0020000c0030000840300008403000038040000b0040000
+  eventsList:
+  - ' '
+  - ' '
+  - ' '
+  - ' '
+  - ' '
+  - ' '
 --- !u!95 &-8910108579370357771
 Animator:
   serializedVersion: 3

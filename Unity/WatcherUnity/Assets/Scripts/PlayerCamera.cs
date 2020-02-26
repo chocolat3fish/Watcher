@@ -14,10 +14,14 @@ public class PlayerCamera : MonoBehaviour
     // an object defined in the editor that the camera will focus on if the player is not in view
     public GameObject targetObject;
 
+    public GameObject secondaryObject;
+
     public bool watchTargetObject;
 
     // the order in which the camera should cycle through
     public int priority;
+
+    
 
     private void Awake()
     {
@@ -103,6 +107,15 @@ public class PlayerCamera : MonoBehaviour
                 if (PGM.Instance.camerasCanSee.Contains(cameraComponent))
                 {
                     PGM.Instance.camerasCanSee.Remove(cameraComponent);
+
+                    
+                }
+
+                if (!PGM.Instance.camerasCanSee.Contains(cameraComponent) && watchTargetObject == false && secondaryObject != null)
+                {
+                    Quaternion rotateToObject = Quaternion.LookRotation(secondaryObject.transform.position - transform.position);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotateToObject, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
+
                 }
             }
 
@@ -153,5 +166,6 @@ public class PlayerCamera : MonoBehaviour
             cameraComponent.targetTexture = PGM.Instance.monitorScreen;
 
         }
+
     }
 }

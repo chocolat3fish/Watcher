@@ -1142,6 +1142,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
   targetObject: {fileID: 1218088370}
+  secondaryObject: {fileID: 1857192539}
   watchTargetObject: 0
   priority: 0
 --- !u!20 &264598354
@@ -3071,6 +3072,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
   targetObject: {fileID: 13163792}
+  secondaryObject: {fileID: 0}
   watchTargetObject: 1
   priority: 1
 --- !u!20 &1061233627
@@ -3891,6 +3893,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
   targetObject: {fileID: 1713244624}
+  secondaryObject: {fileID: 0}
   watchTargetObject: 0
   priority: 2
 --- !u!20 &1306252545
@@ -4100,7 +4103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388656427
 GameObject:
@@ -4288,6 +4291,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
   targetObject: {fileID: 1052003360}
+  secondaryObject: {fileID: 0}
   watchTargetObject: 0
   priority: 3
 --- !u!20 &1418198053
@@ -4912,7 +4916,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
@@ -5598,6 +5602,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
   targetObject: {fileID: 1694730702}
+  secondaryObject: {fileID: 0}
   watchTargetObject: 0
   priority: 4
 --- !u!20 &1816188740
@@ -5989,6 +5994,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
   targetObject: {fileID: 404118651}
+  secondaryObject: {fileID: 899456687}
   watchTargetObject: 0
   priority: 5
 --- !u!20 &2076156377

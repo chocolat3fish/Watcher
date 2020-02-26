@@ -67,6 +67,7 @@ public class PGM : MonoBehaviour
     public string deskScene;
     public string testLevel;
     public string computerScene;
+    public string eventsScene;
 
     [Header("Puzzles")]
     public Puzzle currentPuzzle;
@@ -84,6 +85,9 @@ public class PGM : MonoBehaviour
     public int qualityIndex;
     public int[] resolutionX;
     public int[] resolutionY;
+
+    [Header("Events Dialogue")]
+    public List<string> eventsList;
 
 
     public void AdjustDictionary(string key, int data)
@@ -128,7 +132,6 @@ public class PGM : MonoBehaviour
     private void Update()
     {
         
-
         if (sortedCameras == false && allCameras.Count > 0)
         {
 
@@ -161,19 +164,29 @@ public class PGM : MonoBehaviour
         
     }
 
-    
-    /*
-    private void FixedUpdate()
+
+    // Adds an event to the list, to be used to indicate the player to something happening. 
+    public void AddEvents(string action)
     {
-        if (usingComputer && SceneManager.GetSceneByName(computerScene).isLoaded == false)
+        
+        switch (action)
         {
-            SceneManager.LoadSceneAsync(computerScene, LoadSceneMode.Additive);
+            case "doorOpen":
+                eventsList.Add("door opened");
+                break;
+
+            case "doorClosed":
+                eventsList.Add("door closed");
+                break;
         }
-        if (usingComputer == false && SceneManager.GetSceneByName(computerScene).isLoaded)
+
+        // Only 6 elements will be displayed at a time and older ones won't need to be saved so the first one is deleted and the other elements are pushed down
+        if (eventsList.Count >= 6)
         {
-            SceneManager.UnloadSceneAsync(computerScene);
+            eventsList.RemoveAt(0);
         }
+
     }
-    */
+    
 
 }

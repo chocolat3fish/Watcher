@@ -123,10 +123,14 @@ public class PlayerControls : MonoBehaviour
                 {
                     case true:
                         PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = false;
+                        // Prints an event for the player to see
+                        PGM.Instance.AddEvents("doorClosed");
                         break;
 
                     case false:
                         PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = true;
+                        // Prints an event for the player to see
+                        PGM.Instance.AddEvents("doorOpen");
                         break;
                 }
             }
@@ -199,7 +203,7 @@ public class PlayerControls : MonoBehaviour
         {
             animator.SetBool("usingComputer", true);
             canMove = false;
-
+            
             //PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = true;
             PGM.Instance.usingComputer = true;
             usingComputer = true;
