@@ -33,6 +33,8 @@ public class PGM : MonoBehaviour
 
     public bool sortedCameras;
 
+    public bool exitWasOpen;
+
     [Header("Object Tracking")]
     public string puzzleObject;
     public PlayerControls player;
@@ -157,10 +159,18 @@ public class PGM : MonoBehaviour
         if (currentPuzzle.triggersBeenHit == currentPuzzle.triggersToHit)
         {
             currentPuzzle.completed = true;
+            AddEvents("puzzleCompleted");
+            exitWasOpen = true;
         }
         if (currentPuzzle.triggersBeenHit < currentPuzzle.triggersToHit)
         {
             currentPuzzle.completed = false;
+            if (exitWasOpen)
+            {
+                AddEvents("puzzleIncomplete");
+                exitWasOpen = false;
+            }
+            
         }
 
         
@@ -179,6 +189,14 @@ public class PGM : MonoBehaviour
 
             case "doorClosed":
                 eventsList.Add("door closed");
+                break;
+
+            case "puzzleCompleted":
+                eventsList.Add("exit opened");
+                break;
+
+            case "puzzleIncomplete":
+                eventsList.Add("exit closed");
                 break;
         }
 

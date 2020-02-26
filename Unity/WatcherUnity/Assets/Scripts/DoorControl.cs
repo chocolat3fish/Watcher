@@ -10,6 +10,10 @@ public class DoorControl : MonoBehaviour
 
     public ComputerControl computer;
 
+    [Header("Triggers")]
+    public bool completeTrigger;
+    public bool computerTrigger;
+
     private void Start()
     {
         doorAnimator = GetComponent<Animator>();
@@ -18,15 +22,31 @@ public class DoorControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (computer.activate)
+        switch (computerTrigger)
         {
-            doorAnimator.SetBool("isOpen", true);
+            case true:
+                doorAnimator.SetBool("isOpen", true);
+                break;
 
+            case false:
+                doorAnimator.SetBool("isOpen", false);
+                break;
+            
         }
 
-        if (computer.activate == false)
+        if (completeTrigger)
         {
-            doorAnimator.SetBool("isOpen", false);
+            switch (PGM.Instance.currentPuzzle.completed)
+            {
+                case true:
+                    doorAnimator.SetBool("isOpen", true);
+                    break;
+
+                case false:
+                    doorAnimator.SetBool("isOpen", false);
+                    break;
+            }
         }
+
     }
 }
