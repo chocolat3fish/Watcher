@@ -50,7 +50,7 @@ LightmapSettings:
     m_BounceScale: 1
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -660,7 +660,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2082,6 +2082,26 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 705f77fd55e024b70ad81b164220b1cd, type: 2}
+    - target: {fileID: -5519098462408223918, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5519098462408223918, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.11
+      objectReference: {fileID: 0}
+    - target: {fileID: -5519098462408223918, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5519098462408223918, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.07
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2140,17 +2160,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
@@ -2180,7 +2200,22 @@ PrefabInstance:
     - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fde7ca57a6184eadb9806d67c0a8783, type: 3}
@@ -2969,7 +3004,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3377,7 +3412,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3469,7 +3504,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4376,7 +4411,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4496,7 +4531,7 @@ MonoBehaviour:
   targetObject: {fileID: 1052003360}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
-  priority: 3
+  priority: 4
 --- !u!20 &1418198053
 Camera:
   m_ObjectHideFlags: 0
@@ -5081,6 +5116,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 705f77fd55e024b70ad81b164220b1cd, type: 2}
+    - target: {fileID: -5519098462408223918, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -5519098462408223918, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.98
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5139,17 +5184,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
@@ -5179,7 +5224,17 @@ PrefabInstance:
     - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700593591742835894, guid: 0fde7ca57a6184eadb9806d67c0a8783,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fde7ca57a6184eadb9806d67c0a8783, type: 3}
@@ -5284,7 +5339,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5488,7 +5543,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5604,10 +5659,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 486687b56149955459772786138ded3d,
+        type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 486687b56149955459772786138ded3d,
         type: 3}
       propertyPath: m_Name
       value: PuzzleOne
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 486687b56149955459772786138ded3d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 486687b56149955459772786138ded3d, type: 3}
@@ -5807,7 +5872,7 @@ MonoBehaviour:
   targetObject: {fileID: 1694730702}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
-  priority: 4
+  priority: 3
 --- !u!20 &1816188740
 Camera:
   m_ObjectHideFlags: 0
@@ -6321,7 +6386,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1

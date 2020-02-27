@@ -15,6 +15,10 @@ public class CameraSwitcher : MonoBehaviour
 
     public string materialName;
 
+    public MeshRenderer screenMaterial;
+
+    public MeshRenderer buttonMaterial;
+
     public GameObject buttonObject;
 
     public Color32 oldColour;
@@ -31,6 +35,10 @@ public class CameraSwitcher : MonoBehaviour
         assignedScreen = PGM.Instance.monitorsObject.transform.Find(monitorName + "Screen").gameObject;
 
         materialName = assignedScreen.GetComponent<MeshRenderer>().material.name;
+
+        screenMaterial = assignedScreen.GetComponent<MeshRenderer>();
+
+        buttonMaterial = buttonObject.GetComponent<MeshRenderer>();
 
         // Monitor has 7 letters, 7th index is the number after it. Didn't just use length as the initial material has "(Instance)" at the end of it
         screenNumber = int.Parse(materialName[7].ToString());
@@ -53,11 +61,11 @@ public class CameraSwitcher : MonoBehaviour
 
         if (PGM.Instance.selectedGameobject == buttonObject)
         {
-            buttonObject.GetComponent<MeshRenderer>().material.color = PGM.Instance.highlightColour;
+            buttonMaterial.material.color = PGM.Instance.highlightColour;
         }
         else
         {
-            buttonObject.GetComponent<MeshRenderer>().material.color = oldColour;
+            buttonMaterial.material.color = oldColour;
         }
 
     }
@@ -70,7 +78,7 @@ public class CameraSwitcher : MonoBehaviour
         {
             currentIndex = 0;
         }
-        assignedScreen.GetComponent<MeshRenderer>().material = PGM.Instance.screenMaterials[currentIndex];
+        screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
         
         //PGM.Instance.allCameras
     }
@@ -82,6 +90,6 @@ public class CameraSwitcher : MonoBehaviour
         {
             currentIndex = PGM.Instance.allCameras.Count - 1;
         }
-        assignedScreen.GetComponent<MeshRenderer>().material = PGM.Instance.screenMaterials[currentIndex];
+        screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
     }
 }

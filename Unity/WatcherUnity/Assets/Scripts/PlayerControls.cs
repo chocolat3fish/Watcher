@@ -61,6 +61,7 @@ public class PlayerControls : MonoBehaviour
             PGM.Instance.settingsOpen = true;
             SceneManager.LoadSceneAsync(PGM.Instance.pauseScene, LoadSceneMode.Additive);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 0;
         }
 

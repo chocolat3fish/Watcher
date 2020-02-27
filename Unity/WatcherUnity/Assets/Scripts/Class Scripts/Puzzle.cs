@@ -18,8 +18,4 @@ public class Puzzle
     public bool completed;
 
 
-
-
-
-
 }

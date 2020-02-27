@@ -81,6 +81,7 @@ public class MenuInGame : MonoBehaviour
         PGM.Instance.settingsOpen = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.UnloadSceneAsync(PGM.Instance.pauseScene);
     }
 
