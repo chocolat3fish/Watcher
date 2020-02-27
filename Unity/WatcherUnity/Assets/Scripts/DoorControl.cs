@@ -10,40 +10,61 @@ public class DoorControl : MonoBehaviour
 
     public ComputerControl computer;
 
+    public Vector3 originalPosition;
+    public Vector3 openPosition;
+
     [Header("Triggers")]
     public bool completeTrigger;
     public bool computerTrigger;
 
+    [Header("Numbers")]
+    public float distanceToMove;
+    public Vector3 directionToMove;
+    public float speedOfMove;
+
     private void Start()
     {
-        doorAnimator = GetComponent<Animator>();
+        //doorAnimator = GetComponent<Animator>();
+        originalPosition = transform.localPosition;
+
+        openPosition = originalPosition + (directionToMove * distanceToMove);
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (computerTrigger)
-        {
-            case true:
-                doorAnimator.SetBool("isOpen", true);
-                break;
 
-            case false:
-                doorAnimator.SetBool("isOpen", false);
-                break;
-            
+        if (computerTrigger)
+        {
+            switch (computer.activate)
+            {
+                case true:
+                    //doorAnimator.SetBool("isOpen", true);
+                    transform.localPosition = Vector2.Lerp(transform.localPosition, openPosition, speedOfMove);
+                    break;
+
+                case false:
+                    //doorAnimator.SetBool("isOpen", false);
+                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove);
+                    break;
+
+            }
         }
+        
 
         if (completeTrigger)
         {
             switch (PGM.Instance.currentPuzzle.completed)
             {
                 case true:
-                    doorAnimator.SetBool("isOpen", true);
+                    //doorAnimator.SetBool("isOpen", true);
+
+                    transform.localPosition = Vector2.Lerp(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
-                    doorAnimator.SetBool("isOpen", false);
+                    //doorAnimator.SetBool("isOpen", false);
+                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove);
                     break;
             }
         }

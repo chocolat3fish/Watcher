@@ -1,19 +1,36 @@
 fileFormatVersion: 2
-guid: 486687b56149955459772786138ded3d
+guid: 3cb58dfd792e4654fb2ddebbec265f13
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Floor
-    second: {fileID: 2100000, guid: 8d4313de2a8ed7f4c8d7050a2d2392d2, type: 2}
+      74: 5984496454500463648
+    second: Open
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Walls
-    second: {fileID: 2100000, guid: e201451394cd2dc4fa3bc04652035893, type: 2}
+      74: 6354035838180593151
+    second: DoorLeft.001|Closed
+  - first:
+      74: -8087403503591780675
+    second: DoorLeft.001|Closed.001
+  - first:
+      74: -8567176634905872963
+    second: DoorLeft.001|Closed.002
+  - first:
+      74: 3759256264155935993
+    second: DoorLeft.001|Open
+  - first:
+      74: -5094465168769339790
+    second: Frame.001|Closed
+  - first:
+      74: -6958233665130789460
+    second: Frame.001|Closed.001
+  - first:
+      74: -2228798768590188643
+    second: Frame.001|Closed.002
+  - first:
+      74: -1752498238366820247
+    second: Frame.001|Open
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -44,7 +61,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 41.25
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +107,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.4125
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

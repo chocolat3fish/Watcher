@@ -53,7 +53,7 @@ public class MenuController : MonoBehaviour
         // finds a the matching height and width in PGM and sets the active dropdown value to match
         foreach (int value in PGM.Instance.resolutionX)
         {
-            print(value);
+            
             if (value == Screen.currentResolution.width && PGM.Instance.resolutionY[Array.IndexOf(PGM.Instance.resolutionX, value)] == Screen.currentResolution.height)
             {
                 resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutionX, value);
@@ -64,7 +64,6 @@ public class MenuController : MonoBehaviour
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
         qualityDropdown.value = QualitySettings.GetQualityLevel(); //Array.IndexOf(QualitySettings.names, QualitySettings.GetQualityLevel());
-        print(QualitySettings.GetQualityLevel());
     }
 
     
