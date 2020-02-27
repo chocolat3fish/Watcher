@@ -30,6 +30,12 @@ ModelImporter:
   - first:
       74: -1752498238366820247
     second: Frame.001|Open
+  - first:
+      74: 6027276966214505233
+    second: Frame.001|Closed.003
+  - first:
+      74: 8539058694893571569
+    second: Frame.001|Open.001
   externalObjects: {}
   materials:
     materialImportMode: 1
