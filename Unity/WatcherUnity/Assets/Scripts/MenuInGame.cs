@@ -47,7 +47,8 @@ public class MenuInGame : MonoBehaviour
         }
 
         // finds a the matching height and width in PGM and sets the active dropdown value to match
-        foreach (int value in PGM.Instance.resolutionX)
+
+        /*foreach (int value in PGM.Instance.resolutionX)
         {
             if (value == Screen.currentResolution.width && PGM.Instance.resolutionY[Array.IndexOf(PGM.Instance.resolutionX, value)] == Screen.currentResolution.height)
             {
@@ -55,6 +56,19 @@ public class MenuInGame : MonoBehaviour
                 break;
             }
         }
+        */
+
+        for (int value = 0; value < PGM.Instance.resolutions.Length; value++)
+        {
+            if (Screen.currentResolution.width == PGM.Instance.resolutions[value].x && Screen.currentResolution.height == PGM.Instance.resolutions[value].y)
+            {
+                resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, value);
+                break;
+            }
+        } 
+       
+
+
 
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
@@ -122,7 +136,7 @@ public class MenuInGame : MonoBehaviour
     public void ChangeResolutionSetting()
     {
 
-        Screen.SetResolution(PGM.Instance.resolutionX[resolutionDropdown.value], PGM.Instance.resolutionY[resolutionDropdown.value], Screen.fullScreenMode);
+        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].x, Screen.fullScreenMode);
     }
 
     public void ChangeFullscreenSetting()

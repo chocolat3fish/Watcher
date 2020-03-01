@@ -87,8 +87,11 @@ public class PGM : MonoBehaviour
 
     [Header("Settings")]
     public int qualityIndex;
-    public int[] resolutionX;
-    public int[] resolutionY;
+    //public int[] resolutionX;
+    //public int[] resolutionY;
+
+    public Resolution[] resolutions;
+    
 
     [Header("Events Dialogue")]
     public List<string> eventsList;
@@ -118,6 +121,8 @@ public class PGM : MonoBehaviour
 
         currentPuzzle = puzzleManager[puzzlesCompleted];
 
+        // Sorts the array elements by the y values
+        Array.Sort(resolutions, (resOne, resTwo) => resOne.y.CompareTo(resTwo.y));
     }
 
     private void Start()
@@ -131,20 +136,20 @@ public class PGM : MonoBehaviour
         }
         */
 
+        
+
     }
+
 
     private void Update()
     {
         
         if (sortedCameras == false && allCameras.Count > 0)
         {
-
-
             allCameras.Sort(delegate (Camera a, Camera b)
             {
                 return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
             });
-
 
             sortedCameras = true;
         }

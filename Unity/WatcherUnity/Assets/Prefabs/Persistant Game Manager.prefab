@@ -54,6 +54,7 @@ MonoBehaviour:
   manyCameras: 1
   usingComputer: 0
   sortedCameras: 0
+  exitWasOpen: 0
   puzzleObject: Pickup
   player: {fileID: 0}
   monitorsObject: {fileID: 0}
@@ -107,6 +108,25 @@ MonoBehaviour:
   qualityIndex: 0
   resolutionX: 800200000005000000050000a0050000400600008007000080070000
   resolutionY: e0010000d0020000c0030000840300008403000038040000b0040000
+  resolutions:
+  - x: 640
+    y: 480
+  - x: 1280
+    y: 720
+  - x: 1280
+    y: 900
+  - x: 1440
+    y: 900
+  - x: 1600
+    y: 900
+  - x: 1920
+    y: 1080
+  - x: 1920
+    y: 1200
+  - x: 320
+    y: 240
+  - x: 960
+    y: 540
   eventsList:
   - ' '
   - ' '

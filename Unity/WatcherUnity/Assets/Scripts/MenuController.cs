@@ -27,7 +27,15 @@ public class MenuController : MonoBehaviour
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
         fullscreenDropdown = settingsMenu.transform.Find("FullscreenDropdown").GetComponent<TMP_Dropdown>();
 
+        for (int index = 0; index < PGM.Instance.resolutions.Length; index++)
+        {
+            resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
+        }
+        
+
+
         settingsMenu.SetActive(false);
+
 
         // Finds the current fullscreen mode and sets the dropdown to represent that
         List<string> fullscreenList = fullscreenDropdown.options.Select(option => option.text).ToList();
@@ -51,12 +59,23 @@ public class MenuController : MonoBehaviour
         }
 
         // finds a the matching height and width in PGM and sets the active dropdown value to match
-        foreach (int value in PGM.Instance.resolutionX)
+
+
+        /*foreach (int value in PGM.Instance.resolutionX)
         {
             
             if (value == Screen.currentResolution.width && PGM.Instance.resolutionY[Array.IndexOf(PGM.Instance.resolutionX, value)] == Screen.currentResolution.height)
             {
                 resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutionX, value);
+                break;
+            }
+        }*/
+
+        for (int value = 0; value < PGM.Instance.resolutions.Length; value++)
+        {
+            if (Screen.currentResolution.width == PGM.Instance.resolutions[value].x && Screen.currentResolution.height == PGM.Instance.resolutions[value].y)
+            {
+                resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, value);
                 break;
             }
         }
@@ -110,7 +129,7 @@ public class MenuController : MonoBehaviour
     public void ChangeResolutionSetting()
     {
         
-        Screen.SetResolution(PGM.Instance.resolutionX[resolutionDropdown.value], PGM.Instance.resolutionY[resolutionDropdown.value], Screen.fullScreenMode);
+        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].x, Screen.fullScreenMode);
     }
 
     public void ChangeFullscreenSetting()
