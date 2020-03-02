@@ -32,19 +32,25 @@ public class PlayerControls : MonoBehaviour
     public float reachDistance;
     public float computerReachDistance;
 
-    public GameObject objectBeingHeld;
+    public Rigidbody objectBeingHeld;
 
     public Rigidbody rb;
     public Animator animator;
 
     public GameObject[] nearbyObjects;
-    public GameObject[] nearbyComputers;
+    public ComputerControl[] nearbyComputers;
+
+    public GameObject handRight;
+    public GameObject handLeft;
 
  
     void Start()
     {
         nearbyObjects = GameObject.FindGameObjectsWithTag("Pickup");
-        nearbyComputers = GameObject.FindGameObjectsWithTag("Computer");
+        nearbyComputers = FindObjectsOfType<ComputerControl>();
+
+        handRight = GameObject.Find("Hand.R");
+        handLeft = GameObject.Find("Hand.L");
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
@@ -127,16 +133,16 @@ public class PlayerControls : MonoBehaviour
             {
                 interactComputer = true;
 
-                switch (PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate)
+                switch (PGM.Instance.computerBeingUsed.activate)
                 {
                     case true:
-                        PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = false;
+                        PGM.Instance.computerBeingUsed.activate = false;
                         // Prints an event for the player to see
                         PGM.Instance.AddEvents("doorClosed");
                         break;
 
                     case false:
-                        PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = true;
+                        PGM.Instance.computerBeingUsed.activate = true;
                         // Prints an event for the player to see
                         PGM.Instance.AddEvents("doorOpen");
                         break;
@@ -161,7 +167,7 @@ public class PlayerControls : MonoBehaviour
         if (objectBeingHeld != null)
         {
             // places object between left and right hand (fits with animation better/looks nicer)
-            objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position + (GameObject.Find("Hand.L").transform.position - GameObject.Find("Hand.R").transform.position) / 2;
+            objectBeingHeld.transform.position = (handRight.transform.position + handLeft.transform.position) / 2;
             animator.SetBool("holdingObject", true);
             // enables animation override while holding object so that the player can have the walk animation but keep the arms holding the object
             animator.SetLayerWeight(1, 1f);
@@ -182,12 +188,12 @@ public class PlayerControls : MonoBehaviour
             animator.SetTrigger("pickUpObject");
 
             GameObject nearestObject = FindNearestObject();
-            objectBeingHeld = nearestObject;
+            objectBeingHeld = nearestObject.GetComponent<Rigidbody>();
             holdingObject = true;
             // set parent as player's hand to make the player "hold" the object        
-            objectBeingHeld.transform.position = GameObject.Find("Hand.R").transform.position;
-            objectBeingHeld.transform.parent = GameObject.Find("Hand.R").transform;
-            objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = true;
+            objectBeingHeld.transform.position = handRight.transform.position; //+ (handRight.transform.position - handLeft.transform.position) / 2;
+            objectBeingHeld.transform.parent = handRight.transform;
+            objectBeingHeld.freezeRotation = true;
             pickUpObject = false;
             dropObject = false;
            
@@ -199,9 +205,9 @@ public class PlayerControls : MonoBehaviour
             animator.SetLayerWeight(1, 0f);
             holdingObject = false;
             objectBeingHeld.transform.parent = null;
-            objectBeingHeld.GetComponent<Rigidbody>().freezeRotation = false;
-            objectBeingHeld.GetComponent<Rigidbody>().useGravity = true;
-            objectBeingHeld.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            objectBeingHeld.freezeRotation = false;
+            objectBeingHeld.useGravity = true;
+            objectBeingHeld.velocity = Vector3.zero;
             objectBeingHeld = null;
             pickUpObject = false;
             dropObject = false;
@@ -252,14 +258,14 @@ public class PlayerControls : MonoBehaviour
     }
 
 
-    GameObject FindNearestComputer()
+    ComputerControl FindNearestComputer()
     {
-        GameObject nearest = null;
+        ComputerControl nearest = null;
 
         Vector3 playerLocation = transform.position;
         float minDistance = computerReachDistance;
 
-        foreach (GameObject computer in nearbyComputers)
+        foreach (ComputerControl computer in nearbyComputers)
         {
             // allows to interact if computer is within an angle of the direction  
             if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < pickupAngle)
@@ -269,7 +275,6 @@ public class PlayerControls : MonoBehaviour
             }
 
         }
-
         PGM.Instance.computerBeingUsed = nearest;
 
         

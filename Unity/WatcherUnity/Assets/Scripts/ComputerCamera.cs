@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ComputerCamera : MonoBehaviour
 {
+    public Camera thisCamera;
 
     void Start()
     {
-        
+        thisCamera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -15,7 +16,7 @@ public class ComputerCamera : MonoBehaviour
     {
         if (PGM.Instance.usingComputer)
         {
-            GetComponent<Camera>().targetTexture = PGM.Instance.puzzleScreen;
+            thisCamera.targetTexture = PGM.Instance.puzzleScreen;
         }
     }
 }

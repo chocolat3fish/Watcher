@@ -41,7 +41,7 @@ public class PGM : MonoBehaviour
 
     public GameObject monitorsObject;
 
-    public GameObject computerBeingUsed;
+    public ComputerControl computerBeingUsed;
 
     [Header("Screens")]
     public List<RenderTexture> monitorScreens;
@@ -143,15 +143,10 @@ public class PGM : MonoBehaviour
 
     private void Update()
     {
-        
+        // only runs it once because start and awake are too early for some reason and it has to be in update
         if (sortedCameras == false && allCameras.Count > 0)
         {
-            allCameras.Sort(delegate (Camera a, Camera b)
-            {
-                return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
-            });
-
-            sortedCameras = true;
+            SortCameras();
         }
         
 
@@ -211,6 +206,17 @@ public class PGM : MonoBehaviour
             eventsList.RemoveAt(0);
         }
 
+    }
+
+
+    public void SortCameras()
+    {
+        allCameras.Sort(delegate (Camera a, Camera b)
+        {
+            return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
+        });
+
+        sortedCameras = true;
     }
     
 

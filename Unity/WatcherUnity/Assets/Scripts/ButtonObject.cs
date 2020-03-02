@@ -72,7 +72,7 @@ public class ButtonObject : MonoBehaviour
                 {
                     PGM.Instance.activeCamera = GetComponent<Camera>();
 
-                    targetCamera.GetComponent<Camera>().targetTexture = PGM.Instance.monitorScreen;
+                    targetCamera.targetTexture = PGM.Instance.monitorScreen;
                 }
 
 
