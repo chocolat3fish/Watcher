@@ -1,83 +1,8 @@
 fileFormatVersion: 2
-guid: 22c85ee339afa914e8702b309458ee0d
+guid: 3baa7b83d387b48cba95040c2362232c
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable:
-  - first:
-      74: 5984496454500463648
-    second: Open
-  - first:
-      74: -5007136494783040286
-    second: DoorLeft|Closed
-  - first:
-      74: 6058910205729622784
-    second: DoorLeft|Closed.001
-  - first:
-      74: -6528901759210713578
-    second: DoorLeft|Closed.002
-  - first:
-      74: -191368008963033680
-    second: DoorLeft|Open
-  - first:
-      74: -397910135213531111
-    second: Frame|Closed
-  - first:
-      74: 4528124777626620349
-    second: Frame|Closed.001
-  - first:
-      74: -5533040919793514205
-    second: Frame|Closed.002
-  - first:
-      74: -101464965139634478
-    second: Frame|Open
-  - first:
-      74: -892207309150508932
-    second: DoorLeft.002|Closed
-  - first:
-      74: -1058623126750560592
-    second: DoorLeft.002|Closed.001
-  - first:
-      74: -1478547399403340272
-    second: DoorLeft.002|Closed.002
-  - first:
-      74: 1624723668426732717
-    second: DoorLeft.002|Open
-  - first:
-      74: 3611275798736203035
-    second: Frame.002|Closed
-  - first:
-      74: -5065871721898757603
-    second: Frame.002|Closed.001
-  - first:
-      74: 4298627865388840925
-    second: Frame.002|Closed.002
-  - first:
-      74: 3054851261263492827
-    second: Frame.002|Open
-  - first:
-      74: 6354035838180593151
-    second: DoorLeft.001|Closed
-  - first:
-      74: -8087403503591780675
-    second: DoorLeft.001|Closed.001
-  - first:
-      74: -8567176634905872963
-    second: DoorLeft.001|Closed.002
-  - first:
-      74: 3759256264155935993
-    second: DoorLeft.001|Open
-  - first:
-      74: -5094465168769339790
-    second: Frame.001|Closed
-  - first:
-      74: -6958233665130789460
-    second: Frame.001|Closed.001
-  - first:
-      74: -2228798768590188643
-    second: Frame.001|Closed.002
-  - first:
-      74: -1752498238366820247
-    second: Frame.001|Open
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -110,7 +35,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1

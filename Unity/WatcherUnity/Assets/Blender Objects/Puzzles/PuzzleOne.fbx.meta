@@ -2,8 +2,38 @@ fileFormatVersion: 2
 guid: 486687b56149955459772786138ded3d
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 6734961036158436024
+    second: PlayerIdle
+  - first:
+      74: 5987286527781595846
+    second: PlayerWalk
+  - first:
+      74: 5037605952340872120
+    second: UseComputer
+  - first:
+      74: 7632032247543785110
+    second: PickupObject
+  - first:
+      74: 6496241873733589595
+    second: Armature|PickupObject
+  - first:
+      74: -5132346120663624452
+    second: Armature|PlayerIdle
+  - first:
+      74: -3617355029950739607
+    second: Armature|PlayerWalk
+  - first:
+      74: 8656347978364142388
+    second: Armature|UseComputer
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cubicle
+    second: {fileID: -8651324575956559470, guid: 30f432ffdf16d514d88137f7382a08e6,
+      type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -90,7 +120,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.4125
+    globalScale: 41.25
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
