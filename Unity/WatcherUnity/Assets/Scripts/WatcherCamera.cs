@@ -10,6 +10,7 @@ public class WatcherCamera : MonoBehaviour
     private float scroll;
 
     public float scrollSpeed;
+    public float scrollDuration;
     public float sensitivity;
 
 
@@ -75,7 +76,7 @@ public class WatcherCamera : MonoBehaviour
             if (scroll < minFOV)
                 scroll = minFOV;
 
-            cam.fieldOfView = scroll;
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, scroll, scrollDuration);
             PGM.Instance.FOV = scroll;
         }
 

@@ -1155,14 +1155,13 @@ MonoBehaviour:
   assignedScreen: {fileID: 0}
   currentIndex: 0
   screenNumber: 0
-  cameraMaterial: {fileID: 0}
-  buttonMaterial: {fileID: 0}
   materialName: 
+  screenMaterial: {fileID: 0}
+  buttonMaterial: {fileID: 0}
   buttonObject: {fileID: 0}
   oldColour:
     serializedVersion: 2
     rgba: 0
-  cameraNumber: 0
 --- !u!1 &420944868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 72e74fa2c6096480ab489a1d971164b8,
@@ -2652,14 +2651,13 @@ MonoBehaviour:
   assignedScreen: {fileID: 0}
   currentIndex: 0
   screenNumber: 0
-  cameraMaterial: {fileID: 0}
-  buttonMaterial: {fileID: 0}
   materialName: 
+  screenMaterial: {fileID: 0}
+  buttonMaterial: {fileID: 0}
   buttonObject: {fileID: 0}
   oldColour:
     serializedVersion: 2
     rgba: 0
-  cameraNumber: 0
 --- !u!1 &1013181111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,6 +4719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultFOV: 90
   scrollSpeed: 50
+  scrollDuration: 0.1
   sensitivity: 1
   minimumX: -360
   maximumX: 360
@@ -5063,14 +5062,13 @@ MonoBehaviour:
   assignedScreen: {fileID: 0}
   currentIndex: 0
   screenNumber: 0
-  cameraMaterial: {fileID: 0}
-  buttonMaterial: {fileID: 0}
   materialName: 
+  screenMaterial: {fileID: 0}
+  buttonMaterial: {fileID: 0}
   buttonObject: {fileID: 0}
   oldColour:
     serializedVersion: 2
     rgba: 0
-  cameraNumber: 0
 --- !u!1 &1644167028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 65acba53828b3334cb4d14dd2d79fdfd,
@@ -6613,14 +6611,13 @@ MonoBehaviour:
   assignedScreen: {fileID: 0}
   currentIndex: 0
   screenNumber: 0
-  cameraMaterial: {fileID: 0}
-  buttonMaterial: {fileID: 0}
   materialName: 
+  screenMaterial: {fileID: 0}
+  buttonMaterial: {fileID: 0}
   buttonObject: {fileID: 0}
   oldColour:
     serializedVersion: 2
     rgba: 0
-  cameraNumber: 0
 --- !u!4 &477180765695484876
 Transform:
   m_ObjectHideFlags: 0
