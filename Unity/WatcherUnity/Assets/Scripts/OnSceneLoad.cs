@@ -12,7 +12,7 @@ public class OnSceneLoad : MonoBehaviour
         {
             PGM.Instance.monitorsObject = GameObject.Find("ManyMonitors");
             SceneManager.LoadSceneAsync(PGM.Instance.currentPuzzle.sceneName, LoadSceneMode.Additive);
-            SceneManager.LoadSceneAsync(PGM.Instance.eventsScene, LoadSceneMode.Additive);
+            //SceneManager.LoadSceneAsync(PGM.Instance.eventsScene, LoadSceneMode.Additive);
         }
         
     }

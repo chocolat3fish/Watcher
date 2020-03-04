@@ -118,7 +118,6 @@ public class PGM : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
         currentPuzzle = puzzleManager[puzzlesCompleted];
 
         // Sorts the array elements by the y values
@@ -149,19 +148,16 @@ public class PGM : MonoBehaviour
             SortCameras();
         }
         
-
-        if (currentPuzzle.completed)
-        {
-            puzzlesCompleted += 1;
-            //currentPuzzle = puzzleManager[puzzlesCompleted];
-        }
-
         if (currentPuzzle.triggersBeenHit == currentPuzzle.triggersToHit)
         {
             currentPuzzle.completed = true;
-            AddEvents("puzzleCompleted");
+            if (exitWasOpen == false)
+            {
+                AddEvents("puzzleCompleted");
+            }
             exitWasOpen = true;
         }
+
         if (currentPuzzle.triggersBeenHit < currentPuzzle.triggersToHit)
         {
             currentPuzzle.completed = false;
@@ -169,11 +165,8 @@ public class PGM : MonoBehaviour
             {
                 AddEvents("puzzleIncomplete");
                 exitWasOpen = false;
-            }
-            
+            }   
         }
-
-        
     }
 
 
@@ -205,7 +198,6 @@ public class PGM : MonoBehaviour
         {
             eventsList.RemoveAt(0);
         }
-
     }
 
 
@@ -215,9 +207,6 @@ public class PGM : MonoBehaviour
         {
             return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
         });
-
         sortedCameras = true;
-    }
-    
-
+    } 
 }
