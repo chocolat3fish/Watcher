@@ -147,10 +147,9 @@ public class PGM : MonoBehaviour
         {
             SortCameras();
         }
-        
-        if (currentPuzzle.triggersBeenHit == currentPuzzle.triggersToHit)
+
+        if (currentPuzzle.completed)
         {
-            currentPuzzle.completed = true;
             if (exitWasOpen == false)
             {
                 AddEvents("puzzleCompleted");
@@ -158,14 +157,14 @@ public class PGM : MonoBehaviour
             exitWasOpen = true;
         }
 
-        if (currentPuzzle.triggersBeenHit < currentPuzzle.triggersToHit)
+        if (currentPuzzle.completed == false)
         {
             currentPuzzle.completed = false;
             if (exitWasOpen)
             {
                 AddEvents("puzzleIncomplete");
                 exitWasOpen = false;
-            }   
+            }
         }
     }
 
@@ -190,6 +189,14 @@ public class PGM : MonoBehaviour
 
             case "puzzleIncomplete":
                 eventsList.Add("exit closed");
+                break;
+
+            case "liftRaise":
+                eventsList.Add("lift raised");
+                break;
+
+            case "liftLower":
+                eventsList.Add("lift lowered");
                 break;
         }
 

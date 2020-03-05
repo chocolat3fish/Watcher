@@ -5,17 +5,19 @@ public class ComputerControl : MonoBehaviour
 {
     public bool activate;
 
+    public MoveObject assignedObject;
 
     void Start()
     {
-
+        foreach (MoveObject moveObject in FindObjectsOfType<MoveObject>())
+        {
+            if (moveObject.computer == this)
+            {
+                assignedObject = moveObject;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void ToggleStatus()
     {

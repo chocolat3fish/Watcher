@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class DoorControl : MonoBehaviour
+public class MoveObject : MonoBehaviour
 {
 
-    public Animator doorAnimator;
+    public enum ObjectType { Door, Lift}
+
+    public ObjectType objectType;
 
     public ComputerControl computer;
 
@@ -40,12 +42,13 @@ public class DoorControl : MonoBehaviour
             {
                 case true:
                     //doorAnimator.SetBool("isOpen", true);
-                    transform.localPosition = Vector2.Lerp(transform.localPosition, openPosition, speedOfMove);
+
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
                     //doorAnimator.SetBool("isOpen", false);
-                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
 
             }
@@ -59,12 +62,12 @@ public class DoorControl : MonoBehaviour
                 case true:
                     //doorAnimator.SetBool("isOpen", true);
 
-                    transform.localPosition = Vector2.Lerp(transform.localPosition, openPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
                     //doorAnimator.SetBool("isOpen", false);
-                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
             }
         }

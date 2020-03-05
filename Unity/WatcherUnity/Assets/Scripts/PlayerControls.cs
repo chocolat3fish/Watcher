@@ -30,6 +30,7 @@ public class PlayerControls : MonoBehaviour
 
     [Header("Objects")]
     public float reachDistance;
+    public float reachHeight;
     public float computerReachDistance;
 
     public Rigidbody objectBeingHeld;
@@ -138,13 +139,32 @@ public class PlayerControls : MonoBehaviour
                     case true:
                         PGM.Instance.computerBeingUsed.activate = false;
                         // Prints an event for the player to see
-                        PGM.Instance.AddEvents("doorClosed");
+                        switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
+                        {
+                            case MoveObject.ObjectType.Door:
+                                PGM.Instance.AddEvents("doorClosed");
+                                break;
+
+                            case MoveObject.ObjectType.Lift:
+                                PGM.Instance.AddEvents("liftRaise");
+                                break;
+                        }
+
                         break;
 
                     case false:
                         PGM.Instance.computerBeingUsed.activate = true;
                         // Prints an event for the player to see
-                        PGM.Instance.AddEvents("doorOpen");
+                        switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
+                        {
+                            case MoveObject.ObjectType.Door:
+                                PGM.Instance.AddEvents("doorOpen");
+                                break;
+
+                            case MoveObject.ObjectType.Lift:
+                                PGM.Instance.AddEvents("liftLower");
+                                break;
+                        }
                         break;
                 }
             }
@@ -240,13 +260,15 @@ public class PlayerControls : MonoBehaviour
     {
         GameObject nearest = null;
 
-        Vector3 playerLocation = transform.position;
+        Vector3 playerLocation = new Vector3(transform.position.x, 0, transform.position.z);
         float minDistance = reachDistance;
 
         foreach (GameObject pickup in nearbyObjects)
         {
+            Vector3 pickupPos = new Vector3(pickup.transform.position.x, 0, pickup.transform.position.z);
+            
             // allows to pick up if the object is within an angle of the direction, using Vector3.SignedAngle so that vertical angle has no effect
-            if (Vector3.Distance(pickup.transform.position, playerLocation) < minDistance && (Vector3.SignedAngle(transform.forward, pickup.transform.position - playerLocation, Vector3.left) < pickupAngle))
+            if (Vector3.Distance(pickupPos, playerLocation) < minDistance && (Vector3.SignedAngle(transform.forward, pickupPos - playerLocation, Vector3.left) < pickupAngle) && Mathf.Abs(transform.position.y - pickup.transform.position.y) <= reachHeight)
             {
                           
                 nearest = pickup;
@@ -265,8 +287,11 @@ public class PlayerControls : MonoBehaviour
         Vector3 playerLocation = transform.position;
         float minDistance = computerReachDistance;
 
+        
+
         foreach (ComputerControl computer in nearbyComputers)
         {
+
             // allows to interact if computer is within an angle of the direction  
             if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < pickupAngle)
             {
