@@ -36,12 +36,13 @@ public class PGM : MonoBehaviour
     public bool exitWasOpen;
 
     [Header("Object Tracking")]
-    public string puzzleObject;
     public PlayerControls player;
 
     public GameObject monitorsObject;
 
     public ComputerControl computerBeingUsed;
+
+    public PickupManager[] puzzleObjects;
 
     [Header("Screens")]
     public List<RenderTexture> monitorScreens;

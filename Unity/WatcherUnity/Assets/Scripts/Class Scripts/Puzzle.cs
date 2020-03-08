@@ -10,10 +10,6 @@ public class Puzzle
 
     public string sceneName;
 
-    // tracks required triggers per puzzle
-    //public int triggersToHit;
-    //public int triggersBeenHit;
-
     public PathTriggers[] pathTriggers;
 
     public bool completed;
@@ -22,6 +18,7 @@ public class Puzzle
 [Serializable]
 public struct PathTriggers
 {
+    // has the number of triggers, number of triggers hit, and if the path is completed or not
     public int pathTriggers;
     public int pathProgress;
     public bool pathComplete;

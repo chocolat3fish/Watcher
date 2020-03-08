@@ -67,6 +67,9 @@ MonoBehaviour:
   - {fileID: 8400000, guid: 1d56eba0862384bc398f12b6990c481a, type: 2}
   - {fileID: 8400000, guid: 3bd68fd4ac5514b2092d111a95d351a4, type: 2}
   - {fileID: 8400000, guid: a7c3e4689b8d24c888cfbc9d806cfbef, type: 2}
+  - {fileID: 8400000, guid: 253a5dadab81b4aa8a246a9270b5b20d, type: 2}
+  - {fileID: 8400000, guid: 3b15673d48bae498b87be00e9acc39e1, type: 2}
+  - {fileID: 8400000, guid: 9e68d93833e394e6db1c146da1d315ee, type: 2}
   screenMaterials:
   - {fileID: 2100000, guid: 10259cc12509a466fa040d29bd0469ec, type: 2}
   - {fileID: 2100000, guid: 72e73e9a74116410ba87d55d4967ce63, type: 2}
@@ -75,6 +78,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f0d4828866d5741fdb2e29dd76e67b5f, type: 2}
   - {fileID: 2100000, guid: 393ed45ae0aab46059ccb3d18edaf8e6, type: 2}
   - {fileID: 2100000, guid: a543f0d716757433caa7e2f8a5c61a03, type: 2}
+  - {fileID: 2100000, guid: 186c8ea3587f949529cbb845f9dd51ba, type: 2}
+  - {fileID: 2100000, guid: e1e1542ef8d6f4f9ba758e92b2fc14b9, type: 2}
+  - {fileID: 2100000, guid: 3f3ff6d69e55e4924ab4f9da6830495b, type: 2}
   monitorScreen: {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
   puzzleScreen: {fileID: 8400000, guid: 61447df54ab5c4dfaa8c0e0ccf8765b5, type: 2}
   hiddenScreen: {fileID: 8400000, guid: 7dd128c4a0f054651829ac3c6304d4be, type: 2}

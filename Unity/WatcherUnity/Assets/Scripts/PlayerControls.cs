@@ -259,7 +259,7 @@ public class PlayerControls : MonoBehaviour
     GameObject FindNearestObject()
     {
         GameObject nearest = null;
-
+        // Only uses horizontal values for distance so an object being higher means it can't be as far away
         Vector3 playerLocation = new Vector3(transform.position.x, 0, transform.position.z);
         float minDistance = reachDistance;
 

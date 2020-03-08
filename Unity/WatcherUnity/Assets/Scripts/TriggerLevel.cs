@@ -17,13 +17,12 @@ public class TriggerLevel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
-
+        // checks if the colliding object is on the same puzzle path as the trigger
         if (col.CompareTag("Pickup") == true && col.GetComponent<PickupManager>().path == path && holdingObject == false)
         {
             
 
             holdingObject = true;
-            //PGM.Instance.levelComplete = true;
             PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress += 1;
             if (PGM.Instance.currentPuzzle.pathTriggers[path].pathTriggers <= PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress)
             {
@@ -33,6 +32,7 @@ public class TriggerLevel : MonoBehaviour
             int completedPaths = 0;
             for (int i = 0; i < PGM.Instance.currentPuzzle.pathTriggers.Length; i++)
             {
+                // determines whether or not all of the puzzle's paths are completed, which then opens the exit
                 if (PGM.Instance.currentPuzzle.pathTriggers[i].pathComplete)
                 {
                     completedPaths += 1;
@@ -51,7 +51,6 @@ public class TriggerLevel : MonoBehaviour
         if (col.CompareTag("Pickup") == true && col.GetComponent<PickupManager>().path == path && holdingObject == true)
         {
             holdingObject = false;
-            //PGM.Instance.levelComplete = true;
             PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress -= 1;
             if (PGM.Instance.currentPuzzle.pathTriggers[path].pathTriggers > PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress)
             {

@@ -35,19 +35,17 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // determines the requirement to moving
 
         if (computerTrigger)
         {
             switch (computer.activate)
             {
                 case true:
-                    //doorAnimator.SetBool("isOpen", true);
-
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
-                    //doorAnimator.SetBool("isOpen", false);
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
 
@@ -60,13 +58,10 @@ public class MoveObject : MonoBehaviour
             switch (PGM.Instance.currentPuzzle.completed)
             {
                 case true:
-                    //doorAnimator.SetBool("isOpen", true);
-
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
-                    //doorAnimator.SetBool("isOpen", false);
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
             }
