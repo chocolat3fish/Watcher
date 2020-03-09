@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Crosshair : MonoBehaviour
 {   
-    enum Corner
+    public enum Corner
     {
         TopL, 
         TopR, 
@@ -13,7 +13,7 @@ public class Crosshair : MonoBehaviour
         Center
     }
     [SerializeField]
-    Corner corner;
+    public Corner corner;
 
     float max, min;
     private float multipler;

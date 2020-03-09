@@ -143,27 +143,11 @@ public class PlayerControls : MonoBehaviour
                         switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
                         {
                             case MoveObject.ObjectType.Door:
-                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
-                                {
-                                    PGM.Instance.AddEvents("doorOpen");
-                                }
-                                else
-                                {
-                                    PGM.Instance.AddEvents("doorClosed");
-                                }
-                                
+                                PGM.Instance.AddEvents("doorClose");   
                                 break;
 
                             case MoveObject.ObjectType.Lift:
-                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
-                                {
-                                    PGM.Instance.AddEvents("liftLower");
-                                }
-                                else
-                                {
-                                    PGM.Instance.AddEvents("liftRaise");
-                                }
-                                
+                                PGM.Instance.AddEvents("liftRaise");   
                                 break;
                         }
 
@@ -175,26 +159,11 @@ public class PlayerControls : MonoBehaviour
                         switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
                         {
                             case MoveObject.ObjectType.Door:
-                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
-                                {
-                                    PGM.Instance.AddEvents("doorClosed");
-                                }
-                                else
-                                {
-                                    PGM.Instance.AddEvents("doorOpen");
-                                }
-
+                                PGM.Instance.AddEvents("doorOpen");
                                 break;
 
                             case MoveObject.ObjectType.Lift:
-                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
-                                {
-                                    PGM.Instance.AddEvents("liftRaise");
-                                }
-                                else
-                                {
-                                    PGM.Instance.AddEvents("liftLower");
-                                }
+                                PGM.Instance.AddEvents("liftLower");
                                 break;
                         }
                         break;

@@ -23,7 +23,6 @@ public class MoveObject : MonoBehaviour
     public float distanceToMove;
     public Vector3 directionToMove;
     public float speedOfMove;
-    public float directionMulti;
 
     public bool invertDirection;
     
@@ -35,82 +34,50 @@ public class MoveObject : MonoBehaviour
 
         openPosition = originalPosition + (directionToMove * distanceToMove);
 
+        // switches the default activate status to align with opposite directions
+        switch (invertDirection)
+        {
+            case true:
+                computer.activate = true;
+                break;
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // determines the requirement to moving
+        // determines the requirement for moving
 
         if (computerTrigger)
         {
-            switch (invertDirection)
+
+            switch (computer.activate)
             {
                 case true:
-
-                    switch (computer.activate)
-                    {
-                        case false:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
-                            break;
-
-                        case true:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
-                            break;
-                    }
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
-
-                    switch (computer.activate)
-                    {
-                        case true:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
-                            break;
-
-                        case false:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
-                            break;
-                    }
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
-            }
-                
+            }    
         }
                    
 
         if (completeTrigger)
         {
-
-            switch (invertDirection)
+            switch (PGM.Instance.currentPuzzle.completed)
             {
                 case true:
-
-                    switch (PGM.Instance.currentPuzzle.completed)
-                    {
-                        case false:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
-                            break;
-
-                        case true:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
-                            break;
-                    }
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
                     break;
 
                 case false:
-
-                    switch (PGM.Instance.currentPuzzle.completed)
-                    {
-                        case true:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
-                            break;
-
-                        case false:
-                            transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
-                            break;
-                    }
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
             }
+    
         }
     }
 }
