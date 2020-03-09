@@ -58,6 +58,8 @@ public class PlayerControls : MonoBehaviour
         canMove = true;
         // "disables" the layer for picking up objects, so that the top half of the idle animation doesn't override anything else
         animator.SetLayerWeight(1, 0f);
+
+        rb.sleepThreshold = 0.0f;
     }
 
 
@@ -122,7 +124,6 @@ public class PlayerControls : MonoBehaviour
             transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
 
-
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == false)
         {
             if (FindNearestObject() != null)
@@ -142,11 +143,27 @@ public class PlayerControls : MonoBehaviour
                         switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
                         {
                             case MoveObject.ObjectType.Door:
-                                PGM.Instance.AddEvents("doorClosed");
+                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
+                                {
+                                    PGM.Instance.AddEvents("doorOpen");
+                                }
+                                else
+                                {
+                                    PGM.Instance.AddEvents("doorClosed");
+                                }
+                                
                                 break;
 
                             case MoveObject.ObjectType.Lift:
-                                PGM.Instance.AddEvents("liftRaise");
+                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
+                                {
+                                    PGM.Instance.AddEvents("liftLower");
+                                }
+                                else
+                                {
+                                    PGM.Instance.AddEvents("liftRaise");
+                                }
+                                
                                 break;
                         }
 
@@ -158,11 +175,26 @@ public class PlayerControls : MonoBehaviour
                         switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
                         {
                             case MoveObject.ObjectType.Door:
-                                PGM.Instance.AddEvents("doorOpen");
+                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
+                                {
+                                    PGM.Instance.AddEvents("doorClosed");
+                                }
+                                else
+                                {
+                                    PGM.Instance.AddEvents("doorOpen");
+                                }
+
                                 break;
 
                             case MoveObject.ObjectType.Lift:
-                                PGM.Instance.AddEvents("liftLower");
+                                if (PGM.Instance.computerBeingUsed.assignedObject.invertDirection)
+                                {
+                                    PGM.Instance.AddEvents("liftRaise");
+                                }
+                                else
+                                {
+                                    PGM.Instance.AddEvents("liftLower");
+                                }
                                 break;
                         }
                         break;
@@ -176,7 +208,7 @@ public class PlayerControls : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && usingComputer == true)
+        if (Input.GetKeyDown(KeyCode.E) && usingComputer == true || (usingComputer && FindNearestComputer() == null))
         {
             exitComputer = true;
 
@@ -300,7 +332,24 @@ public class PlayerControls : MonoBehaviour
             }
 
         }
-        PGM.Instance.computerBeingUsed = nearest;
+        if (nearest != null)
+        {
+            switch (nearest.isClone)
+            {
+                case true:
+                    PGM.Instance.computerBeingUsed = nearest.mainComputer;
+                    break;
+
+                case false:
+                    PGM.Instance.computerBeingUsed = nearest;
+                    break;
+            }
+        }
+        else
+        {
+            PGM.Instance.computerBeingUsed = nearest;
+        }
+        
 
         
         return nearest;

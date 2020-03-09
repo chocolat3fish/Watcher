@@ -5,6 +5,11 @@ public class ComputerControl : MonoBehaviour
 {
     public bool activate;
 
+    // will make it act the same as another computer
+    public bool isClone;
+
+    public ComputerControl mainComputer;
+
     public MoveObject assignedObject;
 
     void Start()
@@ -16,7 +21,9 @@ public class ComputerControl : MonoBehaviour
                 assignedObject = moveObject;
             }
         }
+        
     }
+
 
 
     void ToggleStatus()
