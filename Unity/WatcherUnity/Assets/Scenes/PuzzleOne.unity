@@ -10547,7 +10547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  acceleration: 0.3
+  acceleration: 0.25
   rotateSpeed: 200
   direction: {x: 0, y: 0, z: 0}
   pickupAngle: 35
@@ -13557,8 +13557,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2045947355}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2045947357
-MeshCollider:
+--- !u!135 &2045947357
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13567,10 +13567,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4711208715938537054, guid: 06c026c4fb3db492891162a99055eaa4, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2045947358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13600,6 +13599,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!65 &2045947360
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045947356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.07444973, z: 0.15}
+  m_Center: {x: -0.000000029802322, y: 0.14384131, z: 0.0007305667}
 --- !u!1001 &2047952137
 PrefabInstance:
   m_ObjectHideFlags: 0
