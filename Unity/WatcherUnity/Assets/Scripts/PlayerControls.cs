@@ -10,6 +10,7 @@ public class PlayerControls : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float acceleration;
+    public float gravityScale;
 
     public float rotateSpeed;
     public Vector3 direction;
@@ -81,7 +82,7 @@ public class PlayerControls : MonoBehaviour
             animator.SetBool("movingBackward", false);
         }
 
-        if (Input.GetKey(KeyCode.S) && canMove == true)
+        if (Input.GetKey(KeyCode.S) && canMove == true) 
         {
             rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingBackward", true);
@@ -90,13 +91,13 @@ public class PlayerControls : MonoBehaviour
 
         if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.S))
         {
-            rb.velocity = transform.forward * -moveSpeed;
+            rb.velocity = (transform.forward * -moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
         }
 
         else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.W))
         {
-            rb.velocity = transform.forward * moveSpeed;
+            rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
         }
 
@@ -104,15 +105,13 @@ public class PlayerControls : MonoBehaviour
         {
             animator.SetBool("isMoving", true);
         }
+
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             animator.SetBool("isMoving", false);
             animator.SetBool("movingForward", false);
             animator.SetBool("movingBackward", false);
         }
-
-
-
 
         if (Input.GetKey(KeyCode.A) && canMove == true)
         {
@@ -171,6 +170,7 @@ public class PlayerControls : MonoBehaviour
             }
 
         }
+
         if (Input.GetKeyDown(KeyCode.E) && holdingObject == true)
         {
             dropObject = true;
@@ -182,8 +182,6 @@ public class PlayerControls : MonoBehaviour
             exitComputer = true;
 
         }
-
-        
 
         if (objectBeingHeld != null)
         {
