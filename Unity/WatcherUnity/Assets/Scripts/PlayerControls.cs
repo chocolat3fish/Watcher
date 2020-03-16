@@ -75,27 +75,27 @@ public class PlayerControls : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if (Input.GetKey(KeyCode.W) && canMove == true)
+        if (Input.GetKey(PGM.Instance.keyBinds["Forward"]) && canMove == true)
         {
             rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingForward", true);
             animator.SetBool("movingBackward", false);
         }
 
-        if (Input.GetKey(KeyCode.S) && canMove == true) 
+        if (Input.GetKey(PGM.Instance.keyBinds["Backward"]) && canMove == true) 
         {
             rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingBackward", true);
             animator.SetBool("movingForward", false);
         }
 
-        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.S))
+        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Backward"]))
         {
             rb.velocity = (transform.forward * -moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
         }
 
-        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(KeyCode.W))
+        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Forward"]))
         {
             rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
@@ -106,24 +106,24 @@ public class PlayerControls : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
 
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        if (!Input.GetKey(PGM.Instance.keyBinds["Forward"]) && !Input.GetKey(PGM.Instance.keyBinds["Backward"]))
         {
             animator.SetBool("isMoving", false);
             animator.SetBool("movingForward", false);
             animator.SetBool("movingBackward", false);
         }
 
-        if (Input.GetKey(KeyCode.A) && canMove == true)
+        if (Input.GetKey(PGM.Instance.keyBinds["Left"]) && canMove == true)
         {
             transform.Rotate(0f, -rotateSpeed * Time.deltaTime, 0f);
         }
 
-        if (Input.GetKey(KeyCode.D) && canMove == true)
+        if (Input.GetKey(PGM.Instance.keyBinds["Right"]) && canMove == true)
         {
             transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && holdingObject == false)
+        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false)
         {
             if (FindNearestObject() != null)
             {
@@ -171,13 +171,13 @@ public class PlayerControls : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && holdingObject == true)
+        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == true)
         {
             dropObject = true;
 
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && usingComputer == true || (usingComputer && FindNearestComputer() == null))
+        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null))
         {
             exitComputer = true;
 

@@ -8,33 +8,68 @@ using System.Linq;
 
 public class MenuController : MonoBehaviour
 {
+    public Event e;
+
+    public bool changingKey;
 
     public GameObject mainMenu;
     public GameObject settingsMenu;
+    public GameObject controlsMenu;
     public GameObject background;
 
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown fullscreenDropdown;
-    
+
+    public TMP_Text forwardKey;
+    public TMP_Text backwardKey;
+    public TMP_Text leftKey;
+    public TMP_Text rightKey;
+    public TMP_Text interactKey;
+    public TMP_Text monitor1Key;
+    public TMP_Text monitor2Key;
+    public TMP_Text monitor3Key;
+    public TMP_Text monitor4Key;
+    public TMP_Text monitorBackKey;
+
+    public TMP_Text changeKeyDialogue;
+
     void Start()
     {
         mainMenu = GameObject.Find("MainMenu");
         settingsMenu = GameObject.Find("SettingsMenu");
+        controlsMenu = GameObject.Find("ControlsMenu");
         background = GameObject.Find("Background");
 
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
         fullscreenDropdown = settingsMenu.transform.Find("FullscreenDropdown").GetComponent<TMP_Dropdown>();
 
+        forwardKey = controlsMenu.transform.Find("Forward").GetComponent<TMP_Text>();
+        backwardKey = controlsMenu.transform.Find("Backward").GetComponent<TMP_Text>();
+        leftKey = controlsMenu.transform.Find("Left").GetComponent<TMP_Text>();
+        rightKey = controlsMenu.transform.Find("Right").GetComponent<TMP_Text>();
+        interactKey = controlsMenu.transform.Find("Interact").GetComponent<TMP_Text>();
+        monitor1Key = controlsMenu.transform.Find("Monitor1").GetComponent<TMP_Text>();
+        monitor2Key = controlsMenu.transform.Find("Monitor2").GetComponent<TMP_Text>();
+        monitor3Key = controlsMenu.transform.Find("Monitor3").GetComponent<TMP_Text>();
+        monitor4Key = controlsMenu.transform.Find("Monitor4").GetComponent<TMP_Text>();
+        monitorBackKey = controlsMenu.transform.Find("MonitorBack").GetComponent<TMP_Text>();
+
+        changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
+
+
+        PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
+
         for (int index = 0; index < PGM.Instance.resolutions.Length; index++)
         {
             resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
         }
-        
-
 
         settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        changeKeyDialogue.text = "";
+
 
 
         // Finds the current fullscreen mode and sets the dropdown to represent that
@@ -58,19 +93,6 @@ public class MenuController : MonoBehaviour
                 break;
         }
 
-        // finds a the matching height and width in PGM and sets the active dropdown value to match
-
-
-        /*foreach (int value in PGM.Instance.resolutionX)
-        {
-            
-            if (value == Screen.currentResolution.width && PGM.Instance.resolutionY[Array.IndexOf(PGM.Instance.resolutionX, value)] == Screen.currentResolution.height)
-            {
-                resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutionX, value);
-                break;
-            }
-        }*/
-
         for (int value = 0; value < PGM.Instance.resolutions.Length; value++)
         {
             if (Screen.currentResolution.width == PGM.Instance.resolutions[value].x && Screen.currentResolution.height == PGM.Instance.resolutions[value].y)
@@ -83,9 +105,13 @@ public class MenuController : MonoBehaviour
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
         qualityDropdown.value = QualitySettings.GetQualityLevel(); //Array.IndexOf(QualitySettings.names, QualitySettings.GetQualityLevel());
+
+
+
+
     }
 
-    
+
     void Update()
     {
 
@@ -107,15 +133,19 @@ public class MenuController : MonoBehaviour
 
     public void OpenSettings()
     {
-        
+
         settingsMenu.SetActive(true);
     }
 
 
     public void OpenMainMenu()
     {
-        settingsMenu.SetActive(false);
-        
+        if (changingKey == false)
+        {
+            settingsMenu.SetActive(false);
+            controlsMenu.SetActive(false);
+        }
+
     }
 
 
@@ -128,7 +158,7 @@ public class MenuController : MonoBehaviour
 
     public void ChangeResolutionSetting()
     {
-        
+
         Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].x, Screen.fullScreenMode);
     }
 
@@ -152,5 +182,96 @@ public class MenuController : MonoBehaviour
                 Screen.fullScreenMode = FullScreenMode.Windowed;
                 break;
         }
+    }
+
+
+    public void OpenKeybindings()
+    {
+        controlsMenu.SetActive(true);
+        UpdateText();
+    }
+
+    public void CloseKeybindings()
+    {
+        if (changingKey == false)
+        {
+            controlsMenu.SetActive(false);
+        }
+    }
+
+
+    public void ChangeKeyBind(string buttonName)
+    {
+        if (changingKey == false)
+        {
+
+            changingKey = true;
+
+            StartCoroutine(WaitForKey(buttonName));
+
+        }
+    }
+
+
+    public void UpdateText()
+    {
+        List<TMP_Text> textObjects = new List<TMP_Text>() { forwardKey, backwardKey, leftKey, rightKey, interactKey, monitor1Key, monitor2Key, monitor3Key, monitor4Key, monitorBackKey };
+
+        foreach (TMP_Text item in textObjects)
+        {
+
+            // Does a loop to check if key name starts with Alpha and then only prints the number after alpha
+            string bind = "";
+            if (PGM.Instance.keyBinds[item.name].ToString().Length > 3)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    bind += PGM.Instance.keyBinds[item.name].ToString()[i];
+                }
+            }
+
+            if (bind == "Alp")
+            {
+                item.text = item.name + " | " + PGM.Instance.keyBinds[item.name].ToString().Substring(5);
+            }
+            else
+            {
+                item.text = item.name + " | " + PGM.Instance.keyBinds[item.name];
+            }
+
+        }
+    }
+
+
+    public IEnumerator WaitForKey(string button)
+    {
+        changingKey = true;
+        changeKeyDialogue.text = "Press desired input key: ";
+        while (true)
+        {
+            //if (Input.anyKeyDown && !Input.GetMouseButton(0) && !Input.GetMouseButton(1))
+            if (e.isKey)
+            {
+
+                print((KeyCode)e.character);
+                if (!PGM.Instance.keyBinds.Values.Contains((KeyCode)e.character))
+                {
+                    PGM.Instance.keyBinds[button] = (KeyCode)e.character;
+                    
+                }
+                changingKey = false;
+                changeKeyDialogue.text = "";
+                UpdateText();
+                break;
+            }
+
+            yield return 0;
+        }
+    }
+
+
+    private void OnGUI()
+    {
+        e = Event.current;
     }
 }

@@ -156,6 +156,17 @@ MonoBehaviour:
   - ' '
   - ' '
   - ' '
+  moveForwardKey: 119
+  moveBackwardKey: 115
+  rotateLeftKey: 97
+  rotateRightKey: 100
+  interactKey: 101
+  switchMon1: 49
+  switchMon2: 50
+  switchMon3: 51
+  switchMon4: 52
+  reverseKey: 304
+  monitorKeyList: 
 --- !u!95 &-8910108579370357771
 Animator:
   serializedVersion: 3

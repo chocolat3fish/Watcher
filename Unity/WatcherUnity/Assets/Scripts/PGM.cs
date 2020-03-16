@@ -53,7 +53,7 @@ public class PGM : MonoBehaviour
     public RenderTexture puzzleScreen;
     public RenderTexture hiddenScreen;
 
-    
+
     [Header("Cameras")]
     public GameObject primaryCamera;
     public Camera activeCamera;
@@ -92,10 +92,40 @@ public class PGM : MonoBehaviour
     //public int[] resolutionY;
 
     public Resolution[] resolutions;
-    
+
 
     [Header("Events Dialogue")]
     public List<string> eventsList;
+
+
+    [Header("Inputs")]
+
+
+    public Dictionary<string, KeyCode> keyBinds = new Dictionary<string, KeyCode>
+    {
+        { "Forward", KeyCode.W },
+        { "Backward", KeyCode.S },
+        { "Left", KeyCode.A },
+        { "Right", KeyCode.D },
+        { "Interact", KeyCode.E },
+        { "Monitor1", KeyCode.Alpha1 },
+        { "Monitor2", KeyCode.Alpha2 },
+        { "Monitor3", KeyCode.Alpha3 },
+        { "Monitor4", KeyCode.Alpha4 },
+        { "MonitorBack", KeyCode.LeftShift }
+    };
+
+    public List<KeyCode> monitorKeyList;
+
+    /*
+    public KeyCode moveForwardKey;
+    public KeyCode moveBackwardKey;
+    public KeyCode rotateLeftKey;
+    public KeyCode rotateRightKey;
+    public KeyCode interactKey;
+    public KeyCode switchMon1, switchMon2, switchMon3, switchMon4, reverseKey;
+    */
+
 
 
     public void AdjustDictionary(string key, int data)
@@ -123,6 +153,9 @@ public class PGM : MonoBehaviour
 
         // Sorts the array elements by the y values
         Array.Sort(resolutions, (resOne, resTwo) => resOne.y.CompareTo(resTwo.y));
+
+        monitorKeyList = new List<KeyCode>() { keyBinds["Monitor1"], keyBinds["Monitor2"], keyBinds["Monitor3"], keyBinds["Monitor4"] };
+
     }
 
     private void Start()
@@ -216,5 +249,5 @@ public class PGM : MonoBehaviour
             return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
         });
         sortedCameras = true;
-    } 
+    }
 }

@@ -23,6 +23,9 @@ public class CameraSwitcher : MonoBehaviour
 
     public Color32 oldColour;
 
+    public int monitorNumber;
+
+
 
 
     void Start()
@@ -31,6 +34,22 @@ public class CameraSwitcher : MonoBehaviour
         oldColour = buttonObject.GetComponent<MeshRenderer>().material.color;
 
         monitorName = transform.name.Substring(0, 2);
+
+        switch(monitorName)
+        {
+            case "TL":
+                monitorNumber = 0;
+                break;
+            case "TM":
+                monitorNumber = 1;
+                break;
+            case "TR":
+                monitorNumber = 2;
+                break;
+            case "BR":
+                monitorNumber = 3;
+                break;
+        }
 
         assignedScreen = PGM.Instance.monitorsObject.transform.Find(monitorName + "Screen").gameObject;
 
@@ -49,14 +68,15 @@ public class CameraSwitcher : MonoBehaviour
 
     void Update()
     {
-        // on click
-        if (Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == buttonObject)
-        {
-            OutputForward();
-        }
-        if (Input.GetMouseButtonDown(1) && PGM.Instance.selectedGameobject == buttonObject)
+        // on click or button press
+
+        if ((Input.GetMouseButtonDown(1) && PGM.Instance.selectedGameobject == buttonObject) || Input.GetKey(PGM.Instance.keyBinds["MonitorBack"]) && Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber]))
         {
             OutputBackward();
+        }
+        else if (Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == buttonObject || Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber]))
+        {
+            OutputForward();
         }
 
         if (PGM.Instance.selectedGameobject == buttonObject)

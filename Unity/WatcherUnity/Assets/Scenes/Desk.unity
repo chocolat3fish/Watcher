@@ -1229,6 +1229,8 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
+  numberKey: 52
+  reverseKey: 304
 --- !u!1 &420944868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 72e74fa2c6096480ab489a1d971164b8,
@@ -2802,6 +2804,8 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
+  numberKey: 50
+  reverseKey: 304
 --- !u!1 &1013181111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5450,6 +5454,8 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
+  numberKey: 51
+  reverseKey: 304
 --- !u!1 &1644167028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 65acba53828b3334cb4d14dd2d79fdfd,
@@ -6848,6 +6854,8 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
+  numberKey: 49
+  reverseKey: 304
 --- !u!4 &477180765695484876
 Transform:
   m_ObjectHideFlags: 0

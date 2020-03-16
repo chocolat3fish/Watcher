@@ -8,22 +8,59 @@ using System;
 
 public class MenuInGame : MonoBehaviour
 {
+    public Event e;
+
+    public bool changingKey;
+
     public GameObject settingsMenu;
+    public GameObject controlsMenu;
 
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown fullscreenDropdown;
 
+    public TMP_Text forwardKey;
+    public TMP_Text backwardKey;
+    public TMP_Text leftKey;
+    public TMP_Text rightKey;
+    public TMP_Text interactKey;
+    public TMP_Text monitor1Key;
+    public TMP_Text monitor2Key;
+    public TMP_Text monitor3Key;
+    public TMP_Text monitor4Key;
+    public TMP_Text monitorBackKey;
+
+    public TMP_Text changeKeyDialogue;
+
 
     void Start()
     {
         settingsMenu = GameObject.Find("SettingsMenu");
+        controlsMenu = GameObject.Find("ControlsMenu");
 
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
         fullscreenDropdown = settingsMenu.transform.Find("FullscreenDropdown").GetComponent<TMP_Dropdown>();
 
+        forwardKey = controlsMenu.transform.Find("Forward").GetComponent<TMP_Text>();
+        backwardKey = controlsMenu.transform.Find("Backward").GetComponent<TMP_Text>();
+        leftKey = controlsMenu.transform.Find("Left").GetComponent<TMP_Text>();
+        rightKey = controlsMenu.transform.Find("Right").GetComponent<TMP_Text>();
+        interactKey = controlsMenu.transform.Find("Interact").GetComponent<TMP_Text>();
+        monitor1Key = controlsMenu.transform.Find("Monitor1").GetComponent<TMP_Text>();
+        monitor2Key = controlsMenu.transform.Find("Monitor2").GetComponent<TMP_Text>();
+        monitor3Key = controlsMenu.transform.Find("Monitor3").GetComponent<TMP_Text>();
+        monitor4Key = controlsMenu.transform.Find("Monitor4").GetComponent<TMP_Text>();
+        monitorBackKey = controlsMenu.transform.Find("MonitorBack").GetComponent<TMP_Text>();
+
+        changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
+
+
+        PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
+
+
         settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
 
         // Finds the current fullscreen mode and sets the dropdown to represent that
         List<string> fullscreenList = fullscreenDropdown.options.Select(option => option.text).ToList();
@@ -110,6 +147,7 @@ public class MenuInGame : MonoBehaviour
     public void CloseSettings()
     {
         settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
 
@@ -159,5 +197,95 @@ public class MenuInGame : MonoBehaviour
                 Screen.fullScreenMode = FullScreenMode.Windowed;
                 break;
         }
+    }
+
+    public void OpenKeybindings()
+    {
+        controlsMenu.SetActive(true);
+        UpdateText();
+    }
+
+    public void CloseKeybindings()
+    {
+        if (changingKey == false)
+        {
+            controlsMenu.SetActive(false);
+        }
+    }
+
+
+    public void ChangeKeyBind(string buttonName)
+    {
+        if (changingKey == false)
+        {
+
+            changingKey = true;
+
+            StartCoroutine(WaitForKey(buttonName));
+
+        }
+    }
+
+
+    public void UpdateText()
+    {
+        List<TMP_Text> textObjects = new List<TMP_Text>() { forwardKey, backwardKey, leftKey, rightKey, interactKey, monitor1Key, monitor2Key, monitor3Key, monitor4Key, monitorBackKey };
+
+        foreach (TMP_Text item in textObjects)
+        {
+
+            // Does a loop to check if key name starts with Alpha and then only prints the number after alpha
+            string bind = "";
+            if (PGM.Instance.keyBinds[item.name].ToString().Length > 3)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    bind += PGM.Instance.keyBinds[item.name].ToString()[i];
+                }
+            }
+
+            if (bind == "Alp")
+            {
+                item.text = item.name + " | " + PGM.Instance.keyBinds[item.name].ToString().Substring(5);
+            }
+            else
+            {
+                item.text = item.name + " | " + PGM.Instance.keyBinds[item.name];
+            }
+
+        }
+    }
+
+
+    public IEnumerator WaitForKey(string button)
+    {
+        changingKey = true;
+        changeKeyDialogue.text = "Press desired input key: ";
+        while (true)
+        {
+            //if (Input.anyKeyDown && !Input.GetMouseButton(0) && !Input.GetMouseButton(1))
+            if (e.isKey)
+            {
+
+                print((KeyCode)e.character);
+                if (!PGM.Instance.keyBinds.Values.Contains((KeyCode)e.character))
+                {
+                    PGM.Instance.keyBinds[button] = (KeyCode)e.character;
+
+                }
+                changingKey = false;
+                changeKeyDialogue.text = "";
+                UpdateText();
+                break;
+            }
+
+            yield return 0;
+        }
+    }
+
+
+    private void OnGUI()
+    {
+        e = Event.current;
     }
 }
