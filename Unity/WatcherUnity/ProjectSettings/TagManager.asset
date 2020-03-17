@@ -9,6 +9,7 @@ TagManager:
   - CameraButton
   - Computer
   - ComputerCamera
+  - Trigger
   layers:
   - Default
   - TransparentFX

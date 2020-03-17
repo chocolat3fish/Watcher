@@ -9,19 +9,24 @@ public class TriggerLevel : MonoBehaviour
 
     public PathTriggers currentPath;
 
+    public int triggerRequirement;
+
     public bool holdingObject;
+
+    public Collider col;
+
+    public Vector3 snapLocation;
 
     private void Start()
     {
-        
+        col = GetComponent<Collider>();
+        snapLocation = new Vector3(transform.position.x, transform.position.y + col.bounds.size.y, transform.position.z);
     }
     private void OnTriggerEnter(Collider col)
     {
         // checks if the colliding object is on the same puzzle path as the trigger
-        if (col.CompareTag("Pickup") == true && col.GetComponent<PickupManager>().path == path && holdingObject == false)
+        if (col.CompareTag("Pickup") == true && col.GetComponent<PickupManager>().path == path && holdingObject == false && PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress >= triggerRequirement)
         {
-            
-
             holdingObject = true;
             PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress += 1;
             if (PGM.Instance.currentPuzzle.pathTriggers[path].pathTriggers <= PGM.Instance.currentPuzzle.pathTriggers[path].pathProgress)
@@ -71,7 +76,5 @@ public class TriggerLevel : MonoBehaviour
             }
         }
 
-
     }
-
 }

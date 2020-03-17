@@ -22,7 +22,8 @@ public class OnSceneLoad : MonoBehaviour
         {
             PGM.Instance.puzzleObjects = FindObjectsOfType<PickupManager>();
         }
-        
+
+        PGM.Instance.player = FindObjectOfType<PlayerControls>();
         
     }
 

@@ -438,7 +438,7 @@ MonoBehaviour:
   targetObject: {fileID: 13163792}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
-  priority: 10
+  priority: 9
 --- !u!20 &35041487
 Camera:
   m_ObjectHideFlags: 0
@@ -494,7 +494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 74
+  m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &56387875
 PrefabInstance:
@@ -3857,6 +3857,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 0
+  nearbyTriggers: []
+  snapTime: 0.02
 --- !u!1 &264598351
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,6 +4453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 1
+  nearbyTriggers: []
+  snapTime: 0
 --- !u!1001 &407367966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5790,7 +5794,7 @@ MonoBehaviour:
   targetObject: {fileID: 1349906725}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
-  priority: 8
+  priority: 7
 --- !u!20 &508411113
 Camera:
   m_ObjectHideFlags: 0
@@ -6461,7 +6465,7 @@ GameObject:
   - component: {fileID: 812806308}
   m_Layer: 0
   m_Name: CubeTrigger (1)
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6483,7 +6487,10 @@ MonoBehaviour:
     pathTriggers: 0
     pathProgress: 0
     pathComplete: 0
+  triggerRequirement: 0
   holdingObject: 0
+  col: {fileID: 0}
+  snapLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &812806309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6495,8 +6502,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.87303925, y: 0.5667205, z: 0.81183624}
-  m_Center: {x: 1.0287209, y: -0.21930093, z: -0.9579201}
+  m_Size: {x: 0.87303925, y: 0.68524885, z: 0.81183624}
+  m_Center: {x: 1.0287209, y: -0.16003674, z: -0.9579201}
 --- !u!4 &812806310
 Transform:
   m_ObjectHideFlags: 0
@@ -6717,7 +6724,7 @@ GameObject:
   - component: {fileID: 968238778}
   m_Layer: 0
   m_Name: CubeTrigger
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6739,7 +6746,10 @@ MonoBehaviour:
     pathTriggers: 0
     pathProgress: 0
     pathComplete: 0
+  triggerRequirement: 0
   holdingObject: 0
+  col: {fileID: 0}
+  snapLocation: {x: 0, y: 0, z: 0}
 --- !u!65 &968238779
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8986,7 +8996,7 @@ GameObject:
   - component: {fileID: 1154911173}
   m_Layer: 0
   m_Name: ExitTrigger
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10531,7 +10541,7 @@ GameObject:
   - component: {fileID: 1479116996}
   m_Layer: 0
   m_Name: SphereTrigger
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10566,7 +10576,10 @@ MonoBehaviour:
     pathTriggers: 0
     pathProgress: 0
     pathComplete: 0
+  triggerRequirement: 0
   holdingObject: 0
+  col: {fileID: 0}
+  snapLocation: {x: 0, y: 0, z: 0}
 --- !u!4 &1479116998
 Transform:
   m_ObjectHideFlags: 0
@@ -10770,7 +10783,7 @@ MonoBehaviour:
   targetObject: {fileID: 1833506121}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
-  priority: 9
+  priority: 8
 --- !u!20 &1493088967
 Camera:
   m_ObjectHideFlags: 0
@@ -10826,7 +10839,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 76
+  m_RootOrder: 74
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1501172000
 PrefabInstance:
@@ -12745,7 +12758,7 @@ MonoBehaviour:
   targetObject: {fileID: 812806307}
   secondaryObject: {fileID: 1511840059}
   watchTargetObject: 0
-  priority: 7
+  priority: 6
 --- !u!20 &1756043499
 Camera:
   m_ObjectHideFlags: 0
@@ -14156,7 +14169,7 @@ MonoBehaviour:
   targetObject: {fileID: 2126663346}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
-  priority: 11
+  priority: 10
 --- !u!20 &2035101431
 Camera:
   m_ObjectHideFlags: 0
@@ -14212,7 +14225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 75
+  m_RootOrder: 76
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &2045947355
 PrefabInstance:
@@ -14320,6 +14333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 1
+  nearbyTriggers: []
+  snapTime: 0.02
 --- !u!54 &2045947359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15185,6 +15200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 0
+  nearbyTriggers: []
+  snapTime: 0.02
 --- !u!65 &2081022638
 BoxCollider:
   m_ObjectHideFlags: 0
