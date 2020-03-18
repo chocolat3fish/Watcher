@@ -3857,7 +3857,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 0
-  nearbyTriggers: []
   snapTime: 0.02
   holdPosition: {x: 0, y: 0, z: 0}
   inPlace: 0
@@ -4455,7 +4454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 1
-  nearbyTriggers: []
   snapTime: 0
   holdPosition: {x: 0, y: 0, z: 0}
   inPlace: 0
@@ -11041,6 +11039,11 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4694338623589209743, guid: 01293175121f01a4489e9f573f77872d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c7a842aa2b6e74024b51ea6524695516, type: 2}
     - target: {fileID: -4216859302048453862, guid: 01293175121f01a4489e9f573f77872d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14342,7 +14345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 1
-  nearbyTriggers: []
   snapTime: 0.02
   holdPosition: {x: 0, y: 0, z: 0}
   inPlace: 0
@@ -15211,7 +15213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: 0
-  nearbyTriggers: []
   snapTime: 0.02
   holdPosition: {x: 0, y: 0, z: 0}
   inPlace: 0

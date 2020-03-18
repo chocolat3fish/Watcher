@@ -263,8 +263,6 @@ public class MenuController : MonoBehaviour
             //if (Input.anyKeyDown && !Input.GetMouseButton(0) && !Input.GetMouseButton(1))
             if (e.isKey)
             {
-
-                print((KeyCode)e.character);
                 if (!PGM.Instance.keyBinds.Values.Contains((KeyCode)e.character))
                 {
                     PGM.Instance.keyBinds[button] = (KeyCode)e.character;
