@@ -77,6 +77,13 @@ public class MoveObject : MonoBehaviour
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
                     break;
             }
+
+            switch (PGM.Instance.exitedLevel)
+            {
+                case true:
+                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove * 6);
+                    break;
+            }
     
         }
     }

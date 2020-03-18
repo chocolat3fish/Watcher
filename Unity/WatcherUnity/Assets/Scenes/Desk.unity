@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 70418168b22c33c4dba99d81ada0ced5, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d917b5131feec614ab796a09f9944bfe, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1436224796}
-  m_IndirectSpecularColor: {r: 0.11079882, g: 0.063234515, b: 0.016025195, a: 1}
+  m_IndirectSpecularColor: {r: 0.42472875, g: 0.4439192, b: 0.43813023, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -50,7 +50,7 @@ LightmapSettings:
     m_BounceScale: 1
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &49968020
 Light:
   m_ObjectHideFlags: 0
@@ -1229,8 +1229,7 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
-  numberKey: 52
-  reverseKey: 304
+  monitorNumber: 0
 --- !u!1 &420944868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 72e74fa2c6096480ab489a1d971164b8,
@@ -1350,7 +1349,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: d0684a57077fe40c69ab3029963d2207,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.005
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d0684a57077fe40c69ab3029963d2207,
         type: 3}
@@ -1536,7 +1535,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 2, y: 1}
   m_BounceIntensity: 1
@@ -1554,7 +1553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573874255}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -34.220184, y: 4.731, z: -7.19}
+  m_LocalPosition: {x: -34.220184, y: 4.731, z: -6.411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1643,7 +1642,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.220184
+      value: -34.304
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
@@ -1653,7 +1652,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.111792
+      value: 2.613
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
@@ -2642,7 +2641,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 2, y: 1}
   m_BounceIntensity: 1
@@ -2660,7 +2659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945215013}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -34.220184, y: 4.731, z: 2.111792}
+  m_LocalPosition: {x: -34.220184, y: 4.731, z: 2.649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2804,8 +2803,7 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
-  numberKey: 50
-  reverseKey: 304
+  monitorNumber: 0
 --- !u!1 &1013181111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2893,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.220184
+      value: -34.3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
@@ -2905,7 +2903,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.716
+      value: -1.978
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
@@ -4839,7 +4837,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 2, y: 1}
   m_BounceIntensity: 1
@@ -4857,7 +4855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509007756}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -34.220184, y: 4.731, z: -2.716}
+  m_LocalPosition: {x: -34.241, y: 4.731, z: -1.954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5454,8 +5452,7 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
-  numberKey: 51
-  reverseKey: 304
+  monitorNumber: 0
 --- !u!1 &1644167028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 65acba53828b3334cb4d14dd2d79fdfd,
@@ -5491,7 +5488,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.220184
+      value: -34.294
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
@@ -5501,7 +5498,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.19
+      value: -6.458
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a0296ee7eb0f047edbf0c582b41f7eb4,
         type: 3}
@@ -6854,8 +6851,7 @@ MonoBehaviour:
   oldColour:
     serializedVersion: 2
     rgba: 0
-  numberKey: 49
-  reverseKey: 304
+  monitorNumber: 0
 --- !u!4 &477180765695484876
 Transform:
   m_ObjectHideFlags: 0

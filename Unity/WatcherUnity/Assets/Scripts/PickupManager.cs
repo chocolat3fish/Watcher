@@ -9,7 +9,7 @@ public class PickupManager : MonoBehaviour
 
     Rigidbody rb;
 
-    public TriggerLevel[] nearbyTriggers;
+    //public TriggerLevel[] nearbyTriggers;
     public float snapTime;
 
     public Vector3 holdPosition;
@@ -21,29 +21,31 @@ public class PickupManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.sleepThreshold = 0;
 
-        nearbyTriggers = FindObjectsOfType<TriggerLevel>();
+        //nearbyTriggers = FindObjectsOfType<TriggerLevel>();
     }
 
     private void Update()
     {
+        /*
         if (PGM.Instance.player.holdingObject && PGM.Instance.player.objectBeingHeld == rb)
         {
             inPlace = false;
             rb.useGravity = true;
         }
-
+        
         if (inPlace)
         {
             rb.useGravity = false;
             transform.position = holdPosition;
         }
+        */
         
     }
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Trigger") && PGM.Instance.player.holdingObject == false)
         {
-            inPlace = true;
+            //inPlace = true;
             holdPosition = col.GetComponent<TriggerLevel>().snapLocation;
             rb.velocity = Vector3.zero;
             transform.position = Vector3.MoveTowards(transform.position, holdPosition, snapTime);

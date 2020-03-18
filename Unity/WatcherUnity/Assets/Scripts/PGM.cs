@@ -35,6 +35,8 @@ public class PGM : MonoBehaviour
 
     public bool exitWasOpen;
 
+    public bool exitedLevel;
+
     [Header("Object Tracking")]
     public PlayerControls player;
 
@@ -232,6 +234,12 @@ public class PGM : MonoBehaviour
             case "liftLower":
                 eventsList.Add("lift lowered");
                 break;
+
+            case "levelComplete":
+                eventsList.Add("room completed");
+                break;
+
+
         }
 
         // Only 6 elements will be displayed at a time and older ones won't need to be saved so the first one is deleted and the other elements are pushed down

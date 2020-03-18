@@ -75,31 +75,7 @@ public class PlayerControls : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if (Input.GetKey(PGM.Instance.keyBinds["Forward"]) && canMove == true)
-        {
-            rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
-            animator.SetBool("movingForward", true);
-            animator.SetBool("movingBackward", false);
-        }
 
-        if (Input.GetKey(PGM.Instance.keyBinds["Backward"]) && canMove == true) 
-        {
-            rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
-            animator.SetBool("movingBackward", true);
-            animator.SetBool("movingForward", false);
-        }
-
-        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Backward"]))
-        {
-            rb.velocity = (transform.forward * -moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
-
-        }
-
-        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Forward"]))
-        {
-            rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
-
-        }
 
         if (rb.velocity.magnitude > 0)
         {
@@ -200,7 +176,31 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKey(PGM.Instance.keyBinds["Forward"]) && canMove == true)
+        {
+            rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
+            animator.SetBool("movingForward", true);
+            animator.SetBool("movingBackward", false);
+        }
 
+        if (Input.GetKey(PGM.Instance.keyBinds["Backward"]) && canMove == true)
+        {
+            rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
+            animator.SetBool("movingBackward", true);
+            animator.SetBool("movingForward", false);
+        }
+
+        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Backward"]))
+        {
+            rb.velocity = (transform.forward * -moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
+
+        }
+
+        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Forward"]))
+        {
+            rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
+
+        }
 
         if (pickUpObject)
         {
