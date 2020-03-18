@@ -55,6 +55,7 @@ MonoBehaviour:
   usingComputer: 0
   sortedCameras: 0
   exitWasOpen: 0
+  exitedLevel: 0
   player: {fileID: 0}
   monitorsObject: {fileID: 0}
   computerBeingUsed: {fileID: 0}
@@ -149,6 +150,9 @@ MonoBehaviour:
     y: 240
   - x: 960
     y: 540
+  currentResolution:
+    x: 1920
+    y: 1080
   eventsList:
   - ' '
   - ' '
@@ -156,16 +160,6 @@ MonoBehaviour:
   - ' '
   - ' '
   - ' '
-  moveForwardKey: 119
-  moveBackwardKey: 115
-  rotateLeftKey: 97
-  rotateRightKey: 100
-  interactKey: 101
-  switchMon1: 49
-  switchMon2: 50
-  switchMon3: 51
-  switchMon4: 52
-  reverseKey: 304
   monitorKeyList: 
 --- !u!95 &-8910108579370357771
 Animator:

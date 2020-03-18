@@ -95,6 +95,8 @@ public class PGM : MonoBehaviour
 
     public Resolution[] resolutions;
 
+    public Resolution currentResolution;
+
 
     [Header("Events Dialogue")]
     public List<string> eventsList;

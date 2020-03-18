@@ -58,6 +58,15 @@ public class MenuInGame : MonoBehaviour
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
 
+        Resolution tempResolution = PGM.Instance.currentResolution;
+        
+        for (int index = 0; index < PGM.Instance.resolutions.Length; index++)
+        {
+            resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
+        }
+        PGM.Instance.currentResolution = tempResolution;
+        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
+
 
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
@@ -93,17 +102,19 @@ public class MenuInGame : MonoBehaviour
                 break;
             }
         }
-        */
-
+        
         for (int value = 0; value < PGM.Instance.resolutions.Length; value++)
         {
+
             if (Screen.currentResolution.width == PGM.Instance.resolutions[value].x && Screen.currentResolution.height == PGM.Instance.resolutions[value].y)
             {
                 resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, value);
                 break;
             }
-        } 
-       
+        }
+        */
+        resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, PGM.Instance.currentResolution);
+
 
 
 
@@ -120,10 +131,11 @@ public class MenuInGame : MonoBehaviour
         {
             ContinueGame();
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && settingsMenu.activeSelf == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && (settingsMenu.activeSelf == true || (controlsMenu.activeSelf == true && changingKey == false)))
         {
             settingsMenu.SetActive(false);
         }
+
     }
 
 
@@ -174,7 +186,9 @@ public class MenuInGame : MonoBehaviour
     public void ChangeResolutionSetting()
     {
 
-        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].x, Screen.fullScreenMode);
+        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].y, Screen.fullScreenMode);
+        PGM.Instance.currentResolution.x = PGM.Instance.resolutions[resolutionDropdown.value].x;
+        PGM.Instance.currentResolution.y = PGM.Instance.resolutions[resolutionDropdown.value].y;
     }
 
     public void ChangeFullscreenSetting()

@@ -61,10 +61,14 @@ public class MenuController : MonoBehaviour
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
 
+        Resolution tempResolution = PGM.Instance.currentResolution;
+
         for (int index = 0; index < PGM.Instance.resolutions.Length; index++)
         {
             resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
         }
+        PGM.Instance.currentResolution = tempResolution;
+        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
@@ -92,15 +96,20 @@ public class MenuController : MonoBehaviour
                 fullscreenDropdown.value = fullscreenList.IndexOf("Windowed");
                 break;
         }
-
+        /*
         for (int value = 0; value < PGM.Instance.resolutions.Length; value++)
         {
+
             if (Screen.currentResolution.width == PGM.Instance.resolutions[value].x && Screen.currentResolution.height == PGM.Instance.resolutions[value].y)
             {
                 resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, value);
                 break;
             }
         }
+        */
+        resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, PGM.Instance.currentResolution);
+
+        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
@@ -159,7 +168,9 @@ public class MenuController : MonoBehaviour
     public void ChangeResolutionSetting()
     {
 
-        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].x, Screen.fullScreenMode);
+        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].y, Screen.fullScreenMode);
+        PGM.Instance.currentResolution.x = PGM.Instance.resolutions[resolutionDropdown.value].x;
+        PGM.Instance.currentResolution.y = PGM.Instance.resolutions[resolutionDropdown.value].y;
     }
 
     public void ChangeFullscreenSetting()
