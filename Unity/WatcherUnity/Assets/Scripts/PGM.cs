@@ -245,7 +245,7 @@ public class PGM : MonoBehaviour
         }
 
         // Only 6 elements will be displayed at a time and older ones won't need to be saved so the first one is deleted and the other elements are pushed down
-        if (eventsList.Count >= 6)
+        if (eventsList.Count > 6)
         {
             eventsList.RemoveAt(0);
         }
