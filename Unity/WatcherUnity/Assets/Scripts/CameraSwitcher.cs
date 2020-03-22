@@ -51,7 +51,7 @@ public class CameraSwitcher : MonoBehaviour
                 break;
         }
 
-        assignedScreen = PGM.Instance.monitorsObject.transform.Find(monitorName + "Screen").gameObject;
+        assignedScreen = PGM.instance.monitorsObject.transform.Find(monitorName + "Screen").gameObject;
 
         materialName = assignedScreen.GetComponent<MeshRenderer>().material.name;
 
@@ -70,18 +70,18 @@ public class CameraSwitcher : MonoBehaviour
     {
         // on click or button press
 
-        if ((Input.GetMouseButtonDown(1) && PGM.Instance.selectedGameobject == buttonObject) || Input.GetKey(PGM.Instance.keyBinds["MonitorBack"]) && Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber]))
+        if ((Input.GetMouseButtonDown(1) && PGM.instance.selectedGameobject == buttonObject) || Input.GetKey(PGM.instance.keyBinds["MonitorBack"]) && Input.GetKeyDown(PGM.instance.monitorKeyList[monitorNumber]))
         {
             OutputBackward();
         }
-        else if (Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == buttonObject || Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber]))
+        else if (Input.GetMouseButtonDown(0) && PGM.instance.selectedGameobject == buttonObject || Input.GetKeyDown(PGM.instance.monitorKeyList[monitorNumber]))
         {
             OutputForward();
         }
 
-        if (PGM.Instance.selectedGameobject == buttonObject)
+        if (PGM.instance.selectedGameobject == buttonObject)
         {
-            buttonMaterial.material.color = PGM.Instance.highlightColour;
+            buttonMaterial.material.color = PGM.instance.highlightColour;
         }
         else
         {
@@ -94,11 +94,11 @@ public class CameraSwitcher : MonoBehaviour
     {
 
         currentIndex += 1;
-        if (currentIndex >= PGM.Instance.allCameras.Count)
+        if (currentIndex >= PGM.instance.allCameras.Count)
         {
             currentIndex = 0;
         }
-        screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
+        screenMaterial.material = PGM.instance.screenMaterials[currentIndex];
         
         //PGM.Instance.allCameras
     }
@@ -108,8 +108,8 @@ public class CameraSwitcher : MonoBehaviour
         currentIndex -= 1;
         if (currentIndex < 0)
         {
-            currentIndex = PGM.Instance.allCameras.Count - 1;
+            currentIndex = PGM.instance.allCameras.Count - 1;
         }
-        screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
+        screenMaterial.material = PGM.instance.screenMaterials[currentIndex];
     }
 }

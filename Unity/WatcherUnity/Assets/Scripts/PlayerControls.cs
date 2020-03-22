@@ -45,16 +45,21 @@ public class PlayerControls : MonoBehaviour
     public GameObject handRight;
     public GameObject handLeft;
 
+    public Collider playerCollider;
+
  
     void Start()
     {
         nearbyObjects = GameObject.FindGameObjectsWithTag("Pickup");
         nearbyComputers = FindObjectsOfType<ComputerControl>();
 
+        playerCollider = GetComponent<Collider>();
+
         handRight = GameObject.Find("Hand.R");
         handLeft = GameObject.Find("Hand.L");
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
 
         canMove = true;
         // "disables" the layer for picking up objects, so that the top half of the idle animation doesn't override anything else
@@ -66,10 +71,10 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && PGM.Instance.settingsOpen == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && PGM.instance.settingsOpen == false)
         {
-            PGM.Instance.settingsOpen = true;
-            SceneManager.LoadSceneAsync(PGM.Instance.pauseScene, LoadSceneMode.Additive);
+            PGM.instance.settingsOpen = true;
+            SceneManager.LoadSceneAsync(PGM.instance.pauseScene, LoadSceneMode.Additive);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0;
@@ -82,63 +87,63 @@ public class PlayerControls : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
 
-        if (!Input.GetKey(PGM.Instance.keyBinds["Forward"]) && !Input.GetKey(PGM.Instance.keyBinds["Backward"]))
+        if (!Input.GetKey(PGM.instance.keyBinds["Forward"]) && !Input.GetKey(PGM.instance.keyBinds["Backward"]))
         {
             animator.SetBool("isMoving", false);
             animator.SetBool("movingForward", false);
             animator.SetBool("movingBackward", false);
         }
 
-        if (Input.GetKey(PGM.Instance.keyBinds["Left"]) && canMove == true)
+        if (Input.GetKey(PGM.instance.keyBinds["Left"]) && canMove == true)
         {
             transform.Rotate(0f, -rotateSpeed * Time.deltaTime, 0f);
         }
 
-        if (Input.GetKey(PGM.Instance.keyBinds["Right"]) && canMove == true)
+        if (Input.GetKey(PGM.instance.keyBinds["Right"]) && canMove == true)
         {
             transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
 
-        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false)
+        if (Input.GetKeyDown(PGM.instance.keyBinds["Interact"]) && holdingObject == false)
         {
             if (FindNearestObject() != null)
             {
                 pickUpObject = true;
             }
 
-            if (FindNearestComputer() != null && PGM.Instance.usingComputer == false)
+            if (FindNearestComputer() != null && PGM.instance.usingComputer == false)
             {
                 interactComputer = true;
 
-                switch (PGM.Instance.computerBeingUsed.activate)
+                switch (PGM.instance.computerBeingUsed.activate)
                 {
                     case true:
-                        PGM.Instance.computerBeingUsed.activate = false;
+                        PGM.instance.computerBeingUsed.activate = false;
                         // Prints an event for the player to see
-                        switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
+                        switch (PGM.instance.computerBeingUsed.assignedObject.objectType)
                         {
                             case MoveObject.ObjectType.Door:
-                                PGM.Instance.AddEvents("doorClose");   
+                                PGM.instance.AddEvents("doorClose");   
                                 break;
 
                             case MoveObject.ObjectType.Lift:
-                                PGM.Instance.AddEvents("liftRaise");   
+                                PGM.instance.AddEvents("liftRaise");   
                                 break;
                         }
 
                         break;
 
                     case false:
-                        PGM.Instance.computerBeingUsed.activate = true;
+                        PGM.instance.computerBeingUsed.activate = true;
                         // Prints an event for the player to see
-                        switch (PGM.Instance.computerBeingUsed.assignedObject.objectType)
+                        switch (PGM.instance.computerBeingUsed.assignedObject.objectType)
                         {
                             case MoveObject.ObjectType.Door:
-                                PGM.Instance.AddEvents("doorOpen");
+                                PGM.instance.AddEvents("doorOpen");
                                 break;
 
                             case MoveObject.ObjectType.Lift:
-                                PGM.Instance.AddEvents("liftLower");
+                                PGM.instance.AddEvents("liftLower");
                                 break;
                         }
                         break;
@@ -147,13 +152,13 @@ public class PlayerControls : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == true)
+        if (Input.GetKeyDown(PGM.instance.keyBinds["Interact"]) && holdingObject == true)
         {
             dropObject = true;
 
         }
 
-        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null))
+        if (Input.GetKeyDown(PGM.instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null))
         {
             exitComputer = true;
 
@@ -176,27 +181,27 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(PGM.Instance.keyBinds["Forward"]) && canMove == true)
+        if (Input.GetKey(PGM.instance.keyBinds["Forward"]) && canMove == true)
         {
             rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingForward", true);
             animator.SetBool("movingBackward", false);
         }
 
-        if (Input.GetKey(PGM.Instance.keyBinds["Backward"]) && canMove == true)
+        if (Input.GetKey(PGM.instance.keyBinds["Backward"]) && canMove == true)
         {
             rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingBackward", true);
             animator.SetBool("movingForward", false);
         }
 
-        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Backward"]))
+        if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.instance.keyBinds["Backward"]))
         {
             rb.velocity = (transform.forward * -moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
         }
 
-        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Forward"]))
+        else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.instance.keyBinds["Forward"]))
         {
             rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
@@ -238,7 +243,7 @@ public class PlayerControls : MonoBehaviour
             canMove = false;
             
             //PGM.Instance.computerBeingUsed.GetComponent<ComputerControl>().activate = true;
-            PGM.Instance.usingComputer = true;
+            PGM.instance.usingComputer = true;
             usingComputer = true;
         }
 
@@ -247,8 +252,8 @@ public class PlayerControls : MonoBehaviour
             interactComputer = false;
             exitComputer = false;
             usingComputer = false;
-            PGM.Instance.usingComputer = false;
-            PGM.Instance.computerBeingUsed = null;
+            PGM.instance.usingComputer = false;
+            PGM.instance.computerBeingUsed = null;
             canMove = true;
             animator.SetBool("usingComputer", false);
             
@@ -304,17 +309,17 @@ public class PlayerControls : MonoBehaviour
             switch (nearest.isClone)
             {
                 case true:
-                    PGM.Instance.computerBeingUsed = nearest.mainComputer;
+                    PGM.instance.computerBeingUsed = nearest.mainComputer;
                     break;
 
                 case false:
-                    PGM.Instance.computerBeingUsed = nearest;
+                    PGM.instance.computerBeingUsed = nearest;
                     break;
             }
         }
         else
         {
-            PGM.Instance.computerBeingUsed = nearest;
+            PGM.instance.computerBeingUsed = nearest;
         }
         
 

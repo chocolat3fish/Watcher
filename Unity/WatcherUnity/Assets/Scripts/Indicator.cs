@@ -19,7 +19,7 @@ public class Indicator : MonoBehaviour
    
     void Update()
     {
-        if (PGM.Instance.currentPuzzle.completed)
+        if (PGM.instance.currentPuzzle.completed)
         {
             material.SetColor("_EmissionColor", green);
         }

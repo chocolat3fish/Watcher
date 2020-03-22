@@ -59,16 +59,16 @@ public class MenuController : MonoBehaviour
         changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
 
 
-        PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
+        PGM.instance.monitorKeyList = new List<KeyCode>() { PGM.instance.keyBinds["Monitor1"], PGM.instance.keyBinds["Monitor2"], PGM.instance.keyBinds["Monitor3"], PGM.instance.keyBinds["Monitor4"] };
 
-        Resolution tempResolution = PGM.Instance.currentResolution;
+        Resolution tempResolution = PGM.instance.currentResolution;
 
-        for (int index = 0; index < PGM.Instance.resolutions.Length; index++)
+        for (int index = 0; index < PGM.instance.resolutions.Length; index++)
         {
-            resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
+            resolutionDropdown.AddOptions(new List<string> { PGM.instance.resolutions[index].x + "x" + PGM.instance.resolutions[index].y });
         }
-        PGM.Instance.currentResolution = tempResolution;
-        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
+        PGM.instance.currentResolution = tempResolution;
+        Screen.SetResolution(PGM.instance.currentResolution.x, PGM.instance.currentResolution.y, Screen.fullScreenMode);
 
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
@@ -107,9 +107,9 @@ public class MenuController : MonoBehaviour
             }
         }
         */
-        resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, PGM.Instance.currentResolution);
+        resolutionDropdown.value = Array.IndexOf(PGM.instance.resolutions, PGM.instance.currentResolution);
 
-        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
+        Screen.SetResolution(PGM.instance.currentResolution.x, PGM.instance.currentResolution.y, Screen.fullScreenMode);
 
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
@@ -129,7 +129,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(PGM.Instance.deskScene);
+        SceneManager.LoadScene(PGM.instance.deskScene);
     }
 
 
@@ -168,9 +168,9 @@ public class MenuController : MonoBehaviour
     public void ChangeResolutionSetting()
     {
 
-        Screen.SetResolution(PGM.Instance.resolutions[resolutionDropdown.value].x, PGM.Instance.resolutions[resolutionDropdown.value].y, Screen.fullScreenMode);
-        PGM.Instance.currentResolution.x = PGM.Instance.resolutions[resolutionDropdown.value].x;
-        PGM.Instance.currentResolution.y = PGM.Instance.resolutions[resolutionDropdown.value].y;
+        Screen.SetResolution(PGM.instance.resolutions[resolutionDropdown.value].x, PGM.instance.resolutions[resolutionDropdown.value].y, Screen.fullScreenMode);
+        PGM.instance.currentResolution.x = PGM.instance.resolutions[resolutionDropdown.value].x;
+        PGM.instance.currentResolution.y = PGM.instance.resolutions[resolutionDropdown.value].y;
     }
 
     public void ChangeFullscreenSetting()
@@ -233,21 +233,21 @@ public class MenuController : MonoBehaviour
 
             // Does a loop to check if key name starts with Alpha and then only prints the number after alpha
             string bind = "";
-            if (PGM.Instance.keyBinds[item.name].ToString().Length > 3)
+            if (PGM.instance.keyBinds[item.name].ToString().Length > 3)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    bind += PGM.Instance.keyBinds[item.name].ToString()[i];
+                    bind += PGM.instance.keyBinds[item.name].ToString()[i];
                 }
             }
 
             if (bind == "Alp")
             {
-                item.text = item.name + " | " + PGM.Instance.keyBinds[item.name].ToString().Substring(5);
+                item.text = item.name + " | " + PGM.instance.keyBinds[item.name].ToString().Substring(5);
             }
             else
             {
-                item.text = item.name + " | " + PGM.Instance.keyBinds[item.name];
+                item.text = item.name + " | " + PGM.instance.keyBinds[item.name];
             }
 
         }
@@ -263,9 +263,9 @@ public class MenuController : MonoBehaviour
             //if (Input.anyKeyDown && !Input.GetMouseButton(0) && !Input.GetMouseButton(1))
             if (e.isKey)
             {
-                if (!PGM.Instance.keyBinds.Values.Contains((KeyCode)e.character))
+                if (!PGM.instance.keyBinds.Values.Contains((KeyCode)e.character))
                 {
-                    PGM.Instance.keyBinds[button] = (KeyCode)e.character;
+                    PGM.instance.keyBinds[button] = (KeyCode)e.character;
                     
                 }
                 changingKey = false;

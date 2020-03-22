@@ -26,7 +26,7 @@ public class EventDisplay : MonoBehaviour
                 default:
 
                     // text will display as the value in the events list at the index of the last digit in the text object's name
-                    textObject.text = PGM.Instance.eventsList[int.Parse(textObject.name.Substring(textObject.name.Length - 1))];
+                    textObject.text = PGM.instance.eventsList[int.Parse(textObject.name.Substring(textObject.name.Length - 1))];
                     break;
 
             }

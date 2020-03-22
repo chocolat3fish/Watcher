@@ -29,12 +29,12 @@ public class CrosshairManager : MonoBehaviour
             child.GetComponent<Image>().color = crossHairColour;
         }
 
-        multiplier = (max - min) / (PGM.Instance.maxFOV - PGM.Instance.minFOV);
+        multiplier = (max - min) / (PGM.instance.maxFOV - PGM.instance.minFOV);
     }
     void Update()
     {
 
-        float zoom = ((PGM.Instance.FOV - PGM.Instance.minFOV) * multiplier + min);
+        float zoom = ((PGM.instance.FOV - PGM.instance.minFOV) * multiplier + min);
 
 
         children[0].transform.localPosition = new Vector3(-zoom, zoom, 1); //Top Left

@@ -49,15 +49,15 @@ public class ButtonObject : MonoBehaviour
             case ButtonFunction.toggleCameras:
                 // Bug around list being empty on start, so waits until list is not empty
 
-                if (foundCamera == false && PGM.Instance.allCameras.Count > 1)
+                if (foundCamera == false && PGM.instance.allCameras.Count > 1)
                 {
-                    targetCamera = PGM.Instance.allCameras[cameraNumber];
+                    targetCamera = PGM.instance.allCameras[cameraNumber];
                     foundCamera = true;
                 }
 
                 if (targetCamera != null)
                 {
-                    if (PGM.Instance.activeCamera.name == targetCamera.name)
+                    if (PGM.instance.activeCamera.name == targetCamera.name)
                     {
                         meshRenderer.material = buttonOn;
                     }
@@ -68,11 +68,11 @@ public class ButtonObject : MonoBehaviour
                           
                 }
 
-                if (Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == transform)
+                if (Input.GetMouseButtonDown(0) && PGM.instance.selectedGameobject == transform)
                 {
-                    PGM.Instance.activeCamera = GetComponent<Camera>();
+                    PGM.instance.activeCamera = GetComponent<Camera>();
 
-                    targetCamera.targetTexture = PGM.Instance.monitorScreen;
+                    targetCamera.targetTexture = PGM.instance.monitorScreen;
                 }
 
 

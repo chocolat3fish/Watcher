@@ -60,6 +60,8 @@ MonoBehaviour:
   monitorsObject: {fileID: 0}
   computerBeingUsed: {fileID: 0}
   puzzleObjects: []
+  tutorialPanel: {fileID: 734134173434445341, guid: e8feac1a6fe204b98b89c3ce5c1ec6d3,
+    type: 3}
   monitorScreens:
   - {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
   - {fileID: 8400000, guid: 960632959f31041bb995822b29199f87, type: 2}
