@@ -6,7 +6,7 @@ using TMPro;
 public class Tutorial : MonoBehaviour
 {
 
-    public enum TutorialCom { interact, move, camera}
+    public enum TutorialCom { interact, move, camera, end}
 
     public TutorialCom tutorialCom;
 
@@ -44,6 +44,10 @@ public class Tutorial : MonoBehaviour
 
                 case TutorialCom.camera:
                     tutorialText = "You can toggle camera outputs with " + PGM.instance.keyBinds["Monitor1"].ToString() + ", " + PGM.instance.keyBinds["Monitor2"].ToString() + ", " + PGM.instance.keyBinds["Monitor3"].ToString() + ", " + PGM.instance.keyBinds["Monitor4"].ToString() + ".\nHolding " + PGM.instance.keyBinds["MonitorBack"].ToString() + " will reverse the toggle direction";
+                    break;
+
+                case TutorialCom.end:
+                    tutorialText = "Thank you for finishing the level";
                     break;
             }
 
