@@ -43,7 +43,7 @@ public class PickupManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag("Trigger") && PGM.instance.player.holdingObject == false)
+        if (col.CompareTag("Trigger") && PGM.Instance.player.holdingObject == false)
         {
             //inPlace = true;
             holdPosition = col.GetComponent<TriggerLevel>().snapLocation;

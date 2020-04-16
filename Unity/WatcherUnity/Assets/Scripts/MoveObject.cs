@@ -67,7 +67,7 @@ public class MoveObject : MonoBehaviour
 
         if (completeTrigger)
         {
-            switch (PGM.instance.currentPuzzle.completed)
+            switch (PGM.Instance.currentPuzzle.completed)
             {
                 case true:
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
@@ -78,7 +78,7 @@ public class MoveObject : MonoBehaviour
                     break;
             }
 
-            switch (PGM.instance.exitedLevel)
+            switch (PGM.Instance.exitedLevel)
             {
                 case true:
                     transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove * 6);

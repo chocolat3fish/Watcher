@@ -15,19 +15,19 @@ public class ScreenMaterials : MonoBehaviour
         switch (monitorName)
         {
             case "BR":
-                meshRender.material = PGM.instance.screenMaterials[0];
+                meshRender.material = PGM.Instance.screenMaterials[0];
                 break;
 
             case "TL":
-                meshRender.material = PGM.instance.screenMaterials[1];
+                meshRender.material = PGM.Instance.screenMaterials[1];
                 break;
 
             case "TM":
-                meshRender.material = PGM.instance.screenMaterials[2];
+                meshRender.material = PGM.Instance.screenMaterials[2];
                 break;
 
             case "TR":
-                meshRender.material = PGM.instance.screenMaterials[3];
+                meshRender.material = PGM.Instance.screenMaterials[3];
                 break;
 
         }

@@ -42,8 +42,8 @@ public class WatcherCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        maxFOV = PGM.instance.maxFOV;
-        minFOV = PGM.instance.minFOV;
+        maxFOV = PGM.Instance.maxFOV;
+        minFOV = PGM.Instance.minFOV;
 
         originalRotation = transform.localRotation;
     }
@@ -52,7 +52,7 @@ public class WatcherCamera : MonoBehaviour
     void Update()
     {
 
-        if (PGM.instance.settingsOpen == false)
+        if (PGM.Instance.settingsOpen == false)
         {
 
             // from MouseLook.cs (Found on google)
@@ -77,14 +77,14 @@ public class WatcherCamera : MonoBehaviour
                 scroll = minFOV;
 
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, scroll, scrollDuration);
-            PGM.instance.FOV = scroll;
+            PGM.Instance.FOV = scroll;
         }
 
 
         // Finds what the camera is looking at
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
         {
-            PGM.instance.selectedGameobject = hit.transform.gameObject;
+            PGM.Instance.selectedGameobject = hit.transform.gameObject;
 
         }
         Debug.DrawRay(transform.position, transform.forward);

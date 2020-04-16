@@ -26,12 +26,12 @@ public class Crosshair : MonoBehaviour
 
         max = transform.parent.GetComponent<CrosshairManager>().max;
         min = transform.parent.GetComponent<CrosshairManager>().min;
-        multipler = (max - min) / (PGM.instance.maxFOV - PGM.instance.minFOV);
+        multipler = (max - min) / (PGM.Instance.maxFOV - PGM.Instance.minFOV);
     }
     void Update()
     {
 
-        float zoomX = (PGM.instance.FOV-PGM.instance.minFOV) * multipler + min;
+        float zoomX = (PGM.Instance.FOV-PGM.Instance.minFOV) * multipler + min;
         float zoomY = zoomX;
         switch(corner)
         {

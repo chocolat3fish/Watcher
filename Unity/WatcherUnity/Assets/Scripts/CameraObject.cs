@@ -25,11 +25,11 @@ public class CameraObject : MonoBehaviour
     {
         // Looks toward the player (as defined by the nearest camera) to mimic the actual camera.
         
-        if (PGM.instance.camerasCanSee.Contains(nearestCamera)) //&& nearestCamera.GetComponent<PlayerCamera>().watchTargetObject == false)
+        if (PGM.Instance.camerasCanSee.Contains(nearestCamera)) //&& nearestCamera.GetComponent<PlayerCamera>().watchTargetObject == false)
         {
             //transform.LookAt(cameraScript.player.transform.position);
             Quaternion rotateToPlayer = Quaternion.LookRotation(cameraScript.player.transform.position - transform.position);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.instance.monitorCamRotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
 
         }
 
@@ -38,7 +38,7 @@ public class CameraObject : MonoBehaviour
         {
             //transform.LookAt(nearestCamera.GetComponent<PlayerCamera>().targetObject.transform.position);
             Quaternion rotateToObject = Quaternion.LookRotation(cameraScript.targetObject.transform.position - transform.position);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotateToObject, PGM.instance.monitorCamRotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotateToObject, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
         }
 
     }

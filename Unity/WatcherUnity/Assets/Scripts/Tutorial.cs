@@ -6,7 +6,7 @@ using TMPro;
 public class Tutorial : MonoBehaviour
 {
 
-    public enum TutorialCom { interact, move, camera, end}
+    public enum TutorialCom { interact, move, camera, end, zoom}
 
     public TutorialCom tutorialCom;
 
@@ -35,23 +35,27 @@ public class Tutorial : MonoBehaviour
             switch (tutorialCom)
             {
                 case TutorialCom.interact:
-                    tutorialText = "Press " + PGM.instance.keyBinds["Interact"].ToString() + " to interact with objects";
+                    tutorialText = "Press " + PGM.Instance.keyBinds["Interact"].ToString() + " to interact with people and objects";
                     break;
 
                 case TutorialCom.move:
-                    tutorialText = "Use " + PGM.instance.keyBinds["Forward"].ToString() + ", " + PGM.instance.keyBinds["Left"].ToString() + ", " + PGM.instance.keyBinds["Backward"].ToString() + ", " + PGM.instance.keyBinds["Right"].ToString() + " to move around";
+                    tutorialText = "Use " + PGM.Instance.keyBinds["Forward"].ToString() + ", " + PGM.Instance.keyBinds["Left"].ToString() + ", " + PGM.Instance.keyBinds["Backward"].ToString() + ", " + PGM.Instance.keyBinds["Right"].ToString() + " to move around";
                     break;
 
                 case TutorialCom.camera:
-                    tutorialText = "You can toggle camera outputs with " + PGM.instance.keyBinds["Monitor1"].ToString() + ", " + PGM.instance.keyBinds["Monitor2"].ToString() + ", " + PGM.instance.keyBinds["Monitor3"].ToString() + ", " + PGM.instance.keyBinds["Monitor4"].ToString() + ".\nHolding " + PGM.instance.keyBinds["MonitorBack"].ToString() + " will reverse the toggle direction";
+                    tutorialText = "You can toggle camera outputs with " + PGM.Instance.keyBinds["Monitor1"].ToString() + ", " + PGM.Instance.keyBinds["Monitor2"].ToString() + ", " + PGM.Instance.keyBinds["Monitor3"].ToString() + ", " + PGM.Instance.keyBinds["Monitor4"].ToString() + ".\nHolding " + PGM.Instance.keyBinds["MonitorBack"].ToString() + " will reverse the toggle direction";
                     break;
 
                 case TutorialCom.end:
                     tutorialText = "Thank you for finishing the level";
                     break;
+
+                case TutorialCom.zoom:
+                    tutorialText = "You can zoom in by using the scroll wheel";
+                    break;
             }
 
-            tutorialPanel = Instantiate(PGM.instance.tutorialPanel, new Vector3(col.bounds.center.x, col.bounds.max.y, col.bounds.center.z), new Quaternion());
+            tutorialPanel = Instantiate(PGM.Instance.tutorialPanel, new Vector3(col.bounds.center.x, col.bounds.max.y, col.bounds.center.z), new Quaternion());
             tutorialPanel.GetComponentInChildren<TMP_Text>().text = tutorialText;
         }
     }

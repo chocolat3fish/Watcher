@@ -7,19 +7,19 @@ public class ExitTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.name == "Player" && PGM.instance.currentPuzzle.completed == true)
+        if (col.name == "Player" && PGM.Instance.currentPuzzle.completed == true)
         {
-            PGM.instance.puzzlesCompleted += 1;
-            PGM.instance.exitedLevel = true;
-            PGM.instance.AddEvents("levelComplete");
+            PGM.Instance.puzzlesCompleted += 1;
+            PGM.Instance.exitedLevel = true;
+            PGM.Instance.AddEvents("levelComplete");
         } 
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.name == "Player" && PGM.instance.currentPuzzle.completed == true)
+        if (col.name == "Player" && PGM.Instance.currentPuzzle.completed == true)
         {
-            PGM.instance.puzzlesCompleted -= 1;
+            PGM.Instance.puzzlesCompleted -= 1;
         }
     }
 }

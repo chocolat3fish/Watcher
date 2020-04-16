@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PGM : MonoBehaviour
 {
-    public static PGM instance { get; private set; }
+    public static PGM Instance { get; private set; }
 
 
     [Header("Camera Settings")]
@@ -47,6 +47,7 @@ public class PGM : MonoBehaviour
     public PickupManager[] puzzleObjects;
 
     public GameObject tutorialPanel;
+    public GameObject subtitlePanel;
 
     [Header("Screens")]
     public List<RenderTexture> monitorScreens;
@@ -148,11 +149,11 @@ public class PGM : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
             Destroy(gameObject);
         else
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         currentPuzzle = puzzleManager[puzzlesCompleted];

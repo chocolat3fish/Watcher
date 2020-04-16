@@ -14,9 +14,9 @@ public class ComputerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PGM.instance.usingComputer)
+        if (PGM.Instance.usingComputer)
         {
-            thisCamera.targetTexture = PGM.instance.puzzleScreen;
+            thisCamera.targetTexture = PGM.Instance.puzzleScreen;
         }
     }
 }
