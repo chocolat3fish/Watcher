@@ -16,6 +16,7 @@ public class PlayerControls : MonoBehaviour
     public Vector3 direction;
 
     public float pickupAngle;
+    public float computerAngle;
 
     [Header("Booleans")]
     public bool holdingObject;
@@ -59,8 +60,8 @@ public class PlayerControls : MonoBehaviour
 
         playerCollider = GetComponent<Collider>();
 
-        handRight = GameObject.Find("Hand.R");
-        handLeft = GameObject.Find("Hand.L");
+        handRight = GameObject.FindWithTag("HandR");
+        handLeft = GameObject.FindWithTag("HandL");
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
@@ -191,6 +192,11 @@ public class PlayerControls : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (rb.velocity.y > 1.5f)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        }
+
         if (Input.GetKey(PGM.Instance.keyBinds["Forward"]) && canMove == true)
         {
             rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
@@ -224,9 +230,9 @@ public class PlayerControls : MonoBehaviour
             GameObject nearestObject = FindNearestObject();
             objectBeingHeld = nearestObject.GetComponent<Rigidbody>();
             holdingObject = true;
-            // set parent as player's hand to make the player "hold" the object        
-            objectBeingHeld.transform.position = handRight.transform.position; //+ (handRight.transform.position - handLeft.transform.position) / 2;
+            // set parent as player's hand to make the player "hold" the object   
             objectBeingHeld.transform.parent = handRight.transform;
+            objectBeingHeld.transform.position = handRight.transform.position; //+ (handRight.transform.position - handLeft.transform.position) / 2;
             objectBeingHeld.freezeRotation = true;
             pickUpObject = false;
             dropObject = false;
@@ -308,7 +314,7 @@ public class PlayerControls : MonoBehaviour
         {
 
             // allows to interact if computer is within an angle of the direction  
-            if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < pickupAngle)
+            if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < computerAngle)
             {
          
                 nearest = computer;

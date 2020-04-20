@@ -43,6 +43,7 @@ public class PickupManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
+        
         if (col.CompareTag("Trigger") && PGM.Instance.player.holdingObject == false)
         {
             //inPlace = true;
@@ -51,6 +52,7 @@ public class PickupManager : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, holdPosition, snapTime);
             holdPosition = col.GetComponent<TriggerLevel>().snapLocation;
         }
+        
     }
 
 }
