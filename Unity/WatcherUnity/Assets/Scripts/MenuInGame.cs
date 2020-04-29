@@ -17,6 +17,8 @@ public class MenuInGame : MonoBehaviour
     public GameObject loadMenu;
     public GameObject settingsMenu;
     public GameObject controlsMenu;
+    public GameObject saveWarning;
+    public GameObject exitWarning;
 
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
@@ -48,6 +50,8 @@ public class MenuInGame : MonoBehaviour
         loadMenu = GameObject.Find("LoadMenu");
         settingsMenu = GameObject.Find("SettingsMenu");
         controlsMenu = GameObject.Find("ControlsMenu");
+        saveWarning = GameObject.Find("SaveWarning");
+        exitWarning = GameObject.Find("ExitWarning");
 
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
@@ -119,6 +123,8 @@ public class MenuInGame : MonoBehaviour
         loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        saveWarning.SetActive(false);
+        exitWarning.SetActive(false);
 
         // Finds the current fullscreen mode and sets the dropdown to represent that
         List<string> fullscreenList = fullscreenDropdown.options.Select(option => option.text).ToList();
@@ -213,6 +219,25 @@ public class MenuInGame : MonoBehaviour
         controlsMenu.SetActive(false);
     }
 
+    public void TryToExit()
+    {
+        exitWarning.SetActive(true);
+
+    }
+
+    public void ExitChoice(bool choice)
+    {
+        switch (choice)
+        {
+            case true:
+                ExitToMenu();
+                break;
+
+            case false:
+                exitWarning.SetActive(false);
+                break;
+        }
+    }
 
     public void ExitToMenu()
     {
@@ -304,7 +329,6 @@ public class MenuInGame : MonoBehaviour
         {
             PGM.Instance.LoadGame(slot);
         }
-
     }
 
     public void OpenSaveMenu()
@@ -312,10 +336,69 @@ public class MenuInGame : MonoBehaviour
         saveMenu.SetActive(true);
     }
 
+    public void TrySave(int slot)
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
+        {
+            saveWarning.SetActive(true);
+            PGM.Instance.saveSlot = slot;
+        }
+        else
+        {
+            SaveGame(slot);
+        }
+    }
+
+    public void ConfirmSave(bool choice)
+    {
+        switch (choice)
+        {
+            case true:
+                SaveGame(PGM.Instance.saveSlot);
+                break;
+
+            case false:
+                saveWarning.SetActive(false);
+                break;
+        }
+    }
+
     public void SaveGame(int slot)
     {
-        // add slots later
         PGM.Instance.SaveGame(slot);
+        // Updates text
+        if (File.Exists(Application.persistentDataPath + "/savedata1.gd"))
+        {
+            save1.text = "Used";
+            load1.text = "Used";
+        }
+        else
+        {
+            save1.text = "Empty";
+            load1.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata2.gd"))
+        {
+            save2.text = "Used";
+            load2.text = "Used";
+        }
+        else
+        {
+            save2.text = "Empty";
+            load2.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata3.gd"))
+        {
+            save3.text = "Used";
+            load3.text = "Empty";
+        }
+        else
+        {
+            save3.text = "Empty";
+            load3.text = "Empty";
+        }
+
+        saveWarning.SetActive(false);
     }
 
 

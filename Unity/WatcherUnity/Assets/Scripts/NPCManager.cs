@@ -47,6 +47,14 @@ public class NPCManager : MonoBehaviour
                 dialogue.requirementIndex += 1;
                 dialogue.currentIndex += 1;
             }
+            else if (dialogue.requirementIndex == 0)
+            {
+                dialogue.currentIndex = 0;
+            }
+            else
+            {
+                dialogue.currentIndex = dialogue.requirements[dialogue.requirementIndex].lineNum - 1;
+            }
         }
         else
         {
@@ -63,6 +71,10 @@ public class NPCManager : MonoBehaviour
         if (dialogue.currentIndex > dialogue.lines.Length)
         {
             dialogue.currentIndex -= 1;
+        }
+        if (dialogue.requirementIndex > dialogue.lines.Length)
+        {
+            dialogue.requirementIndex -= 1;
         }
     }
 

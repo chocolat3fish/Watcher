@@ -111,9 +111,24 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false)
         {
-            if (FindNearestObject() != null)
+            nearestNPC = FindNearestNPC();
+            if (nearestNPC != null && holdingObject == false)
+            {
+                nearestNPC.ContinueDialogue();
+            }
+
+
+            if (FindNearestObject() != null && nearestNPC == null)
             {
                 pickUpObject = true;
+            }
+
+            if (FindNearestObject() != null && nearestNPC != null)
+            {
+                if (Vector3.Distance(nearestNPC.transform.position, transform.position) > Vector3.Distance(FindNearestObject().transform.position, transform.position))
+                {
+                    pickUpObject = true;
+                }
             }
 
             if (FindNearestComputer() != null && PGM.Instance.usingComputer == false)
@@ -155,11 +170,7 @@ public class PlayerControls : MonoBehaviour
                 }
             }
 
-            nearestNPC = FindNearestNPC();
-            if (nearestNPC != null && holdingObject == false)
-            {
-                nearestNPC.ContinueDialogue();
-            }
+
 
         }
 
