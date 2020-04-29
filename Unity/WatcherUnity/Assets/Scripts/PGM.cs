@@ -135,6 +135,7 @@ public class PGM : MonoBehaviour
 
     [Header("Save Data")]
     public int saveSlot;
+    public int deleteSlot;
     public Dictionary<string, float[]> objectLocations;
     public float[] playerLocation = new float [] { 0, 0, 0 };
     // Puzzle manager as well

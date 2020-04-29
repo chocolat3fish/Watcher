@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject controlsMenu;
     public GameObject background;
+    public GameObject deleteWarning;
 
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
@@ -40,6 +41,10 @@ public class MenuController : MonoBehaviour
     public TMP_Text slot2;
     public TMP_Text slot3;
 
+    public TMP_Text delete1;
+    public TMP_Text delete2;
+    public TMP_Text delete3;
+
     void Start()
     {
         mainMenu = GameObject.Find("MainMenu");
@@ -47,6 +52,8 @@ public class MenuController : MonoBehaviour
         settingsMenu = GameObject.Find("SettingsMenu");
         controlsMenu = GameObject.Find("ControlsMenu");
         background = GameObject.Find("Background");
+        deleteWarning = GameObject.Find("DeleteWarning");
+
 
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
@@ -68,6 +75,10 @@ public class MenuController : MonoBehaviour
         slot1 = loadMenu.transform.Find("Slot1").GetComponent<TMP_Text>();
         slot2 = loadMenu.transform.Find("Slot2").GetComponent<TMP_Text>();
         slot3 = loadMenu.transform.Find("Slot3").GetComponent<TMP_Text>();
+
+        delete1 = loadMenu.transform.Find("Delete1").GetComponent<TMP_Text>();
+        delete2 = loadMenu.transform.Find("Delete2").GetComponent<TMP_Text>();
+        delete3 = loadMenu.transform.Find("Delete3").GetComponent<TMP_Text>();
 
 
 
@@ -110,6 +121,7 @@ public class MenuController : MonoBehaviour
 
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        deleteWarning.SetActive(false);
         loadMenu.SetActive(false);
         changeKeyDialogue.text = "";
 
@@ -266,6 +278,81 @@ public class MenuController : MonoBehaviour
     public void OpenLoadMenu()
     {
         loadMenu.SetActive(true);
+    }
+
+    public void TryDelete(int slot)
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
+        {
+            deleteWarning.SetActive(true);
+
+            PGM.Instance.deleteSlot = slot;
+            switch (slot)
+            {
+                case 1:
+                    //delete1.gameObject.SetActive(true);
+                    delete2.gameObject.SetActive(false);
+                    delete3.gameObject.SetActive(false);
+                    break;
+
+                case 2:
+                    delete1.gameObject.SetActive(false);
+                    //delete2.gameObject.SetActive(true);
+                    delete3.gameObject.SetActive(false);
+                    break;
+
+                case 3:
+                    delete1.gameObject.SetActive(false);
+                    delete2.gameObject.SetActive(false);
+                    //delete3.gameObject.SetActive(true);
+                    break;
+            }
+        }   
+    }
+
+    public void deleteChoice(bool choice)
+    {
+        if (choice)
+        {
+                DeleteSave(PGM.Instance.deleteSlot);
+        }
+        delete1.gameObject.SetActive(true);
+        delete2.gameObject.SetActive(true);
+        delete3.gameObject.SetActive(true);
+        deleteWarning.SetActive(false);
+
+        if (File.Exists(Application.persistentDataPath + "/savedata1.gd"))
+        {
+            slot1.text = "Used";
+        }
+        else
+        {
+            slot1.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata2.gd"))
+        {
+            slot2.text = "Used";
+        }
+        else
+        {
+            slot2.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata3.gd"))
+        {
+            slot3.text = "Used";
+        }
+        else
+        {
+            slot3.text = "Empty";
+        }
+    }
+
+    public void DeleteSave(int slot)
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
+        {
+            File.Delete(Application.persistentDataPath + "/savedata" + slot + ".gd");
+        }
     }
 
     public void LoadGame(int slot)
