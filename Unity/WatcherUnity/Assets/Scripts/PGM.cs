@@ -133,7 +133,10 @@ public class PGM : MonoBehaviour
     public KeyCode switchMon1, switchMon2, switchMon3, switchMon4, reverseKey;
     */
 
-
+    [Header("Save Data")]
+    public Dictionary<string, float[]> objectLocations;
+    public float[] playerLocation = new float [] { 0, 0, 0 };
+    // Puzzle manager as well
 
     public void AdjustDictionary(string key, int data)
     {
@@ -157,6 +160,8 @@ public class PGM : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         currentPuzzle = puzzleManager[puzzlesCompleted];
+
+        objectLocations = new Dictionary<string, float[]>();
 
         // Sorts the array elements by the y values
         Array.Sort(resolutions, (resOne, resTwo) => resOne.y.CompareTo(resTwo.y));
@@ -262,5 +267,29 @@ public class PGM : MonoBehaviour
             return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
         });
         sortedCameras = true;
+    }
+
+    public void SaveGame(int slot)
+    {
+        objectLocations.Clear();
+
+
+        foreach (PickupManager obj in puzzleObjects)
+        {
+            float[] objectVectors = new float[] { obj.transform.position.x, obj.transform.position.y, obj.transform.position.z };
+            objectLocations.Add(obj.name,  objectVectors);
+        }
+        playerLocation[0] = player.transform.position.x;
+        playerLocation[1] = player.transform.position.y;
+        playerLocation[2] = player.transform.position.z;
+        SaveLoad.Save(slot);
+    
+    }
+
+    public void LoadGame(int slot)
+    {
+        SaveLoad.Load(slot);
+        currentPuzzle = puzzleManager[puzzlesCompleted];
+        SceneManager.LoadScene(deskScene);
     }
 }

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
+using System.IO;
 
 public class MenuController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MenuController : MonoBehaviour
     public bool changingKey;
 
     public GameObject mainMenu;
+    public GameObject loadMenu;
     public GameObject settingsMenu;
     public GameObject controlsMenu;
     public GameObject background;
@@ -34,9 +36,14 @@ public class MenuController : MonoBehaviour
 
     public TMP_Text changeKeyDialogue;
 
+    public TMP_Text slot1;
+    public TMP_Text slot2;
+    public TMP_Text slot3;
+
     void Start()
     {
         mainMenu = GameObject.Find("MainMenu");
+        loadMenu = GameObject.Find("LoadMenu");
         settingsMenu = GameObject.Find("SettingsMenu");
         controlsMenu = GameObject.Find("ControlsMenu");
         background = GameObject.Find("Background");
@@ -58,6 +65,11 @@ public class MenuController : MonoBehaviour
 
         changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
 
+        slot1 = loadMenu.transform.Find("Slot1").GetComponent<TMP_Text>();
+        slot2 = loadMenu.transform.Find("Slot2").GetComponent<TMP_Text>();
+        slot3 = loadMenu.transform.Find("Slot3").GetComponent<TMP_Text>();
+
+
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
 
@@ -70,8 +82,35 @@ public class MenuController : MonoBehaviour
         PGM.Instance.currentResolution = tempResolution;
         Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
+        if (File.Exists(Application.persistentDataPath + "/savedata1.gd"))
+        {
+            slot1.text = "Used";
+        }
+        else
+        {
+            slot1.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata2.gd"))
+        {
+            slot2.text = "Used";
+        }
+        else
+        {
+            slot2.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata3.gd"))
+        {
+            slot3.text = "Used";
+        }
+        else
+        {
+            slot3.text = "Empty";
+        }
+
+
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        loadMenu.SetActive(false);
         changeKeyDialogue.text = "";
 
 
@@ -153,6 +192,7 @@ public class MenuController : MonoBehaviour
         {
             settingsMenu.SetActive(false);
             controlsMenu.SetActive(false);
+            loadMenu.SetActive(false);
         }
 
     }
@@ -223,6 +263,19 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void OpenLoadMenu()
+    {
+        loadMenu.SetActive(true);
+    }
+
+    public void LoadGame(int slot)
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
+        {
+            PGM.Instance.LoadGame(slot);
+        }
+    }
+
 
     public void UpdateText()
     {
@@ -283,4 +336,8 @@ public class MenuController : MonoBehaviour
     {
         e = Event.current;
     }
+
+
+
+
 }

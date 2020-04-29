@@ -25,11 +25,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
-        cameraComponent = GetComponent<Camera>();
-
-        PGM.Instance.activeCamera = cameraComponent;
-
-        PGM.Instance.allCameras.Add(cameraComponent);
+        
     }
 
 
@@ -37,8 +33,12 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
+        cameraComponent = GetComponent<Camera>();
 
-        
+        PGM.Instance.activeCamera = cameraComponent;
+
+        PGM.Instance.allCameras.Add(cameraComponent);
+
 
     }
 

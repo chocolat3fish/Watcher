@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using System.IO;
 
 public class MenuInGame : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MenuInGame : MonoBehaviour
 
     public bool changingKey;
 
+    public GameObject saveMenu;
+    public GameObject loadMenu;
     public GameObject settingsMenu;
     public GameObject controlsMenu;
 
@@ -32,9 +35,17 @@ public class MenuInGame : MonoBehaviour
 
     public TMP_Text changeKeyDialogue;
 
+    public TMP_Text save1;
+    public TMP_Text save2;
+    public TMP_Text save3;
+    public TMP_Text load1;
+    public TMP_Text load2;
+    public TMP_Text load3;
 
     void Start()
     {
+        saveMenu = GameObject.Find("SaveMenu");
+        loadMenu = GameObject.Find("LoadMenu");
         settingsMenu = GameObject.Find("SettingsMenu");
         controlsMenu = GameObject.Find("ControlsMenu");
 
@@ -55,6 +66,12 @@ public class MenuInGame : MonoBehaviour
 
         changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
 
+        save1 = saveMenu.transform.Find("Slot1").GetComponent<TMP_Text>();
+        save2 = saveMenu.transform.Find("Slot2").GetComponent<TMP_Text>();
+        save3 = saveMenu.transform.Find("Slot3").GetComponent<TMP_Text>();
+        load1 = loadMenu.transform.Find("Slot1").GetComponent<TMP_Text>();
+        load2 = loadMenu.transform.Find("Slot2").GetComponent<TMP_Text>();
+        load3 = loadMenu.transform.Find("Slot3").GetComponent<TMP_Text>();
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
 
@@ -67,7 +84,39 @@ public class MenuInGame : MonoBehaviour
         PGM.Instance.currentResolution = tempResolution;
         Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
+        if (File.Exists(Application.persistentDataPath + "/savedata1.gd"))
+        {
+            save1.text = "Used";
+            load1.text = "Used";
+        }
+        else
+        {
+            save1.text = "Empty";
+            load1.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata2.gd"))
+        {
+            save2.text = "Used";
+            load2.text = "Used";
+        }
+        else
+        {
+            save2.text = "Empty";
+            load2.text = "Empty";
+        }
+        if (File.Exists(Application.persistentDataPath + "/savedata3.gd"))
+        {
+            save3.text = "Used";
+            load3.text = "Empty";
+        }
+        else
+        {
+            save3.text = "Empty";
+            load3.text = "Empty";
+        }
 
+        saveMenu.SetActive(false);
+        loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
 
@@ -158,6 +207,8 @@ public class MenuInGame : MonoBehaviour
 
     public void CloseSettings()
     {
+        saveMenu.SetActive(false);
+        loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
     }
@@ -166,7 +217,9 @@ public class MenuInGame : MonoBehaviour
     public void ExitToMenu()
     {
         SceneManager.LoadScene(PGM.Instance.mainMenuScene);
-        // reset PGM settings also
+        PGM.Instance.loadedPuzzle = false;
+        PGM.Instance.sortedCameras = false;
+        Destroy(FindObjectOfType<PGM>().gameObject);
     }
 
 
@@ -239,6 +292,34 @@ public class MenuInGame : MonoBehaviour
 
         }
     }
+
+    public void OpenLoadMenu()
+    {
+        loadMenu.SetActive(true);
+    }
+
+    public void LoadGame(int slot)
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
+        {
+            PGM.Instance.LoadGame(slot);
+        }
+
+    }
+
+    public void OpenSaveMenu()
+    {
+        saveMenu.SetActive(true);
+    }
+
+    public void SaveGame(int slot)
+    {
+        // add slots later
+        PGM.Instance.SaveGame(slot);
+    }
+
+
+
 
 
     public void UpdateText()
