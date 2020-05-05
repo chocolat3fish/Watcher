@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OnSceneLoad : MonoBehaviour
 {
-
     void Start()
     {
+
         // If on the desk scene, load the current puzzle (i.e. the first puzzle)
         if (SceneManager.GetActiveScene().name == PGM.Instance.deskScene && PGM.Instance.loadedPuzzle == false)
         {
@@ -47,4 +48,6 @@ public class OnSceneLoad : MonoBehaviour
     {
         
     }
+
+
 }

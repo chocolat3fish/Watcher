@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PGM : MonoBehaviour
 {
@@ -78,6 +79,7 @@ public class PGM : MonoBehaviour
     public string eventsScene;
     public string mainMenuScene;
     public string pauseScene;
+    public string menuDeskScene;
 
     [Header("Puzzles")]
     public Puzzle currentPuzzle;
@@ -183,13 +185,13 @@ public class PGM : MonoBehaviour
         }
         */
 
-        
-
     }
 
 
     private void Update()
     {
+  
+
         // only runs it once because start and awake are too early for some reason and it has to be in update
         if (sortedCameras == false && allCameras.Count > 0)
         {

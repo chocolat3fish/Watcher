@@ -323,14 +323,12 @@ public class PlayerControls : MonoBehaviour
 
         foreach (ComputerControl computer in nearbyComputers)
         {
-
             // allows to interact if computer is within an angle of the direction  
             if (Vector3.Distance(computer.transform.position, playerLocation) < minDistance && Vector3.Angle(transform.forward, computer.transform.position - transform.position) < computerAngle)
             {
-         
                 nearest = computer;
             }
-
+  
         }
         if (nearest != null)
         {

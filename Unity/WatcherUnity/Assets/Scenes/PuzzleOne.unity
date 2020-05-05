@@ -12147,6 +12147,7 @@ MonoBehaviour:
   rotateSpeed: 200
   direction: {x: 0, y: 0, z: 0}
   pickupAngle: 20
+  computerAngle: 45
   holdingObject: 0
   pickUpObject: 0
   dropObject: 0
@@ -14009,7 +14010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   cameraComponent: {fileID: 0}
-  targetObject: {fileID: 1694730702}
+  targetObject: {fileID: 1513089306}
   secondaryObject: {fileID: 0}
   watchTargetObject: 0
   priority: 3

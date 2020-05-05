@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Linq;
 using System.IO;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class MenuController : MonoBehaviour
     public TMP_Text delete2;
     public TMP_Text delete3;
 
+    public Image fadeObject;
+
     void Start()
     {
         mainMenu = GameObject.Find("MainMenu");
@@ -80,6 +83,8 @@ public class MenuController : MonoBehaviour
         delete2 = loadMenu.transform.Find("Delete2").GetComponent<TMP_Text>();
         delete3 = loadMenu.transform.Find("Delete3").GetComponent<TMP_Text>();
 
+
+        fadeObject = GameObject.Find("Fade").GetComponent<Image>();
 
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
@@ -119,10 +124,11 @@ public class MenuController : MonoBehaviour
         }
 
 
-        settingsMenu.SetActive(false);
-        controlsMenu.SetActive(false);
+        //settingsMenu.SetActive(false);
+        //controlsMenu.SetActive(false);
         deleteWarning.SetActive(false);
-        loadMenu.SetActive(false);
+        
+        //loadMenu.SetActive(false);
         changeKeyDialogue.text = "";
 
 
@@ -166,7 +172,7 @@ public class MenuController : MonoBehaviour
 
         qualityDropdown.value = QualitySettings.GetQualityLevel(); //Array.IndexOf(QualitySettings.names, QualitySettings.GetQualityLevel());
 
-
+        UpdateText();
 
 
     }
@@ -174,6 +180,11 @@ public class MenuController : MonoBehaviour
 
     void Update()
     {
+        if (fadeObject != null)
+        {
+            StartCoroutine(FadeAlpha(fadeObject));
+
+        }
 
     }
 
@@ -310,7 +321,7 @@ public class MenuController : MonoBehaviour
         }   
     }
 
-    public void deleteChoice(bool choice)
+    public void DeleteChoice(bool choice)
     {
         if (choice)
         {
@@ -425,6 +436,24 @@ public class MenuController : MonoBehaviour
     }
 
 
+    public IEnumerator FadeAlpha(Image fade)
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            yield return new WaitForSecondsRealtime(1);
+        }
+        if (fade.color.a >= 0.01)
+        {
+            fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, fade.color.a - 0.01f);
 
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        else
+        {
+            Destroy(fade);
+        }
+
+    }
 
 }

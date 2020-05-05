@@ -109,8 +109,9 @@ MonoBehaviour:
   testLevel: POC
   computerScene: ComPuzzleDisplay
   eventsScene: EventsDisplay
-  mainMenuScene: Main Menu
+  mainMenuScene: MenuDesk
   pauseScene: InGameMenu
+  menuDeskScene: Main Menu
   currentPuzzle:
     puzzleNumber: 0
     sceneName: 
@@ -165,6 +166,12 @@ MonoBehaviour:
   - ' '
   - ' '
   monitorKeyList: 
+  saveSlot: 0
+  deleteSlot: 0
+  playerLocation:
+  - 0
+  - 0
+  - 0
 --- !u!95 &-8910108579370357771
 Animator:
   serializedVersion: 3
