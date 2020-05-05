@@ -110,7 +110,7 @@ MonoBehaviour:
   computerScene: ComPuzzleDisplay
   eventsScene: EventsDisplay
   mainMenuScene: MenuDesk
-  pauseScene: InGameMenu
+  pauseScene: PauseMenu
   menuDeskScene: Main Menu
   currentPuzzle:
     puzzleNumber: 0

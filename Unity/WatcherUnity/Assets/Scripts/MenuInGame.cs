@@ -57,25 +57,25 @@ public class MenuInGame : MonoBehaviour
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
         fullscreenDropdown = settingsMenu.transform.Find("FullscreenDropdown").GetComponent<TMP_Dropdown>();
 
-        forwardKey = controlsMenu.transform.Find("Forward").GetComponent<TMP_Text>();
-        backwardKey = controlsMenu.transform.Find("Backward").GetComponent<TMP_Text>();
-        leftKey = controlsMenu.transform.Find("Left").GetComponent<TMP_Text>();
-        rightKey = controlsMenu.transform.Find("Right").GetComponent<TMP_Text>();
-        interactKey = controlsMenu.transform.Find("Interact").GetComponent<TMP_Text>();
-        monitor1Key = controlsMenu.transform.Find("Monitor1").GetComponent<TMP_Text>();
-        monitor2Key = controlsMenu.transform.Find("Monitor2").GetComponent<TMP_Text>();
-        monitor3Key = controlsMenu.transform.Find("Monitor3").GetComponent<TMP_Text>();
-        monitor4Key = controlsMenu.transform.Find("Monitor4").GetComponent<TMP_Text>();
-        monitorBackKey = controlsMenu.transform.Find("MonitorBack").GetComponent<TMP_Text>();
+        forwardKey = controlsMenu.transform.Find("Forward").GetComponentInChildren<TMP_Text>();
+        backwardKey = controlsMenu.transform.Find("Backward").GetComponentInChildren<TMP_Text>();
+        leftKey = controlsMenu.transform.Find("Left").GetComponentInChildren<TMP_Text>();
+        rightKey = controlsMenu.transform.Find("Right").GetComponentInChildren<TMP_Text>();
+        interactKey = controlsMenu.transform.Find("Interact").GetComponentInChildren<TMP_Text>();
+        monitor1Key = controlsMenu.transform.Find("Monitor1").GetComponentInChildren<TMP_Text>();
+        monitor2Key = controlsMenu.transform.Find("Monitor2").GetComponentInChildren<TMP_Text>();
+        monitor3Key = controlsMenu.transform.Find("Monitor3").GetComponentInChildren<TMP_Text>();
+        monitor4Key = controlsMenu.transform.Find("Monitor4").GetComponentInChildren<TMP_Text>();
+        monitorBackKey = controlsMenu.transform.Find("MonitorBack").GetComponentInChildren<TMP_Text>();
 
-        changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
+        changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponentInChildren<TMP_Text>();
 
-        save1 = saveMenu.transform.Find("Slot1").GetComponent<TMP_Text>();
-        save2 = saveMenu.transform.Find("Slot2").GetComponent<TMP_Text>();
-        save3 = saveMenu.transform.Find("Slot3").GetComponent<TMP_Text>();
-        load1 = loadMenu.transform.Find("Slot1").GetComponent<TMP_Text>();
-        load2 = loadMenu.transform.Find("Slot2").GetComponent<TMP_Text>();
-        load3 = loadMenu.transform.Find("Slot3").GetComponent<TMP_Text>();
+        save1 = saveMenu.transform.Find("Slot1").GetComponentInChildren<TMP_Text>();
+        save2 = saveMenu.transform.Find("Slot2").GetComponentInChildren<TMP_Text>();
+        save3 = saveMenu.transform.Find("Slot3").GetComponentInChildren<TMP_Text>();
+        load1 = loadMenu.transform.Find("Slot1").GetComponentInChildren<TMP_Text>();
+        load2 = loadMenu.transform.Find("Slot2").GetComponentInChildren<TMP_Text>();
+        load3 = loadMenu.transform.Find("Slot3").GetComponentInChildren<TMP_Text>();
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
 
@@ -208,6 +208,9 @@ public class MenuInGame : MonoBehaviour
     {
 
         settingsMenu.SetActive(true);
+        saveMenu.SetActive(false);
+        loadMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
 
@@ -294,6 +297,9 @@ public class MenuInGame : MonoBehaviour
     public void OpenKeybindings()
     {
         controlsMenu.SetActive(true);
+        saveMenu.SetActive(false);
+        loadMenu.SetActive(false);
+        settingsMenu.SetActive(false);
         UpdateText();
     }
 
@@ -321,6 +327,9 @@ public class MenuInGame : MonoBehaviour
     public void OpenLoadMenu()
     {
         loadMenu.SetActive(true);
+        saveMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void LoadGame(int slot)
@@ -334,6 +343,9 @@ public class MenuInGame : MonoBehaviour
     public void OpenSaveMenu()
     {
         saveMenu.SetActive(true);
+        loadMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void TrySave(int slot)
