@@ -23,6 +23,8 @@ public class MenuInGame : MonoBehaviour
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown fullscreenDropdown;
+    //public TMP_Dropdown screenAADropdown;
+    public TMP_Dropdown cameraResDropdown;
 
     public TMP_Text forwardKey;
     public TMP_Text backwardKey;
@@ -56,6 +58,8 @@ public class MenuInGame : MonoBehaviour
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
         fullscreenDropdown = settingsMenu.transform.Find("FullscreenDropdown").GetComponent<TMP_Dropdown>();
+        //screenAADropdown = settingsMenu.transform.Find("ScreenAADropdown").GetComponent<TMP_Dropdown>();
+        cameraResDropdown = settingsMenu.transform.Find("CameraResDropdown").GetComponent<TMP_Dropdown>();
 
         forwardKey = controlsMenu.transform.Find("Forward").GetComponentInChildren<TMP_Text>();
         backwardKey = controlsMenu.transform.Find("Backward").GetComponentInChildren<TMP_Text>();
@@ -176,7 +180,26 @@ public class MenuInGame : MonoBehaviour
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
         qualityDropdown.value = QualitySettings.GetQualityLevel(); //Array.IndexOf(QualitySettings.names, QualitySettings.GetQualityLevel());
-
+        /*
+        PGM.Instance.screenAA = QualitySettings.antiAliasing;
+        switch (PGM.Instance.screenAA)
+        {
+            case 1:
+                screenAADropdown.value = 0;
+                break;
+            case 2:
+                screenAADropdown.value = 1;
+                break;
+            case 4:
+                screenAADropdown.value = 2;
+                break;
+            case 8:
+                screenAADropdown.value = 3;
+                break;
+        }
+        */
+        PGM.Instance.cameraRes = PGM.Instance.monitorScreens[0].width;
+        cameraResDropdown.value = cameraResDropdown.options.FindIndex((i) => { return i.text.Equals(PGM.Instance.cameraRes.ToString() + 'p'); });
     }
 
     
@@ -262,6 +285,39 @@ public class MenuInGame : MonoBehaviour
 
         QualitySettings.SetQualityLevel(qualityDropdown.value);
 
+    }
+
+    public void ChangeScreenAA()
+    {/*
+        switch (screenAADropdown.options[screenAADropdown.value].text)
+        {
+            case "None":
+                PGM.Instance.screenAA = 1;
+                break;
+            case "2x":
+                PGM.Instance.screenAA = 2;
+                break;
+            case "4x":
+                PGM.Instance.screenAA = 4;
+                break;
+            case "8x":
+                PGM.Instance.screenAA = 8;
+                break;
+        }
+
+        QualitySettings.antiAliasing = PGM.Instance.screenAA;
+        */
+    }
+
+    public void ChangeCameraResolution()
+    {
+        PGM.Instance.cameraRes = int.Parse(cameraResDropdown.options[cameraResDropdown.value].text.TrimEnd('p'));
+        foreach (RenderTexture tex in PGM.Instance.monitorScreens)
+        {
+            tex.Release();
+            tex.width = PGM.Instance.cameraRes;
+            tex.height = PGM.Instance.cameraRes;
+        }
     }
 
     public void ChangeResolutionSetting()

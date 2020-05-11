@@ -102,6 +102,8 @@ public class PGM : MonoBehaviour
 
     public Resolution currentResolution;
 
+    public int screenAA = 1;
+    public int cameraRes = 540;
 
     [Header("Events Dialogue")]
     public List<string> eventsList;

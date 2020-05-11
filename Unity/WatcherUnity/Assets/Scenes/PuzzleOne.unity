@@ -6197,8 +6197,8 @@ MonoBehaviour:
     lines:
     - Oh, hello. I'm nearly done for the day, but there's a part i need to socket
       into something I'm working on.
-    - Perhaps the box got lost in the office? I guess if  you could find it for me
-      and just drop it in this bin that'd be helpful.
+    - Perhaps it got lost in storage? I guess if  you could find it for me and just
+      drop it in this bin that'd be helpful.
     - Thanks for finding that, I guess.
     requirements:
     - lineNum: 2
@@ -12141,7 +12141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbd60b2d6e37c84a91258e4edda4957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 5
   acceleration: 0.25
   gravityScale: 1.5
   rotateSpeed: 200

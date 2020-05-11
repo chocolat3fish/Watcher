@@ -30,6 +30,15 @@ public class NPCManager : MonoBehaviour
         }
     }
 
+
+    private void FixedUpdate()
+    {
+        if (Vector3.Distance(PGM.Instance.player.transform.position, transform.position) > PGM.Instance.player.reachDistance)
+        {
+            Destroy(subtitlePanel);
+        }
+    }
+
     public void ContinueDialogue()
     {
         if (subtitlePanel != null)
