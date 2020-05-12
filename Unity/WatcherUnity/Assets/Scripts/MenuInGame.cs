@@ -205,6 +205,7 @@ public class MenuInGame : MonoBehaviour
     
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape) && settingsMenu.activeSelf == false)
         {
             ContinueGame();

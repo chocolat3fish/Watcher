@@ -24,12 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 75b0cf130c2f34f688b61e86d0886483
   - enabled: 0
-    path: Assets/Scenes/InGameMenu.unity
+    path: Assets/Scenes/Old Puzzles/InGameMenu.unity
     guid: 130becf3796a747629c037ff075e4a2d
   - enabled: 0
-    path: Assets/Scenes/POC.unity
+    path: Assets/Scenes/Old Puzzles/POC.unity
     guid: e1e36c0ca9816454da399b8b4e499ea4
   - enabled: 0
-    path: Assets/Scenes/brokePuzzleOne.unity
+    path: Assets/Scenes/Old Puzzles/brokePuzzleOne.unity
     guid: c8fe04100f36bd140a21012caa283b1c
   m_configObjects: {}
