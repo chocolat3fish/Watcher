@@ -7236,7 +7236,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 437557669}
-        m_MethodName: deleteChoice
+        m_MethodName: DeleteChoice
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8549,7 +8549,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 437557669}
-        m_MethodName: deleteChoice
+        m_MethodName: DeleteChoice
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

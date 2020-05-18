@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PauseMenu.unity
     guid: 8f6090dfceb093748ab78e86d7ef598b
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: ab649410043374ccaa1387ffdfc0dfc9
   - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 75b0cf130c2f34f688b61e86d0886483

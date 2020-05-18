@@ -80,6 +80,7 @@ public class PGM : MonoBehaviour
     public string mainMenuScene;
     public string pauseScene;
     public string menuDeskScene;
+    public string loadingScene;
 
     [Header("Puzzles")]
     public Puzzle currentPuzzle;
@@ -88,6 +89,7 @@ public class PGM : MonoBehaviour
     public Puzzle[] puzzleManager;
 
     public int puzzlesCompleted;
+
 
     [Header("UI")]
     public bool settingsOpen;
@@ -268,6 +270,7 @@ public class PGM : MonoBehaviour
 
     public void SortCameras()
     {
+        // Sorts all of the cameras by the inspector-defined priority value
         allCameras.Sort(delegate (Camera a, Camera b)
         {
             return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
@@ -277,25 +280,40 @@ public class PGM : MonoBehaviour
 
     public void SaveGame(int slot)
     {
+        // Removes the saved object locations
         objectLocations.Clear();
 
-
+        // Adds the current locations of important objects
         foreach (PickupManager obj in puzzleObjects)
         {
             float[] objectVectors = new float[] { obj.transform.position.x, obj.transform.position.y, obj.transform.position.z };
             objectLocations.Add(obj.name,  objectVectors);
         }
+        // Saves the player's x,y,z values
         playerLocation[0] = player.transform.position.x;
         playerLocation[1] = player.transform.position.y;
         playerLocation[2] = player.transform.position.z;
+        // saves into a selected slot
         SaveLoad.Save(slot);
     
     }
-
+    // For loading from menu
     public void LoadGame(int slot)
     {
+        // Loads game, sets the current puzzle, and then loads the desk scene
         SaveLoad.Load(slot);
         currentPuzzle = puzzleManager[puzzlesCompleted];
         SceneManager.LoadScene(deskScene);
+    }
+
+    // For loading from pause
+    public void LoadInGame(int slot)
+    {
+        // No scene reloading, just loads the data, and moves things already in the scene, then pauses time.
+        // Inelegant solution, but it works.
+        SaveLoad.Load(slot);
+        OnSceneLoad.PuzzleLoaded();
+        Time.timeScale = 0;
+        
     }
 }

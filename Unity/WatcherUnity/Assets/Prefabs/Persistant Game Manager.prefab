@@ -112,6 +112,7 @@ MonoBehaviour:
   mainMenuScene: MenuDesk
   pauseScene: PauseMenu
   menuDeskScene: Main Menu
+  loadingScene: Loading
   currentPuzzle:
     puzzleNumber: 0
     sceneName: 
@@ -158,6 +159,8 @@ MonoBehaviour:
   currentResolution:
     x: 1920
     y: 1080
+  screenAA: 1
+  cameraRes: 540
   eventsList:
   - ' '
   - ' '

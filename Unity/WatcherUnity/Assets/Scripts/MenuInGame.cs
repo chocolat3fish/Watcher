@@ -393,7 +393,8 @@ public class MenuInGame : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
         {
-            PGM.Instance.LoadGame(slot);
+            PGM.Instance.LoadInGame(slot);
+            SaveLoad.Load(slot);
         }
     }
 

@@ -32,6 +32,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
+        
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
         cameraComponent = GetComponent<Camera>();
 
@@ -101,16 +102,15 @@ public class PlayerCamera : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotateToPlayer, PGM.Instance.monitorCamRotateSpeed * Time.deltaTime);
                 
             }
-
+            // Keeps a list of cameras that can see the player. Remnant from original camera system.
             if (hit.collider.name != "Player" && PGM.Instance.manyCameras)
             {
                 if (PGM.Instance.camerasCanSee.Contains(cameraComponent))
                 {
                     PGM.Instance.camerasCanSee.Remove(cameraComponent);
-
-                    
                 }
 
+                // If the player and target object are both out of view, forced to watch a third, stationary thing
                 if (!PGM.Instance.camerasCanSee.Contains(cameraComponent) && watchTargetObject == false && secondaryObject != null)
                 {
                     Quaternion rotateToObject = Quaternion.LookRotation(secondaryObject.transform.position - transform.position);
@@ -120,7 +120,7 @@ public class PlayerCamera : MonoBehaviour
             }
 
         }
-
+        // Draws a ray from the camera to target object, to determine if the object is visible for the camera to focus on.
         Debug.DrawRay(transform.position, targetObject.transform.position - transform.position, Color.red);
         if (Physics.Raycast(transform.position, targetObject.transform.position - transform.position, out hit, Mathf.Infinity))
         {
@@ -136,7 +136,7 @@ public class PlayerCamera : MonoBehaviour
             }
         }
 
-
+        // Remnant from original camera system.
         void DisableCamera()
         {
             // if disabling this camera will leave a camera active (avoids frozen screens because of no cameras outputting)
@@ -153,7 +153,7 @@ public class PlayerCamera : MonoBehaviour
 
         }
 
-
+        // Remnant from original camera system
         void EnableCamera()
         {
             PGM.Instance.activeCamera = cameraComponent;

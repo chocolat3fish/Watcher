@@ -76,6 +76,7 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        // Pauses the game
         if (Input.GetKeyDown(KeyCode.Escape) && PGM.Instance.settingsOpen == false)
         {
             PGM.Instance.settingsOpen = true;
@@ -86,12 +87,12 @@ public class PlayerControls : MonoBehaviour
         }
 
 
-
+        // Triggers the walking animation if the velocity is nonzero
         if (rb.velocity.magnitude > 0)
         {
             animator.SetBool("isMoving", true);
         }
-
+        // All of the controls are based on custom keybinds 
         if (!Input.GetKey(PGM.Instance.keyBinds["Forward"]) && !Input.GetKey(PGM.Instance.keyBinds["Backward"]))
         {
             animator.SetBool("isMoving", false);
@@ -109,20 +110,23 @@ public class PlayerControls : MonoBehaviour
             transform.Rotate(0f, rotateSpeed * Time.deltaTime, 0f);
         }
 
+        
         if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false)
         {
+            // Nearest npc is before objects to allow for npc taking priority over picking up objects
             nearestNPC = FindNearestNPC();
             if (nearestNPC != null && holdingObject == false)
             {
                 nearestNPC.ContinueDialogue();
             }
 
-
+            // Picks up an object if there's no nearby npc
             if (FindNearestObject() != null && nearestNPC == null)
             {
                 pickUpObject = true;
             }
 
+            // If there is a nearby npc, only picks up object if the object is closer
             if (FindNearestObject() != null && nearestNPC != null)
             {
                 if (Vector3.Distance(nearestNPC.transform.position, transform.position) > Vector3.Distance(FindNearestObject().transform.position, transform.position))
@@ -130,11 +134,11 @@ public class PlayerControls : MonoBehaviour
                     pickUpObject = true;
                 }
             }
-
+            
             if (FindNearestComputer() != null && PGM.Instance.usingComputer == false)
             {
                 interactComputer = true;
-
+                // triggers the correct action for the computer
                 switch (PGM.Instance.computerBeingUsed.activate)
                 {
                     case true:
@@ -174,6 +178,7 @@ public class PlayerControls : MonoBehaviour
 
         }
 
+        
         if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == true)
         {
             dropObject = true;
@@ -185,7 +190,7 @@ public class PlayerControls : MonoBehaviour
             exitComputer = true;
 
         }
-
+        
         if (objectBeingHeld != null)
         {
             // places object between left and right hand (fits with animation better/looks nicer)
@@ -200,16 +205,18 @@ public class PlayerControls : MonoBehaviour
             canMove = false;
         }
     }
-
+    // Fixed update because movement uses physics (velocity) 
     private void FixedUpdate()
     {
+        // If moving vertically too fast, caps the speed to avoid supersonic downwards movement
         if (rb.velocity.y > 1.5f)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
-
+        
         if (Input.GetKey(PGM.Instance.keyBinds["Forward"]) && canMove == true)
         {
+            // multiplied by deltatime so that framerate doesn't impact velocity
             rb.velocity += transform.forward * acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingForward", true);
             animator.SetBool("movingBackward", false);
@@ -217,17 +224,19 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKey(PGM.Instance.keyBinds["Backward"]) && canMove == true)
         {
+            // multiplied by deltatime so that framerate doesn't impact velocity
             rb.velocity += transform.forward * -acceleration * (Time.deltaTime * 100);
             animator.SetBool("movingBackward", true);
             animator.SetBool("movingForward", false);
         }
 
+        // If the player is moving too fast, caps the velocity to movespeed + the current vertical velocity
         if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Backward"]))
         {
             rb.velocity = (transform.forward * -moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
 
         }
-
+        // If the player is moving too fast, caps the velocity to movespeed + the current vertical velocity
         else if (rb.velocity.magnitude > moveSpeed && Input.GetKey(PGM.Instance.keyBinds["Forward"]))
         {
             rb.velocity = (transform.forward * moveSpeed) + new Vector3(0, rb.velocity.y * gravityScale, 0);
@@ -236,6 +245,7 @@ public class PlayerControls : MonoBehaviour
 
         if (pickUpObject)
         {
+            
             animator.SetTrigger("pickUpObject");
 
             GameObject nearestObject = FindNearestObject();

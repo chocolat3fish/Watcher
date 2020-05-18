@@ -59,10 +59,11 @@ public class SaveLoad : MonoBehaviour
             }
             catch (SerializationException)
             {
+                // will add something that allows for outdated saves
                 print("load error");
                 file.Close();
             }
-
+            // Saves data as the data in the save slot
             PGM.Instance.objectLocations = saveData.objectLocations;
             PGM.Instance.playerLocation = saveData.playerLocation;
             PGM.Instance.puzzleManager = saveData.puzzleManager;
