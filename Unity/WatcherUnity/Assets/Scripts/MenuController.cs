@@ -193,7 +193,9 @@ public class MenuController : MonoBehaviour
                 break;
         }
         */
+        
         PGM.Instance.cameraRes = PGM.Instance.monitorScreens[0].width;
+        // Finds the dropdown value that matches what is supposed to be the active camera resolution
         cameraResDropdown.value = cameraResDropdown.options.FindIndex((i) => { return i.text.Equals(PGM.Instance.cameraRes.ToString() + 'p'); });
 
         UpdateText();
@@ -495,7 +497,7 @@ public class MenuController : MonoBehaviour
         e = Event.current;
     }
 
-
+    // Has a fade for when the main menu is opened
     public IEnumerator FadeAlpha(Image fade)
     {
         for (int i = 0; i < 1; i++)
@@ -504,6 +506,7 @@ public class MenuController : MonoBehaviour
         }
         if (fade.color.a >= 0.01)
         {
+            // Only changes the alpha, so colour stays black and becomes more transparent
             fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, fade.color.a - 0.01f);
 
 
@@ -511,6 +514,7 @@ public class MenuController : MonoBehaviour
         }
         else
         {
+            // removes the object after the fade is done
             Destroy(fade);
         }
 

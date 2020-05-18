@@ -10,15 +10,16 @@ public class ChairSpin : MonoBehaviour
 
     public float spinSpeed;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();    
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        // Lerp gives the chair a slight delay
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0), spinSpeed);
     }
 }

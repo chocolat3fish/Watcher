@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Indicator : MonoBehaviour
 {
+    // Remnant from earlier version, level complete indicator is no longer in use
+
     public Color32 red;
     public Color32 green;
     public Material material;
@@ -19,6 +21,7 @@ public class Indicator : MonoBehaviour
    
     void Update()
     {
+        
         if (PGM.Instance.currentPuzzle.completed)
         {
             material.SetColor("_EmissionColor", green);

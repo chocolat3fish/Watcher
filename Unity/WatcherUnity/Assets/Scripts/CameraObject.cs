@@ -46,6 +46,7 @@ public class CameraObject : MonoBehaviour
 
     Camera FindNearestCamera()
     {
+        // Goes through all cameras in the scene and finds the closest one to use when mimicking motion
         GameObject closestCamera = null;
         float distance = Mathf.Infinity;
 

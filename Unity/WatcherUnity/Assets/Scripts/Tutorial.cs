@@ -61,7 +61,7 @@ public class Tutorial : MonoBehaviour
             tutorialPanel.GetComponentInChildren<TMP_Text>().text = tutorialText;
         }
     }
-
+    // Removes the currently displayed tutorial if the player leaves the zone
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

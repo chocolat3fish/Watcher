@@ -49,9 +49,10 @@ public class MoveObject : MonoBehaviour
     {
         // determines the requirement for moving
 
+        // If a computer has to be activated
         if (computerTrigger)
         {
-
+            
             switch (computer.activate)
             {
                 case true:
@@ -64,7 +65,7 @@ public class MoveObject : MonoBehaviour
             }    
         }
                    
-
+        // If puzzle has to be complete
         if (completeTrigger)
         {
             switch (PGM.Instance.currentPuzzle.completed)

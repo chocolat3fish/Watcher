@@ -67,7 +67,7 @@ public class ButtonObject : MonoBehaviour
                     }
                           
                 }
-
+                // On mouse click, move the monitor output forward one
                 if (Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == transform)
                 {
                     PGM.Instance.activeCamera = GetComponent<Camera>();

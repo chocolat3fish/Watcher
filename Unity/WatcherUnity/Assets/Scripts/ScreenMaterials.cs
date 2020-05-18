@@ -11,7 +11,7 @@ public class ScreenMaterials : MonoBehaviour
     {
         meshRender = GetComponent<MeshRenderer>();
         monitorName = transform.name.Substring(0, 2);
-
+        // Defaults the monitors to output the first 4 materials, which correspond to the first four cameras
         switch (monitorName)
         {
             case "BR":

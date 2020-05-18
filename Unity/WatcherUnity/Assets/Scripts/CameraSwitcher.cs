@@ -89,7 +89,7 @@ public class CameraSwitcher : MonoBehaviour
         }
 
     }
-
+    // Moves the camera output forward one place
     void OutputForward()
     {
 
@@ -103,6 +103,7 @@ public class CameraSwitcher : MonoBehaviour
         //PGM.Instance.allCameras
     }
 
+    // Moves the camera output backward one place
     void OutputBackward()
     {
         currentIndex -= 1;

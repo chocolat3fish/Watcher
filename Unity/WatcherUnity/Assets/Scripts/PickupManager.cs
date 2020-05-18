@@ -21,32 +21,16 @@ public class PickupManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.sleepThreshold = 0;
 
-        //nearbyTriggers = FindObjectsOfType<TriggerLevel>();
     }
 
-    private void Update()
-    {
-        /*
-        if (PGM.Instance.player.holdingObject && PGM.Instance.player.objectBeingHeld == rb)
-        {
-            inPlace = false;
-            rb.useGravity = true;
-        }
-        
-        if (inPlace)
-        {
-            rb.useGravity = false;
-            transform.position = holdPosition;
-        }
-        */
-        
-    }
     private void OnTriggerEnter(Collider col)
     {
-        
+        // If the player has dropped the object on a trigger
         if (col.CompareTag("Trigger") && PGM.Instance.player.holdingObject == false)
         {
-            //inPlace = true;
+            // Moves the object towards the trigger.
+            // Doesn't work brilliantly, but is effectively a small magnet effect and
+            // makes it a little easier for the player to drop the object in the right place
             holdPosition = col.GetComponent<TriggerLevel>().snapLocation;
             rb.velocity = Vector3.zero;
             transform.position = Vector3.MoveTowards(transform.position, holdPosition, snapTime);

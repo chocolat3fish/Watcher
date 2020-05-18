@@ -9,6 +9,7 @@ public class ExitTrigger : MonoBehaviour
     {
         if (col.name == "Player" && PGM.Instance.currentPuzzle.completed == true)
         {
+            
             PGM.Instance.puzzlesCompleted += 1;
             PGM.Instance.exitedLevel = true;
             PGM.Instance.AddEvents("levelComplete");

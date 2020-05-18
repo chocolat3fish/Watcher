@@ -19,6 +19,7 @@ public class NPCDialogue
 [Serializable]
 public struct SpeechRequirement
 {
+    // The line of dialogue that needs a requirement, the puzzle path required, and the progress in that path required
     public int lineNum;
     public int path;
     public int pathProgress;

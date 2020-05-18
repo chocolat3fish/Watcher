@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CrosshairManager : MonoBehaviour
 {
+    // Written by Josh
+
     [Header("Corner Range")]
     [SerializeField]
     public float max;

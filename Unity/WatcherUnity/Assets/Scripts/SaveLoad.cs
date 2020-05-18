@@ -15,13 +15,6 @@ public class SaveLoad : MonoBehaviour
     {
         saveData.puzzleManager = new Puzzle[PGM.Instance.puzzleManager.Length];
         FileStream file;
-        /*
-        foreach (KeyValuePair<string, Vector3> entry in PGM.Instance.objectLocations)
-        {
-            
-            saveData.objectLocations.Add(entry.Key, entry.Value);
-        }
-        */
         saveData.objectLocations = PGM.Instance.objectLocations;
 
         saveData.playerLocation = PGM.Instance.playerLocation;
