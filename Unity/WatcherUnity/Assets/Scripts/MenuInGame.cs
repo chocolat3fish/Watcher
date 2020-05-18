@@ -20,6 +20,11 @@ public class MenuInGame : MonoBehaviour
     public GameObject saveWarning;
     public GameObject exitWarning;
 
+    public GameObject saveButton;
+    public GameObject loadButton;
+    public GameObject settingsButton;
+    public GameObject controlsButton;
+
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown fullscreenDropdown;
@@ -54,6 +59,11 @@ public class MenuInGame : MonoBehaviour
         controlsMenu = GameObject.Find("ControlsMenu");
         saveWarning = GameObject.Find("SaveWarning");
         exitWarning = GameObject.Find("ExitWarning");
+
+        saveButton = GameObject.Find("SaveButton");
+        loadButton = GameObject.Find("LoadButton"); 
+        settingsButton = GameObject.Find("SettingsButton"); 
+        controlsButton = GameObject.Find("KeysButton"); 
 
         qualityDropdown = settingsMenu.transform.Find("QualityDropdown").GetComponent<TMP_Dropdown>();
         resolutionDropdown = settingsMenu.transform.Find("ResolutionDropdown").GetComponent<TMP_Dropdown>();
@@ -235,6 +245,11 @@ public class MenuInGame : MonoBehaviour
         saveMenu.SetActive(false);
         loadMenu.SetActive(false);
         controlsMenu.SetActive(false);
+
+        settingsButton.SetActive(false);
+        saveButton.SetActive(true);
+        loadButton.SetActive(true);
+        controlsButton.SetActive(true);
     }
 
 
@@ -357,6 +372,13 @@ public class MenuInGame : MonoBehaviour
         saveMenu.SetActive(false);
         loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
+
+
+        settingsButton.SetActive(true);
+        saveButton.SetActive(true);
+        loadButton.SetActive(true);
+        controlsButton.SetActive(false);
+
         UpdateText();
     }
 
@@ -387,6 +409,12 @@ public class MenuInGame : MonoBehaviour
         saveMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+
+
+        settingsButton.SetActive(true);
+        saveButton.SetActive(true);
+        loadButton.SetActive(false);
+        controlsButton.SetActive(true);
     }
 
     public void LoadGame(int slot)
@@ -404,6 +432,12 @@ public class MenuInGame : MonoBehaviour
         loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+
+
+        settingsButton.SetActive(true);
+        saveButton.SetActive(false);
+        loadButton.SetActive(true);
+        controlsButton.SetActive(true);
     }
 
     public void TrySave(int slot)
