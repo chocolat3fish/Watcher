@@ -156,6 +156,8 @@ MonoBehaviour:
     y: 240
   - x: 960
     y: 540
+  - x: 2560
+    y: 1440
   currentResolution:
     x: 1920
     y: 1080
