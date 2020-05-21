@@ -47,7 +47,7 @@ MonoBehaviour:
   FOV: 90
   maxFOV: 90
   minFOV: 20
-  monitorCamRotateSpeed: 1
+  monitorCamRotateSpeed: 1.5
   selectedGameobject: {fileID: 0}
   loadedPuzzle: 0
   autoCameraSwitch: 0
