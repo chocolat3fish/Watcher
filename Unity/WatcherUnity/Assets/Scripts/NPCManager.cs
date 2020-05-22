@@ -60,8 +60,15 @@ public class NPCManager : MonoBehaviour
                 dialogue.currentIndex = dialogue.requirements[i].lineNum;
 
             }
+            // If the requirement index has increased but progress has been undone, lower the requirement index
+            if (i > 0 && dialogue.requirementIndex == i && dialogue.requirements[i].pathProgress > PGM.Instance.currentPuzzle.pathTriggers[dialogue.requirements[i].path].pathProgress)
+            {
+                dialogue.requirementIndex = i - 1;
+            }
         }
+
         
+
         // If the current index has a requirement
         if (dialogue.currentIndex >= dialogue.requirements[dialogue.requirementIndex].lineNum)
         {
@@ -104,7 +111,7 @@ public class NPCManager : MonoBehaviour
             dialogue.currentIndex -= 1;
         }
         // If the current requirement index is past the total number of requirements, move it back one
-        if (dialogue.requirementIndex >= dialogue.lines.Length)
+        if (dialogue.requirementIndex >= dialogue.requirements.Length)
         {
             dialogue.requirementIndex -= 1;
         }
