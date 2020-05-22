@@ -42,11 +42,26 @@ public class NPCManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
+        // If there's no panel (i.e. player left and came back) restarts the dialogue
+        if (subtitlePanel == null)
+        {
+            dialogue.currentIndex = 0;
+        }
         // Destroys previous instance of the subtitles
         if (subtitlePanel != null)
         {
             Destroy(subtitlePanel);
         }
+        // skips dialogue index to the furthest completed requirement, to avoid repeating unnecessary dialogue
+        for (int i = 0; i < dialogue.requirements.Length; i++)
+        {
+            if (dialogue.requirements[i].pathProgress <= PGM.Instance.currentPuzzle.pathTriggers[dialogue.requirements[i].path].pathProgress)
+            {
+                dialogue.currentIndex = dialogue.requirements[i].lineNum;
+
+            }
+        }
+        
         // If the current index has a requirement
         if (dialogue.currentIndex >= dialogue.requirements[dialogue.requirementIndex].lineNum)
         {
@@ -89,7 +104,7 @@ public class NPCManager : MonoBehaviour
             dialogue.currentIndex -= 1;
         }
         // If the current requirement index is past the total number of requirements, move it back one
-        if (dialogue.requirementIndex > dialogue.lines.Length)
+        if (dialogue.requirementIndex >= dialogue.lines.Length)
         {
             dialogue.requirementIndex -= 1;
         }
