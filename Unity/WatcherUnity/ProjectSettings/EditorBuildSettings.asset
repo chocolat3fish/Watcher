@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading.unity
     guid: ab649410043374ccaa1387ffdfc0dfc9
   - enabled: 0
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/Old Puzzles/Main Menu.unity
     guid: 75b0cf130c2f34f688b61e86d0886483
   - enabled: 0
     path: Assets/Scenes/Old Puzzles/InGameMenu.unity
