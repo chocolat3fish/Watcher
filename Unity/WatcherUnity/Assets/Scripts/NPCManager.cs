@@ -30,7 +30,7 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-
+    
     private void FixedUpdate()
     {
         // Removes the subtitles if the player is too far away from the npc

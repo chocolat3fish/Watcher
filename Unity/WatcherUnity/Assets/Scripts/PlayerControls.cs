@@ -80,6 +80,7 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        
         // Pauses the game
         if (Input.GetKeyDown(KeyCode.Escape) && PGM.Instance.settingsOpen == false)
         {
@@ -304,6 +305,11 @@ public class PlayerControls : MonoBehaviour
             
         }
 
+    }
+
+    public void LateUpdate()
+    {
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
     }
 
     GameObject FindNearestObject()

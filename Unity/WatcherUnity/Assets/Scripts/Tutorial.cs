@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.GetType() == typeof(CapsuleCollider))
         {
             // Tutorial dialogue determined by an enum in the inspector
             // Actual dialogue is partially hard-coded, sorry
