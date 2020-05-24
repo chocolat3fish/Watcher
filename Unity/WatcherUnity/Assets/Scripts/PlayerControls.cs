@@ -50,6 +50,7 @@ public class PlayerControls : MonoBehaviour
     public GameObject handLeft;
 
     public Collider playerCollider;
+    public Collider boxCollider;
 
  
     void Start()
@@ -58,7 +59,10 @@ public class PlayerControls : MonoBehaviour
         nearbyComputers = FindObjectsOfType<ComputerControl>();
         nearbyNPCS = FindObjectsOfType<NPCManager>();
 
-        playerCollider = GetComponent<Collider>();
+        playerCollider = GetComponent<CapsuleCollider>();
+        boxCollider = GetComponent<BoxCollider>();
+        // collider will be enabled when object is in hand
+        boxCollider.enabled = false;
 
         handRight = GameObject.FindWithTag("HandR");
         handLeft = GameObject.FindWithTag("HandL");
@@ -257,7 +261,9 @@ public class PlayerControls : MonoBehaviour
             objectBeingHeld.freezeRotation = true;
             pickUpObject = false;
             dropObject = false;
-           
+            // disables the collider after dropping the object
+            boxCollider.enabled = true;
+
         }   
         if (dropObject)
         {
@@ -272,6 +278,8 @@ public class PlayerControls : MonoBehaviour
             objectBeingHeld = null;
             pickUpObject = false;
             dropObject = false;
+            // disables the collider after dropping the object
+            boxCollider.enabled = false;
         }
 
         if (interactComputer)
