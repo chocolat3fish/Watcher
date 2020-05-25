@@ -15,6 +15,7 @@ public class OnSceneLoad : MonoBehaviour
             PGM.Instance.monitorsObject = GameObject.Find("ManyMonitors");
             SceneManager.LoadSceneAsync(PGM.Instance.currentPuzzle.sceneName, LoadSceneMode.Additive);
             PGM.Instance.loadedPuzzle = true;
+            NewLevel();
             //SceneManager.LoadSceneAsync(PGM.Instance.eventsScene, LoadSceneMode.Additive);
         }
 
@@ -26,10 +27,40 @@ public class OnSceneLoad : MonoBehaviour
         }
     
     }
+
+
+    public static void NewLevel()
+    {
+
+        if (PGM.Instance.loadedPuzzle == false)
+        {
+            PGM.Instance.allCameras.Clear();
+            PGM.Instance.sortedCameras = false;
+            PGM.Instance.exitedLevel = false;
+            
+            SceneManager.UnloadSceneAsync(PGM.Instance.currentLevel);
+            SceneManager.LoadSceneAsync(PGM.Instance.levelToLoad, LoadSceneMode.Additive);
+
+
+            PGM.Instance.loadedPuzzle = true;
+
+            PGM.Instance.playerLocation = new float[] { 0, 0, 0};
+
+        }
+
+        PGM.Instance.currentPuzzle = PGM.Instance.puzzleManager[PGM.Instance.puzzlesCompleted];
+
+        PGM.Instance.currentLevel = PGM.Instance.currentPuzzle.sceneName;
+        PGM.Instance.levelToLoad = PGM.Instance.puzzleManager[PGM.Instance.currentPuzzle.puzzleNumber + 1].sceneName;
+
+
+
+    }
+
     // To be run upon loading a game 
     public static void PuzzleLoaded()
     {
-        
+
         PGM.Instance.player = FindObjectOfType<PlayerControls>();
         PGM.Instance.puzzleObjects = FindObjectsOfType<PickupManager>();
         // Moves all of the puzzle objects in the level into the right place as determined by the save data

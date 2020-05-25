@@ -18,6 +18,7 @@ public class MoveObject : MonoBehaviour
     [Header("Triggers")]
     public bool completeTrigger;
     public bool computerTrigger;
+    public bool automaticTrigger;
 
     [Header("Numbers")]
     public float distanceToMove;
@@ -34,11 +35,17 @@ public class MoveObject : MonoBehaviour
 
         openPosition = originalPosition + (directionToMove * distanceToMove);
 
+        if (automaticTrigger)
+        {
+            computer = gameObject.AddComponent<ComputerControl>();
+            computer.activate = true;
+        }
+
         // switches the default activate status to align with opposite directions
         switch (invertDirection)
         {
             case true:
-                computer.activate = true;
+                computer.activate = true;   
                 break;
         }
 

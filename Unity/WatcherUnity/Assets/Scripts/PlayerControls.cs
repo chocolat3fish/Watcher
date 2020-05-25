@@ -254,16 +254,21 @@ public class PlayerControls : MonoBehaviour
             animator.SetTrigger("pickUpObject");
 
             GameObject nearestObject = FindNearestObject();
-            objectBeingHeld = nearestObject.GetComponent<Rigidbody>();
-            holdingObject = true;
-            // set parent as player's hand to make the player "hold" the object   
-            objectBeingHeld.transform.parent = handRight.transform;
-            objectBeingHeld.transform.position = handRight.transform.position; //+ (handRight.transform.position - handLeft.transform.position) / 2;
-            objectBeingHeld.freezeRotation = true;
-            pickUpObject = false;
-            dropObject = false;
-            // disables the collider after dropping the object
-            boxCollider.enabled = true;
+            if (nearestObject != null)
+            {
+                objectBeingHeld = nearestObject.GetComponent<Rigidbody>();
+                holdingObject = true;
+                // set parent as player's hand to make the player "hold" the object   
+                objectBeingHeld.transform.parent = handRight.transform;
+                objectBeingHeld.transform.position = handRight.transform.position; //+ (handRight.transform.position - handLeft.transform.position) / 2;
+                objectBeingHeld.freezeRotation = true;
+                pickUpObject = false;
+                dropObject = false;
+                // disables the collider after dropping the object
+                boxCollider.enabled = true;
+            }
+            
+            
 
         }   
         if (dropObject)

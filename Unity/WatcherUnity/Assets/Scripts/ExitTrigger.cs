@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExitTrigger : MonoBehaviour
 {
@@ -11,8 +12,13 @@ public class ExitTrigger : MonoBehaviour
         {
             
             PGM.Instance.puzzlesCompleted += 1;
+            
             PGM.Instance.exitedLevel = true;
             PGM.Instance.AddEvents("levelComplete");
+
+            PGM.Instance.loadedPuzzle = false;
+            OnSceneLoad.NewLevel();
+
         } 
     }
 

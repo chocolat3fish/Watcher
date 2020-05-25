@@ -119,7 +119,7 @@ MonoBehaviour:
     pathTriggers: []
     completed: 0
   puzzleManager:
-  - puzzleNumber: 1
+  - puzzleNumber: 0
     sceneName: PuzzleOne
     pathTriggers:
     - pathTriggers: 2
@@ -129,11 +129,23 @@ MonoBehaviour:
       pathProgress: 0
       pathComplete: 0
     completed: 0
-  - puzzleNumber: 2
+  - puzzleNumber: 1
     sceneName: PuzzleTwo
-    pathTriggers: []
+    pathTriggers:
+    - pathTriggers: 1
+      pathProgress: 0
+      pathComplete: 0
+    completed: 0
+  - puzzleNumber: 2
+    sceneName: PuzzleThree
+    pathTriggers:
+    - pathTriggers: 1
+      pathProgress: 0
+      pathComplete: 0
     completed: 0
   puzzlesCompleted: 0
+  currentLevel: 
+  levelToLoad: 
   settingsOpen: 0
   unloadSettingsScene: 0
   qualityIndex: 0

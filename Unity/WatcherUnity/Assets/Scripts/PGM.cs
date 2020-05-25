@@ -82,6 +82,7 @@ public class PGM : MonoBehaviour
     public string menuDeskScene;
     public string loadingScene;
 
+
     [Header("Puzzles")]
     public Puzzle currentPuzzle;
 
@@ -89,6 +90,9 @@ public class PGM : MonoBehaviour
     public Puzzle[] puzzleManager;
 
     public int puzzlesCompleted;
+
+    public string currentLevel;
+    public string levelToLoad;
 
 
     [Header("UI")]
@@ -310,7 +314,7 @@ public class PGM : MonoBehaviour
     public void LoadInGame(int slot)
     {
         // No scene reloading, just loads the data, and moves things already in the scene, then pauses time.
-        // Inelegant solution, but it works.
+        // Inelegant solution, but it works.sceen
         SaveLoad.Load(slot);
         OnSceneLoad.PuzzleLoaded();
         Time.timeScale = 0;
