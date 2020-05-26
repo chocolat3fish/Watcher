@@ -18,7 +18,7 @@ public class PGM : MonoBehaviour
 
     public float monitorCamRotateSpeed;
 
-    public GameObject selectedGameobject;
+    
     [SerializeField]
     public Dictionary<string, int> Switches { get; private set; } = new Dictionary<string, int>();
 
@@ -49,6 +49,9 @@ public class PGM : MonoBehaviour
 
     public GameObject tutorialPanel;
     public GameObject subtitlePanel;
+
+
+    public GameObject selectedGameobject;
 
     [Header("Screens")]
     public List<RenderTexture> monitorScreens;

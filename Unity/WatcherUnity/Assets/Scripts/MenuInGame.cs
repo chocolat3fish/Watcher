@@ -140,6 +140,8 @@ public class MenuInGame : MonoBehaviour
         saveWarning.SetActive(false);
         exitWarning.SetActive(false);
 
+        
+
         // Finds the current fullscreen mode and sets the dropdown to represent that
         List<string> fullscreenList = fullscreenDropdown.options.Select(option => option.text).ToList();
         switch (Screen.fullScreenMode)
@@ -241,10 +243,12 @@ public class MenuInGame : MonoBehaviour
     public void OpenSettings()
     {
 
-        settingsMenu.SetActive(true);
         saveMenu.SetActive(false);
         loadMenu.SetActive(false);
+        settingsMenu.SetActive(true);
         controlsMenu.SetActive(false);
+        saveWarning.SetActive(false);
+        exitWarning.SetActive(false);
 
         settingsButton.SetActive(false);
         saveButton.SetActive(true);
@@ -263,6 +267,12 @@ public class MenuInGame : MonoBehaviour
 
     public void TryToExit()
     {
+        saveMenu.SetActive(false);
+        loadMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        saveWarning.SetActive(false);
+
         exitWarning.SetActive(true);
 
     }
@@ -368,10 +378,14 @@ public class MenuInGame : MonoBehaviour
 
     public void OpenKeybindings()
     {
-        controlsMenu.SetActive(true);
         saveMenu.SetActive(false);
         loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+        saveWarning.SetActive(false);
+        exitWarning.SetActive(false);
+
+        changeKeyDialogue.enabled = false;
 
 
         settingsButton.SetActive(true);
@@ -397,6 +411,7 @@ public class MenuInGame : MonoBehaviour
         {
 
             changingKey = true;
+            changeKeyDialogue.enabled = true;
 
             StartCoroutine(WaitForKey(buttonName));
 
@@ -405,10 +420,12 @@ public class MenuInGame : MonoBehaviour
 
     public void OpenLoadMenu()
     {
-        loadMenu.SetActive(true);
         saveMenu.SetActive(false);
+        loadMenu.SetActive(true);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        saveWarning.SetActive(false);
+        exitWarning.SetActive(false);
 
 
         settingsButton.SetActive(true);
@@ -432,6 +449,8 @@ public class MenuInGame : MonoBehaviour
         loadMenu.SetActive(false);
         settingsMenu.SetActive(false);
         controlsMenu.SetActive(false);
+        saveWarning.SetActive(false);
+        exitWarning.SetActive(false);
 
 
         settingsButton.SetActive(true);
@@ -557,6 +576,7 @@ public class MenuInGame : MonoBehaviour
                 changingKey = false;
                 changeKeyDialogue.text = "";
                 UpdateText();
+                changeKeyDialogue.enabled = false;
                 break;
             }
 

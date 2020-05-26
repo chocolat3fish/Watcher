@@ -70,11 +70,11 @@ public class CameraSwitcher : MonoBehaviour
     {
         // on click or button press
 
-        if ((Input.GetMouseButtonDown(1) && PGM.Instance.selectedGameobject == buttonObject) || Input.GetKey(PGM.Instance.keyBinds["MonitorBack"]) && Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber]))
+        if (((Input.GetMouseButtonDown(1) && PGM.Instance.selectedGameobject == buttonObject) || Input.GetKey(PGM.Instance.keyBinds["MonitorBack"]) && Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber])) && PGM.Instance.settingsOpen == false)
         {
             OutputBackward();
         }
-        else if (Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == buttonObject || Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber]))
+        else if ((Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == buttonObject || Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber])) && PGM.Instance.settingsOpen == false)
         {
             OutputForward();
         }
