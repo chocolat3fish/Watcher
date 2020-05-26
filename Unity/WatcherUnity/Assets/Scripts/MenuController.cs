@@ -217,6 +217,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
+        print("start");
         SceneManager.LoadScene(PGM.Instance.deskScene);
     }
 
