@@ -125,7 +125,7 @@ public class MenuInGame : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + "/savedata3.gd"))
         {
             save3.text = "Used";
-            load3.text = "Empty";
+            load3.text = "Used";
         }
         else
         {
