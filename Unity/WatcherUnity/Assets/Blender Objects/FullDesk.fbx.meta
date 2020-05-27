@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cabinet
-    second: {fileID: 2100000, guid: 943ec9e9be8f4aa41ba2642b295aee6e, type: 2}
+    second: {fileID: 2100000, guid: dd935db389d173645877b6648b4eed00, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Desk
-    second: {fileID: 2100000, guid: 10b725abf972c44f1aacd26c54315f7c, type: 2}
+    second: {fileID: 2100000, guid: 72deeae4c83e24d3f88cf2a55669d507, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
