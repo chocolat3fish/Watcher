@@ -99,8 +99,14 @@ public class MenuInGame : MonoBehaviour
         {
             resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
         }
+
+        if (resolutionDropdown.options.ToString().Contains(tempResolution.x + "x" + tempResolution.y))
+        {
+            resolutionDropdown.AddOptions(new List<string> { tempResolution.x + "x" + tempResolution.y });
+        }
+
         PGM.Instance.currentResolution = tempResolution;
-        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
+        //Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
         if (File.Exists(Application.persistentDataPath + "/savedata1.gd"))
         {

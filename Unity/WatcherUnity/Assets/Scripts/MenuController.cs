@@ -93,12 +93,20 @@ public class MenuController : MonoBehaviour
 
         PGM.Instance.monitorKeyList = new List<KeyCode>() { PGM.Instance.keyBinds["Monitor1"], PGM.Instance.keyBinds["Monitor2"], PGM.Instance.keyBinds["Monitor3"], PGM.Instance.keyBinds["Monitor4"] };
 
-        Resolution tempResolution = PGM.Instance.currentResolution;
+        Resolution tempResolution;
+        tempResolution.x = Screen.currentResolution.width;
+        tempResolution.y = Screen.currentResolution.height;
 
         for (int index = 0; index < PGM.Instance.resolutions.Length; index++)
         {
             resolutionDropdown.AddOptions(new List<string> { PGM.Instance.resolutions[index].x + "x" + PGM.Instance.resolutions[index].y });
+            
         }
+        if (resolutionDropdown.options.ToString().Contains(tempResolution.x + "x" + tempResolution.y))
+        {
+            resolutionDropdown.AddOptions(new List<string> { tempResolution.x + "x" + tempResolution.y });
+        }
+        
         PGM.Instance.currentResolution = tempResolution;
         Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
