@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: LightRed
-    second: {fileID: 2100000, guid: 699e8b2a2bbe24a4b90ee5de0fb5af2e, type: 2}
+    second: {fileID: 2100000, guid: 9a885f95608774c4aa2e5d8ea1cf635e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

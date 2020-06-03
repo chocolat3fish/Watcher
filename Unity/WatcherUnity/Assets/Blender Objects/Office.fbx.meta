@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Carpet
-    second: {fileID: 2100000, guid: 45016a86bc2fc4c8db7a0db1e2758ba0, type: 2}
+    second: {fileID: 2100000, guid: 8d4313de2a8ed7f4c8d7050a2d2392d2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -45,12 +45,17 @@ public class PlayerControls : MonoBehaviour
     public NPCManager[] nearbyNPCS;
 
     public NPCManager nearestNPC;
+    public GameObject nearestObject;
 
     public GameObject handRight;
     public GameObject handLeft;
 
     public Collider playerCollider;
     public Collider boxCollider;
+
+    [Header("Misc")]
+    public float compSeconds;
+    public float compTime;
 
  
     void Start()
@@ -118,30 +123,45 @@ public class PlayerControls : MonoBehaviour
         
         if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false)
         {
+            /*
+            if (objectBeingHeld == null || holdingObject == false)
+            {
+                pickUpObject = false;
+            }
+            */
+
+            nearestObject = FindNearestObject();
+
             // Nearest npc is before objects to allow for npc taking priority over picking up objects
             nearestNPC = FindNearestNPC();
+            
             if (nearestNPC != null && holdingObject == false)
             {
                 nearestNPC.ContinueDialogue();
             }
 
-            // Picks up an object if there's no nearby npc
-            if (FindNearestObject() != null && nearestNPC == null)
-            {
-                pickUpObject = true;
-            }
 
-            // If there is a nearby npc, only picks up object if the object is closer
-            if (FindNearestObject() != null && nearestNPC != null)
+            if (nearestObject != null)
             {
-                if (Vector3.Distance(nearestNPC.transform.position, transform.position) > Vector3.Distance(FindNearestObject().transform.position, transform.position))
+                // Picks up an object if there's no nearby npc
+                if (nearestNPC == null)
+                {
+                    pickUpObject = true;
+                }
+
+
+                // If there is a nearby npc, only picks up object if the object is closer
+                if (nearestNPC != null && Vector3.Distance(nearestNPC.transform.position, transform.position) > Vector3.Distance(FindNearestObject().transform.position, transform.position))
                 {
                     pickUpObject = true;
                 }
             }
-            
-            if (FindNearestComputer() != null && PGM.Instance.usingComputer == false)
+
+
+            // If there is a nearby computer and the player is not holding anything
+            if (FindNearestComputer() != null && PGM.Instance.usingComputer == false && holdingObject == false)
             {
+                compTime = Time.time;
                 interactComputer = true;
                 // triggers the correct action for the computer
                 switch (PGM.Instance.computerBeingUsed.activate)
@@ -190,7 +210,7 @@ public class PlayerControls : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null))
+        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null) || Time.time > compTime + compSeconds )
         {
             exitComputer = true;
 
@@ -204,6 +224,8 @@ public class PlayerControls : MonoBehaviour
             // enables animation override while holding object so that the player can have the walk animation but keep the arms holding the object
             animator.SetLayerWeight(1, 1f);
         }
+
+  
         
         if (usingComputer)
         {
@@ -250,10 +272,6 @@ public class PlayerControls : MonoBehaviour
 
         if (pickUpObject)
         {
-            
-            animator.SetTrigger("pickUpObject");
-
-            GameObject nearestObject = FindNearestObject();
             if (nearestObject != null)
             {
                 objectBeingHeld = nearestObject.GetComponent<Rigidbody>();
@@ -267,10 +285,14 @@ public class PlayerControls : MonoBehaviour
                 // disables the collider after dropping the object
                 boxCollider.enabled = true;
             }
-            
-            
+            if (objectBeingHeld != null)
+            {
+                animator.SetTrigger("pickUpObject");
+            }
+
 
         }   
+
         if (dropObject)
         {
             animator.SetBool("holdingObject", false);

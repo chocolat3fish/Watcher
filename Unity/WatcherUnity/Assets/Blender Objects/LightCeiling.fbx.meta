@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: LightShell
-    second: {fileID: 2100000, guid: 7f6f84516f2cc4c27bb3eb6ffcaa58e3, type: 2}
+    second: {fileID: 2100000, guid: dd935db389d173645877b6648b4eed00, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
