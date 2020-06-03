@@ -21,6 +21,12 @@ public class SaveLoad : MonoBehaviour
 
         saveData.puzzleManager = PGM.Instance.puzzleManager;
 
+        saveData.cameraIndexes = PGM.Instance.cameraIndexes;
+
+        saveData.computerStates = PGM.Instance.computerStates;
+
+        saveData.feedData = PGM.Instance.eventsList;
+
 
 
         BinaryFormatter bf = new BinaryFormatter();
@@ -60,6 +66,9 @@ public class SaveLoad : MonoBehaviour
             PGM.Instance.objectLocations = saveData.objectLocations;
             PGM.Instance.playerLocation = saveData.playerLocation;
             PGM.Instance.puzzleManager = saveData.puzzleManager;
+            PGM.Instance.computerStates = saveData.computerStates;
+            PGM.Instance.cameraIndexes = saveData.cameraIndexes;
+            PGM.Instance.eventsList = saveData.feedData;
             print("loaded");
             file.Close();
         }

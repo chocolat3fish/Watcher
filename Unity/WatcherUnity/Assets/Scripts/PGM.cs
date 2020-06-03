@@ -50,6 +50,9 @@ public class PGM : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject subtitlePanel;
 
+    public CameraSwitcher[] camSwitch;
+    public ComputerControl[] computers; 
+
 
     public GameObject selectedGameobject;
 
@@ -119,8 +122,6 @@ public class PGM : MonoBehaviour
 
 
     [Header("Inputs")]
-
-
     public Dictionary<string, KeyCode> keyBinds = new Dictionary<string, KeyCode>
     {
         { "Forward", KeyCode.W },
@@ -151,7 +152,9 @@ public class PGM : MonoBehaviour
     public int deleteSlot;
     public Dictionary<string, float[]> objectLocations;
     public float[] playerLocation = new float [] { 0, 0, 0 };
-    // Puzzle manager as well
+    public Dictionary<string, bool> computerStates = new Dictionary<string, bool>();
+    public List<int> cameraIndexes = new List<int> { 0, 1, 2, 3 };
+    // Puzzle manager and feed as well
 
     public void AdjustDictionary(string key, int data)
     {
@@ -177,6 +180,11 @@ public class PGM : MonoBehaviour
         currentPuzzle = puzzleManager[puzzlesCompleted];
 
         objectLocations = new Dictionary<string, float[]>();
+
+        camSwitch = FindObjectsOfType<CameraSwitcher>();
+
+        computers = FindObjectsOfType<ComputerControl>();
+
 
         // Sorts the array elements by the y values
         Array.Sort(resolutions, (resOne, resTwo) => resOne.y.CompareTo(resTwo.y));
@@ -289,6 +297,8 @@ public class PGM : MonoBehaviour
     {
         // Removes the saved object locations
         objectLocations.Clear();
+        // Removes saved computer states
+        computerStates.Clear();
 
         // Adds the current locations of important objects
         foreach (PickupManager obj in puzzleObjects)
@@ -300,6 +310,23 @@ public class PGM : MonoBehaviour
         playerLocation[0] = player.transform.position.x;
         playerLocation[1] = player.transform.position.y;
         playerLocation[2] = player.transform.position.z;
+
+        // Saves the current visible cameras
+        
+        for (int i = 0; i < camSwitch.Length; i++)
+        {
+            cameraIndexes[i] = camSwitch[i].currentIndex;
+        }
+
+        // Saves the states of all computers in the level
+
+
+        foreach(ComputerControl computer in computers)
+        {
+            computerStates.Add(computer.name, computer.activate);   
+        }
+
+
         // saves into a selected slot
         SaveLoad.Save(slot);
     
@@ -317,9 +344,31 @@ public class PGM : MonoBehaviour
     public void LoadInGame(int slot)
     {
         // No scene reloading, just loads the data, and moves things already in the scene, then pauses time.
-        // Inelegant solution, but it works.sceen
+        // Inelegant solution, but it works
         SaveLoad.Load(slot);
         OnSceneLoad.PuzzleLoaded();
+        // Forces the cameras to switch to saved indexes
+        if (cameraIndexes.Count == 4)
+        {
+            foreach (CameraSwitcher cam in camSwitch)
+            {
+                cam.currentIndex = cameraIndexes[Array.IndexOf(camSwitch, cam)];
+                cam.screenMaterial.material = screenMaterials[cam.currentIndex];
+            }
+        }
+
+        MoveObject[] movables = FindObjectsOfType<MoveObject>();
+        foreach (MoveObject obj in movables)
+        {
+            if (obj.computer != null)
+            {
+                if (obj.computer.activate)
+                {
+                    obj.transform.localPosition = obj.openPosition;
+                }
+            }
+            
+        }
         Time.timeScale = 0;
         
     }

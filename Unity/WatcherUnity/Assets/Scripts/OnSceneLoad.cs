@@ -63,6 +63,12 @@ public class OnSceneLoad : MonoBehaviour
 
         PGM.Instance.player = FindObjectOfType<PlayerControls>();
         PGM.Instance.puzzleObjects = FindObjectsOfType<PickupManager>();
+
+        PGM.Instance.camSwitch = FindObjectsOfType<CameraSwitcher>();
+        PGM.Instance.computers = FindObjectsOfType<ComputerControl>();
+
+        
+       
         // Moves all of the puzzle objects in the level into the right place as determined by the save data
         if (PGM.Instance.objectLocations.Count != 0)
         {
@@ -78,6 +84,40 @@ public class OnSceneLoad : MonoBehaviour
 
             PGM.Instance.player.transform.position = new Vector3(PGM.Instance.playerLocation[0], PGM.Instance.playerLocation[1], PGM.Instance.playerLocation[2]);
         }
+
+        if (PGM.Instance.cameraIndexes.Count == 4)
+        {
+            foreach (CameraSwitcher cam in PGM.Instance.camSwitch)
+            {
+                cam.currentIndex = PGM.Instance.cameraIndexes[System.Array.IndexOf(PGM.Instance.camSwitch, cam)];
+                cam.screenMaterial.material = PGM.Instance.screenMaterials[cam.currentIndex];
+            }
+        }
+
+        foreach(ComputerControl computer in PGM.Instance.computers)
+        {
+            if (PGM.Instance.computerStates.ContainsKey(computer.name))
+            {
+                computer.activate = PGM.Instance.computerStates[computer.name];
+            }
+                
+        }
+
+        MoveObject[] movables = FindObjectsOfType<MoveObject>();
+        foreach(MoveObject obj in movables)
+        {
+            if (obj.computer != null)
+            {
+                if (obj.computer.activate)
+                {
+                    obj.transform.localPosition = obj.openPosition;
+                }
+            }
+        }
+
+
+        
+
         // Resolves an issue relating to paused timescale upon scene loading
         Time.timeScale = 1;
 

@@ -64,6 +64,8 @@ public class CameraSwitcher : MonoBehaviour
         
         currentIndex = screenNumber - 1;
 
+        screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
+
     }
 
     void Update()

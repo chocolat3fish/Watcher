@@ -11,4 +11,7 @@ public class SaveData
     public Puzzle[] puzzleManager;
     // Float array because vector3 cannot be serialized. Stored as float[0] = x, float[1] = y, float[2] = z
     public float[] playerLocation = new float[3];
+    public Dictionary<string, bool> computerStates = new Dictionary<string, bool>();
+    public List<int> cameraIndexes = new List<int>();
+    public List<string> feedData = new List<string>();
 }

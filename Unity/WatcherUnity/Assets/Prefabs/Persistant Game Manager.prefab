@@ -48,7 +48,6 @@ MonoBehaviour:
   maxFOV: 90
   minFOV: 20
   monitorCamRotateSpeed: 3
-  selectedGameobject: {fileID: 0}
   loadedPuzzle: 0
   autoCameraSwitch: 0
   manyCameras: 1
@@ -64,6 +63,7 @@ MonoBehaviour:
     type: 3}
   subtitlePanel: {fileID: 734134173434445341, guid: ca709444c4fc721459c20c79342c9545,
     type: 3}
+  selectedGameobject: {fileID: 0}
   monitorScreens:
   - {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
   - {fileID: 8400000, guid: 960632959f31041bb995822b29199f87, type: 2}
@@ -189,6 +189,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  cameraIndexes: 00000000010000000200000003000000
 --- !u!95 &-8910108579370357771
 Animator:
   serializedVersion: 3
