@@ -32,12 +32,13 @@ public class Tutorial : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.GetType() == typeof(CapsuleCollider))
         {
+
             // Tutorial dialogue determined by an enum in the inspector
             // Actual dialogue is partially hard-coded, sorry
             switch (tutorialCom)
             {
                 case TutorialCom.interact:
-                    tutorialText = "Press " + PGM.Instance.keyBinds["Interact"].ToString() + " to interact with people and objects";
+                    tutorialText = "Press " + PGM.Instance.keyBinds["Interact"].ToString() + " to interact";
                     break;
 
                 case TutorialCom.move:
@@ -60,6 +61,13 @@ public class Tutorial : MonoBehaviour
             tutorialPanel = Instantiate(PGM.Instance.tutorialPanel, new Vector3(col.bounds.center.x, col.bounds.max.y, col.bounds.center.z), new Quaternion());
             tutorialPanel.GetComponentInChildren<TMP_Text>().text = tutorialText;
         }
+
+        if (transform.parent != null && PGM.Instance.player.holdingObject)
+        {
+            displayMessage = false;
+            Destroy(tutorialPanel);
+        }
+        
     }
     // Removes the currently displayed tutorial if the player leaves the zone
     private void OnTriggerExit(Collider other)

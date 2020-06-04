@@ -76,9 +76,9 @@ public class PlayerCamera : MonoBehaviour
         }
 
 
-        // Ray is lifted up by 2.5 points so that it looks the player's head, stopping small things on the floor from getting in the way    
-        Debug.DrawRay(transform.position, player.transform.position - transform.position + Vector3.up * 2.5f, Color.blue);
-        if (Physics.Raycast(transform.position, player.transform.position - transform.position + Vector3.up * 2.5f, out hit, Mathf.Infinity))
+        // Ray is lifted up by 2.9 points so that it looks the player's head, stopping small things on the floor from getting in the way    
+        Debug.DrawRay(transform.position, player.transform.position - transform.position + Vector3.up * 2.9f, Color.blue);
+        if (Physics.Raycast(transform.position, player.transform.position - transform.position + Vector3.up * 2.9f, out hit, Mathf.Infinity))
         {
             // if a wall is in the way and only one monitor should display, don't use the camera
             if (hit.collider.name != "Player" && PGM.Instance.autoCameraSwitch)
