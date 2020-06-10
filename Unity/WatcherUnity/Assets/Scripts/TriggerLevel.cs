@@ -47,10 +47,11 @@ public class TriggerLevel : MonoBehaviour
                 }
             }
             // If all the paths are completed, marks the puzzle as completed
-            if (completedPaths >= PGM.Instance.currentPuzzle.pathTriggers.Length)
+            if (completedPaths >= PGM.Instance.currentPuzzle.pathTriggers.Length - 1)
             {
                 PGM.Instance.currentPuzzle.completed = true;
             }
+
         }
 
     }
@@ -78,7 +79,7 @@ public class TriggerLevel : MonoBehaviour
                 }
             }
             
-            if (completedPaths >= PGM.Instance.currentPuzzle.pathTriggers.Length)
+            if (completedPaths >= PGM.Instance.currentPuzzle.pathTriggers.Length - 1)
             {
                 PGM.Instance.currentPuzzle.completed = true;
             }

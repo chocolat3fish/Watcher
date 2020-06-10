@@ -34,6 +34,7 @@ public class OnSceneLoad : MonoBehaviour
 
         if (PGM.Instance.loadedPuzzle == false)
         {
+            PGM.Instance.allCompleted = false;
             PGM.Instance.allCameras.Clear();
             PGM.Instance.sortedCameras = false;
             PGM.Instance.exitedLevel = false;

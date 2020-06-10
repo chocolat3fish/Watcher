@@ -46,6 +46,7 @@ public class PlayerControls : MonoBehaviour
 
     public NPCManager nearestNPC;
     public GameObject nearestObject;
+    public ComputerControl nearestComputer;
 
     public GameObject handRight;
     public GameObject handLeft;
@@ -130,12 +131,13 @@ public class PlayerControls : MonoBehaviour
             }
             */
 
-            nearestObject = FindNearestObject();
-
-            // Nearest npc is before objects to allow for npc taking priority over picking up objects
+            // Defined here so they only run once per input
             nearestNPC = FindNearestNPC();
-            
-            if (nearestNPC != null && holdingObject == false)
+            nearestObject = FindNearestObject();
+            nearestComputer = FindNearestComputer();
+
+            // only interacts if there's no object that's closer (or being held)
+            if (nearestNPC != null && holdingObject == false && Vector3.Distance(nearestNPC.transform.position, transform.position) < Vector3.Distance(nearestObject.transform.position, transform.position))
             {
                 nearestNPC.ContinueDialogue();
             }
@@ -144,14 +146,15 @@ public class PlayerControls : MonoBehaviour
             if (nearestObject != null)
             {
                 // Picks up an object if there's no nearby npc
-                if (nearestNPC == null)
+                if (nearestNPC == null && nearestComputer == null)
                 {
                     pickUpObject = true;
                 }
 
 
-                // If there is a nearby npc, only picks up object if the object is closer
-                if (nearestNPC != null && Vector3.Distance(nearestNPC.transform.position, transform.position) > Vector3.Distance(FindNearestObject().transform.position, transform.position))
+                // If there is a nearby npc or computer, only picks up object if the object is closer
+                if ((nearestNPC != null && Vector3.Distance(nearestNPC.transform.position, transform.position) > Vector3.Distance(nearestObject.transform.position, transform.position))
+                    || (nearestComputer != null && Vector3.Distance(nearestComputer.transform.position, transform.position) > Vector3.Distance(nearestObject.transform.position, transform.position)))
                 {
                     pickUpObject = true;
                 }
@@ -159,7 +162,7 @@ public class PlayerControls : MonoBehaviour
 
 
             // If there is a nearby computer and the player is not holding anything
-            if (FindNearestComputer() != null && PGM.Instance.usingComputer == false && holdingObject == false)
+            if (nearestComputer != null && PGM.Instance.usingComputer == false && holdingObject == false )
             {
                 compTime = Time.time;
                 interactComputer = true;
@@ -349,9 +352,11 @@ public class PlayerControls : MonoBehaviour
         foreach (GameObject pickup in nearbyObjects)
         {
             Vector3 pickupPos = new Vector3(pickup.transform.position.x, 0, pickup.transform.position.z);
-            
-            // allows to pick up if the object is within an angle of the direction, using Vector3.SignedAngle so that vertical angle has no effect
-            if (Vector3.Distance(pickupPos, playerLocation) < minDistance && (Vector3.SignedAngle(transform.forward, pickupPos - playerLocation, Vector3.left) < pickupAngle) && Mathf.Abs(transform.position.y - pickup.transform.position.y) <= reachHeight)
+
+            // allows to pick up if the object is within an angle of the direction
+            //print(Vector3.SignedAngle(pickupPos - playerLocation, transform.forward, Vector3.up));
+            //print(Vector3.Angle(pickupPos, transform.forward));
+            if (Vector3.Distance(pickupPos, playerLocation) < minDistance && Mathf.Abs(Vector3.SignedAngle(pickupPos - playerLocation, transform.forward, Vector3.up)) < pickupAngle && Mathf.Abs(transform.position.y - pickup.transform.position.y) <= reachHeight)
             {
                           
                 nearest = pickup;

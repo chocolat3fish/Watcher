@@ -13,6 +13,7 @@ public class Puzzle
     public PathTriggers[] pathTriggers;
 
     public bool completed;
+
 }
 
 [Serializable]

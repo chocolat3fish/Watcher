@@ -63,6 +63,8 @@ MonoBehaviour:
     type: 3}
   subtitlePanel: {fileID: 734134173434445341, guid: ca709444c4fc721459c20c79342c9545,
     type: 3}
+  camSwitch: []
+  computers: []
   selectedGameobject: {fileID: 0}
   monitorScreens:
   - {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
@@ -128,6 +130,9 @@ MonoBehaviour:
     - pathTriggers: 1
       pathProgress: 0
       pathComplete: 0
+    - pathTriggers: 1
+      pathProgress: 0
+      pathComplete: 0
     completed: 0
   - puzzleNumber: 1
     sceneName: PuzzleTwo
@@ -146,6 +151,7 @@ MonoBehaviour:
   puzzlesCompleted: 0
   currentLevel: 
   levelToLoad: 
+  allCompleted: 0
   settingsOpen: 0
   unloadSettingsScene: 0
   qualityIndex: 0

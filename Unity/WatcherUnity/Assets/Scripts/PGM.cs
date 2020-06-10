@@ -100,6 +100,8 @@ public class PGM : MonoBehaviour
     public string currentLevel;
     public string levelToLoad;
 
+    public bool allCompleted;
+
 
     [Header("UI")]
     public bool settingsOpen;
@@ -185,6 +187,7 @@ public class PGM : MonoBehaviour
 
         computers = FindObjectsOfType<ComputerControl>();
 
+        allCompleted = false;
 
         // Sorts the array elements by the y values
         Array.Sort(resolutions, (resOne, resTwo) => resOne.y.CompareTo(resTwo.y));

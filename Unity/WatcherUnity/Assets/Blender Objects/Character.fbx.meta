@@ -202,8 +202,8 @@ ModelImporter:
         weight: 0
       - path: Armature/Leg pole target.R/Leg pole target.R_end
         weight: 0
-      - path: Character
-        weight: 1
+      - path: Character.001
+        weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
@@ -405,7 +405,7 @@ ModelImporter:
       name: PickUpObject
       takeName: PickUpObject
       internalID: 0
-      firstFrame: 0
+      firstFrame: 3
       lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
@@ -423,52 +423,10 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      bodyMask: 01000000010000000100000000000000000000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Armature
-        weight: 1
-      - path: Armature/Hips
-        weight: 1
-      - path: Armature/Hips/Spine
-        weight: 1
-      - path: Armature/Hips/Spine/Neck
-        weight: 1
-      - path: Armature/Hips/Spine/Neck/Head
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.L
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.L/UpperArm.L
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.L/UpperArm.L/LowerArm.L
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.L/UpperArm.L/LowerArm.L/Hand.L
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.R
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.R/UpperArm.R
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.R/UpperArm.R/LowerArm.R
-        weight: 1
-      - path: Armature/Hips/Spine/Shoulder.R/UpperArm.R/LowerArm.R/Hand.R
-        weight: 1
-      - path: Armature/Hips/UpperLeg.L
-        weight: 1
-      - path: Armature/Hips/UpperLeg.L/LowerLeg.L
-        weight: 1
-      - path: Armature/Hips/UpperLeg.L/LowerLeg.L/Foot.L
-        weight: 1
-      - path: Armature/Hips/UpperLeg.R
-        weight: 1
-      - path: Armature/Hips/UpperLeg.R/LowerLeg.R
-        weight: 1
-      - path: Armature/Hips/UpperLeg.R/LowerLeg.R/Foot.R
-        weight: 1
-      - path: Character
-        weight: 0
+      transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0

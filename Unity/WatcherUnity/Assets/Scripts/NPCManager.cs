@@ -16,6 +16,8 @@ public class NPCManager : MonoBehaviour
 
     GameObject subtitlePanel;
 
+    public int prevIndex;
+
    
     void Start()
     {
@@ -42,6 +44,9 @@ public class NPCManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
+
+        prevIndex = dialogue.currentIndex;
+
         // If there's no panel (i.e. player left and came back) restarts the dialogue
         if (subtitlePanel == null)
         {
@@ -52,13 +57,13 @@ public class NPCManager : MonoBehaviour
         {
             Destroy(subtitlePanel);
         }
+
         // skips dialogue index to the furthest completed requirement, to avoid repeating unnecessary dialogue
         for (int i = 0; i < dialogue.requirements.Length; i++)
         {
             if (dialogue.requirements[i].pathProgress <= PGM.Instance.currentPuzzle.pathTriggers[dialogue.requirements[i].path].pathProgress)
             {
                 dialogue.currentIndex = dialogue.requirements[i].lineNum;
-
             }
             // If the requirement index has increased but progress has been undone, lower the requirement index
             if (i > 0 && dialogue.requirementIndex == i && dialogue.requirements[i].pathProgress > PGM.Instance.currentPuzzle.pathTriggers[dialogue.requirements[i].path].pathProgress)
@@ -72,14 +77,23 @@ public class NPCManager : MonoBehaviour
         // If the current index has a requirement
         if (dialogue.currentIndex >= dialogue.requirements[dialogue.requirementIndex].lineNum)
         {
+            
             // if the current index meets the requirement to continue
-            if (dialogue.requirements[dialogue.requirementIndex].pathProgress <= PGM.Instance.currentPuzzle.pathTriggers[dialogue.requirements[dialogue.requirementIndex].path].pathProgress)
+            if (dialogue.requirements[dialogue.requirementIndex].pathProgress <= PGM.Instance.currentPuzzle.pathTriggers[dialogue.requirements[dialogue.requirementIndex].path].pathProgress && dialogue.currentIndex != prevIndex)
             {
+
                 // Creates a subtitle with the current dialogue line, and moves the indexes up for the next time
                 subtitlePanel = Instantiate(PGM.Instance.subtitlePanel, transform.position, new Quaternion());
                 subtitlePanel.GetComponentInChildren<TMP_Text>().text = dialogue.lines[dialogue.currentIndex];
                 dialogue.requirementIndex += 1;
                 dialogue.currentIndex += 1;
+
+                if (prevIndex == dialogue.currentIndex)
+                {
+                    Destroy(subtitlePanel);
+                    dialogue.currentIndex = 0;
+                    //prevIndex = 0;
+                }
             }
             // If the first requirement hasn't been met, sets the dialogue back to the start (to allow for repeated dialogue)
             else if (dialogue.requirementIndex == 0)
@@ -91,6 +105,9 @@ public class NPCManager : MonoBehaviour
             {
                 dialogue.currentIndex = dialogue.requirements[dialogue.requirementIndex].lineNum - 1;
             }
+
+
+
         }
         // If there's no requirement on the current line
         else
@@ -105,16 +122,18 @@ public class NPCManager : MonoBehaviour
             }
 
         }
-        // If the index is past the number of lines, move it back one
+        // If the index is past the number of lines, move it back to the start
         if (dialogue.currentIndex > dialogue.lines.Length)
         {
-            dialogue.currentIndex -= 1;
+            dialogue.currentIndex = 0;
         }
-        // If the current requirement index is past the total number of requirements, move it back one
+        // If the current requirement index is past the total number of requirements, move it back to the start
         if (dialogue.requirementIndex >= dialogue.requirements.Length)
         {
-            dialogue.requirementIndex -= 1;
+            dialogue.requirementIndex = 0;
         }
+
+        
     }
 
 }
