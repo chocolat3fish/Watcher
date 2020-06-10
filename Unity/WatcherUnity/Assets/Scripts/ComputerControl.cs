@@ -26,20 +26,4 @@ public class ComputerControl : MonoBehaviour
     }
 
 
-
-    void ToggleStatus()
-    {
-        switch (activate)
-        {
-            case true:
-                activate = false;
-                
-                break;
-
-            case false:
-                activate = true;
-                
-                break;
-        }
-    }
 }

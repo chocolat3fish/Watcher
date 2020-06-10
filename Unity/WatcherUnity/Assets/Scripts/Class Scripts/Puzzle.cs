@@ -14,6 +14,8 @@ public class Puzzle
 
     public bool completed;
 
+    public string finalDialogue;
+
 }
 
 [Serializable]

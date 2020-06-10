@@ -120,6 +120,7 @@ MonoBehaviour:
     sceneName: 
     pathTriggers: []
     completed: 0
+    finalDialogue: 
   puzzleManager:
   - puzzleNumber: 0
     sceneName: PuzzleOne
@@ -134,6 +135,8 @@ MonoBehaviour:
       pathProgress: 0
       pathComplete: 0
     completed: 0
+    finalDialogue: By the way, I know what you're trying to do. The exit's open.
+      Best hurry up.
   - puzzleNumber: 1
     sceneName: PuzzleTwo
     pathTriggers:
@@ -141,6 +144,7 @@ MonoBehaviour:
       pathProgress: 0
       pathComplete: 0
     completed: 0
+    finalDialogue: 
   - puzzleNumber: 2
     sceneName: PuzzleThree
     pathTriggers:
@@ -148,6 +152,7 @@ MonoBehaviour:
       pathProgress: 0
       pathComplete: 0
     completed: 0
+    finalDialogue: 
   puzzlesCompleted: 0
   currentLevel: 
   levelToLoad: 

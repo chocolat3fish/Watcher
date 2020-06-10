@@ -122,7 +122,7 @@ public class PlayerControls : MonoBehaviour
         }
 
         
-        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false)
+        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && holdingObject == false && PGM.Instance.settingsOpen == false)
         {
             /*
             if (objectBeingHeld == null || holdingObject == false)
@@ -137,9 +137,10 @@ public class PlayerControls : MonoBehaviour
             nearestComputer = FindNearestComputer();
 
             // only interacts if there's no object that's closer (or being held)
-            if (nearestNPC != null && holdingObject == false && Vector3.Distance(nearestNPC.transform.position, transform.position) < Vector3.Distance(nearestObject.transform.position, transform.position))
+            if (nearestNPC != null && holdingObject == false && nearestObject == null)
             {
-                nearestNPC.ContinueDialogue();
+                    nearestNPC.ContinueDialogue();
+
             }
 
 

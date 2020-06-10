@@ -133,6 +133,13 @@ public class NPCManager : MonoBehaviour
             dialogue.requirementIndex = 0;
         }
 
+        if (PGM.Instance.currentPuzzle.completed == true && prevIndex == 0)
+        {
+            Destroy(subtitlePanel);
+
+            subtitlePanel = Instantiate(PGM.Instance.subtitlePanel, transform.position, new Quaternion());
+            subtitlePanel.GetComponentInChildren<TMP_Text>().text = PGM.Instance.currentPuzzle.finalDialogue;
+        }
         
     }
 
