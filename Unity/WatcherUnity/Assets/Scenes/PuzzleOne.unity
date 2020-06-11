@@ -5780,7 +5780,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 93
+  m_RootOrder: 92
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &345100252
 GameObject:
@@ -7925,6 +7925,7 @@ MonoBehaviour:
       pathProgress: 1
     currentIndex: 0
     requirementIndex: 0
+  prevIndex: 0
 --- !u!23 &548502918
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9105,7 +9106,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7419c1be2a86342a19fe7a0434171d83,
         type: 3}
       propertyPath: m_RootOrder
-      value: 92
+      value: 93
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7419c1be2a86342a19fe7a0434171d83,
         type: 3}
@@ -12592,7 +12593,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1143366873
 PrefabInstance:
@@ -40970,6 +40971,7 @@ MonoBehaviour:
       pathProgress: 2
     currentIndex: 0
     requirementIndex: 0
+  prevIndex: 0
 --- !u!95 &1906314369 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 01293175121f01a4489e9f573f77872d,
@@ -43386,7 +43388,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 2}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0.3619814, y: 0.31883729, z: 1.9678631}
 --- !u!1 &2110228478 stripped
 GameObject:
