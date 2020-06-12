@@ -73,6 +73,8 @@ public class PGM : MonoBehaviour
     public List<Camera> camerasCanSee;
     public List<Camera> allCameras;
 
+    public List<Camera> visibleCameras;
+
 
 
     public Color32 highlightColour;
@@ -293,6 +295,7 @@ public class PGM : MonoBehaviour
         {
             return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
         });
+
         sortedCameras = true;
     }
 

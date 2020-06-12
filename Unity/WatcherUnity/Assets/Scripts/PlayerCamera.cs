@@ -46,6 +46,14 @@ public class PlayerCamera : MonoBehaviour
     void Update()
     {
 
+        if (!PGM.Instance.visibleCameras.Contains(cameraComponent))
+        {
+            cameraComponent.enabled = false;
+        }
+        else
+        {
+            cameraComponent.enabled = true;
+        }
         
         // when player goes out of view, camera pans back to editor-defined object of importance
         if (targetObject != null && PGM.Instance.camerasCanSee.Contains(cameraComponent) == false && watchTargetObject)

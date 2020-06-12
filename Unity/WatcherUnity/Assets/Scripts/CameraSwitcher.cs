@@ -25,7 +25,7 @@ public class CameraSwitcher : MonoBehaviour
 
     public int monitorNumber;
 
-
+    public bool setCams;
 
 
     void Start()
@@ -66,15 +66,24 @@ public class CameraSwitcher : MonoBehaviour
 
         screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
 
+
+
     }
 
     void Update()
     {
+        // Runs once when PGM has sorted the cameras (doesn't align in the start function so this will have to do
+        if (PGM.Instance.sortedCameras && setCams == false)
+        {
+            PGM.Instance.visibleCameras.Add(PGM.Instance.allCameras[currentIndex]);
+            setCams = true;
+        }
         // on click or button press
 
         if (((Input.GetMouseButtonDown(1) || (Input.GetMouseButtonDown(0) && Input.GetKey(PGM.Instance.keyBinds["MonitorBack"]))) && PGM.Instance.selectedGameobject == buttonObject) || (Input.GetKey(PGM.Instance.keyBinds["MonitorBack"]) && Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber])) && PGM.Instance.settingsOpen == false)
         {
             OutputBackward();
+
         }
         else if ((Input.GetMouseButtonDown(0) && PGM.Instance.selectedGameobject == buttonObject || Input.GetKeyDown(PGM.Instance.monitorKeyList[monitorNumber])) && PGM.Instance.settingsOpen == false)
         {
@@ -90,16 +99,19 @@ public class CameraSwitcher : MonoBehaviour
             buttonMaterial.material.color = oldColour;
         }
 
+        
+
     }
     // Moves the camera output forward one place
     void OutputForward()
     {
-
+        PGM.Instance.visibleCameras.Remove(PGM.Instance.allCameras[currentIndex]);
         currentIndex += 1;
         if (currentIndex >= PGM.Instance.allCameras.Count)
         {
             currentIndex = 0;
         }
+        PGM.Instance.visibleCameras.Add(PGM.Instance.allCameras[currentIndex]);
         screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
         
         //PGM.Instance.allCameras
@@ -108,11 +120,13 @@ public class CameraSwitcher : MonoBehaviour
     // Moves the camera output backward one place
     void OutputBackward()
     {
+        PGM.Instance.visibleCameras.Remove(PGM.Instance.allCameras[currentIndex]);
         currentIndex -= 1;
         if (currentIndex < 0)
         {
             currentIndex = PGM.Instance.allCameras.Count - 1;
         }
+        PGM.Instance.visibleCameras.Add(PGM.Instance.allCameras[currentIndex]);
         screenMaterial.material = PGM.Instance.screenMaterials[currentIndex];
     }
 }

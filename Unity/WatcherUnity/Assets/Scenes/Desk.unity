@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monitorName: 
   assignedScreen: {fileID: 0}
-  currentIndex: 0
+  currentIndex: 3
   screenNumber: 0
   materialName: 
   screenMaterial: {fileID: 0}
@@ -2951,7 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monitorName: 
   assignedScreen: {fileID: 0}
-  currentIndex: 0
+  currentIndex: 1
   screenNumber: 0
   materialName: 
   screenMaterial: {fileID: 0}
@@ -6561,7 +6561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monitorName: 
   assignedScreen: {fileID: 0}
-  currentIndex: 0
+  currentIndex: 2
   screenNumber: 0
   materialName: 
   screenMaterial: {fileID: 0}

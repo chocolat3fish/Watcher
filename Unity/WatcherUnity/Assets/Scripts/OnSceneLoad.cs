@@ -68,8 +68,8 @@ public class OnSceneLoad : MonoBehaviour
         PGM.Instance.camSwitch = FindObjectsOfType<CameraSwitcher>();
         PGM.Instance.computers = FindObjectsOfType<ComputerControl>();
 
-        
        
+
         // Moves all of the puzzle objects in the level into the right place as determined by the save data
         if (PGM.Instance.objectLocations.Count != 0)
         {
@@ -88,10 +88,13 @@ public class OnSceneLoad : MonoBehaviour
 
         if (PGM.Instance.cameraIndexes.Count == 4)
         {
+            PGM.Instance.visibleCameras.Clear();
             foreach (CameraSwitcher cam in PGM.Instance.camSwitch)
             {
                 cam.currentIndex = PGM.Instance.cameraIndexes[System.Array.IndexOf(PGM.Instance.camSwitch, cam)];
                 cam.screenMaterial.material = PGM.Instance.screenMaterials[cam.currentIndex];
+
+                
             }
         }
 

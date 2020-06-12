@@ -5780,7 +5780,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 92
+  m_RootOrder: 82
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &345100252
 GameObject:
@@ -11564,7 +11564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 82
+  m_RootOrder: 83
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1068831135
 GameObject:
@@ -23181,7 +23181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 83
+  m_RootOrder: 84
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337208055
 GameObject:
@@ -23629,7 +23629,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 85
+  m_RootOrder: 86
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1428661801
 PrefabInstance:
@@ -39262,7 +39262,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 87
+  m_RootOrder: 92
   m_LocalEulerAnglesHint: {x: 0, y: -176.78001, z: 0}
 --- !u!43 &1790028323
 Mesh:
@@ -39889,7 +39889,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 84
+  m_RootOrder: 85
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1827028264
 GameObject:
@@ -40958,8 +40958,8 @@ MonoBehaviour:
   dialogue:
     lines:
     - Hello there, I was about to head off to lunch but I have some work to do beforehand.
-    - If you wouldn't mind, there are a couple of receptors including the one next
-      to me that need a weight on them. Any sort of box should do.
+    - If you wouldn't mind, there are a couple of pressure plates including the one
+      next to me that need a weight on them. Any sort of box should do.
     - Only one more to activate.
     - Thanks for the help.
     requirements:
@@ -43182,7 +43182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 86
+  m_RootOrder: 87
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &2081022635
 PrefabInstance:
