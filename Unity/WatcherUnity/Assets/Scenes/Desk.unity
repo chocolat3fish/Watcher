@@ -1468,6 +1468,7 @@ MonoBehaviour:
     rgba: 0
   monitorNumber: 0
   setCams: 0
+  defaultIndex: 3
 --- !u!1 &420944868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 72e74fa2c6096480ab489a1d971164b8,
@@ -3324,6 +3325,7 @@ MonoBehaviour:
     rgba: 0
   monitorNumber: 0
   setCams: 0
+  defaultIndex: 1
 --- !u!1 &1013181111
 GameObject:
   m_ObjectHideFlags: 0
@@ -6985,6 +6987,7 @@ MonoBehaviour:
     rgba: 0
   monitorNumber: 0
   setCams: 0
+  defaultIndex: 2
 --- !u!1 &1630602274
 GameObject:
   m_ObjectHideFlags: 0
@@ -8615,6 +8618,7 @@ MonoBehaviour:
     rgba: 0
   monitorNumber: 0
   setCams: 0
+  defaultIndex: 0
 --- !u!1 &2129727823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f5fbdd359aa8fa54f84e342d7c66c2f8,

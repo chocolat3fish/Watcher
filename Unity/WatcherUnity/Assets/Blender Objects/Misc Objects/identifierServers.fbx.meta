@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8905f4085ea4c4f33b2842ae06b4209f
+guid: 5f6f4756ca055461b92f9d7267b1d02e
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,17 +7,12 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Dirt
-    second: {fileID: 2100000, guid: 92e67317d8f2bf040b3d364fdba69979, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 7fbb6106cd2cf4c0492b9cfcd117d209, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaves
-    second: {fileID: 2100000, guid: 9a885f95608774c4aa2e5d8ea1cf635e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pot
+      name: Shell
     second: {fileID: 2100000, guid: dd935db389d173645877b6648b4eed00, type: 2}
   materials:
     materialImportMode: 1
@@ -49,8 +44,8 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.75
-    meshCompression: 3
+    globalScale: 1
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
@@ -95,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.75
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

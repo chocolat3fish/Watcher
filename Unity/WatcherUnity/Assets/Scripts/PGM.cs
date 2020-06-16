@@ -356,10 +356,12 @@ public class PGM : MonoBehaviour
         // Forces the cameras to switch to saved indexes
         if (cameraIndexes.Count == 4)
         {
+            visibleCameras.Clear();
             foreach (CameraSwitcher cam in camSwitch)
             {
                 cam.currentIndex = cameraIndexes[Array.IndexOf(camSwitch, cam)];
                 cam.screenMaterial.material = screenMaterials[cam.currentIndex];
+                visibleCameras.Add(allCameras[cam.currentIndex]);
             }
         }
 

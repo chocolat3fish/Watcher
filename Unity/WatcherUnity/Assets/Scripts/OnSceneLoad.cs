@@ -36,6 +36,16 @@ public class OnSceneLoad : MonoBehaviour
         {
             PGM.Instance.allCompleted = false;
             PGM.Instance.allCameras.Clear();
+            PGM.Instance.visibleCameras.Clear();
+            PGM.Instance.cameraIndexes = new List<int> { 0, 1, 2, 3 };
+
+            foreach (CameraSwitcher cam in PGM.Instance.camSwitch)
+            {
+                cam.currentIndex = cam.defaultIndex;
+                cam.setCams = false;
+                //PGM.Instance.visibleCameras.Add(PGM.Instance.allCameras[cam.currentIndex]);
+            }
+
             PGM.Instance.sortedCameras = false;
             PGM.Instance.exitedLevel = false;
             
@@ -92,9 +102,7 @@ public class OnSceneLoad : MonoBehaviour
             foreach (CameraSwitcher cam in PGM.Instance.camSwitch)
             {
                 cam.currentIndex = PGM.Instance.cameraIndexes[System.Array.IndexOf(PGM.Instance.camSwitch, cam)];
-                cam.screenMaterial.material = PGM.Instance.screenMaterials[cam.currentIndex];
-
-                
+                cam.screenMaterial.material = PGM.Instance.screenMaterials[cam.currentIndex];    
             }
         }
 

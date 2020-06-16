@@ -62,7 +62,7 @@ public class Tutorial : MonoBehaviour
             tutorialPanel.GetComponentInChildren<TMP_Text>().text = tutorialText;
         }
 
-        if (transform.parent != null && PGM.Instance.player.holdingObject)
+        if (transform.parent != null && PGM.Instance.player.objectBeingHeld == transform.parent.GetComponent<Rigidbody>())
         {
             displayMessage = false;
             Destroy(tutorialPanel);

@@ -27,6 +27,10 @@ public class CameraSwitcher : MonoBehaviour
 
     public bool setCams;
 
+    public int defaultIndex;
+
+
+
 
     void Start()
     {

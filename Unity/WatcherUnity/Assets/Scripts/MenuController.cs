@@ -176,9 +176,10 @@ public class MenuController : MonoBehaviour
             }
         }
         */
-        resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, PGM.Instance.currentResolution);
-
-        Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
+        resolutionDropdown.value = Array.IndexOf(PGM.Instance.resolutions, (Screen.currentResolution.width, Screen.currentResolution.height));
+        PGM.Instance.currentResolution.x = Screen.currentResolution.width;
+        PGM.Instance.currentResolution.y = Screen.currentResolution.height;
+        //Screen.SetResolution(PGM.Instance.currentResolution.x, PGM.Instance.currentResolution.y, Screen.fullScreenMode);
 
         // Finds the current index of the quality level and assigns that to the dropdown to accurately represent the current quality. Should work as the dropdown indexes are the same as the settings indexes.
 
