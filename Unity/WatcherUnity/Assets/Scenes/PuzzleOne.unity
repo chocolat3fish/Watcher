@@ -24863,8 +24863,8 @@ MonoBehaviour:
   gravityScale: 1.5
   rotateSpeed: 200
   direction: {x: 0, y: 0, z: 0}
-  pickupAngle: 45
-  computerAngle: 45
+  pickupAngle: 90
+  computerAngle: 90
   holdingObject: 0
   pickUpObject: 0
   dropObject: 0

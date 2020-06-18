@@ -596,8 +596,8 @@ MonoBehaviour:
   gravityScale: 1.5
   rotateSpeed: 200
   direction: {x: 0, y: 0, z: 0}
-  pickupAngle: 20
-  computerAngle: 45
+  pickupAngle: 90
+  computerAngle: 90
   holdingObject: 0
   pickUpObject: 0
   dropObject: 0
@@ -615,10 +615,14 @@ MonoBehaviour:
   nearbyComputers: []
   nearbyNPCS: []
   nearestNPC: {fileID: 0}
+  nearestObject: {fileID: 0}
+  nearestComputer: {fileID: 0}
   handRight: {fileID: 0}
   handLeft: {fileID: 0}
   playerCollider: {fileID: 0}
   boxCollider: {fileID: 0}
+  compSeconds: 2
+  compTime: 0
 --- !u!23 &177835801
 MeshRenderer:
   m_ObjectHideFlags: 0
