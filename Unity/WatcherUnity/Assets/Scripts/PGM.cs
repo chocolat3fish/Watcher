@@ -194,6 +194,8 @@ public class PGM : MonoBehaviour
         // Sorts the array elements by the y values
         Array.Sort(resolutions, (resOne, resTwo) => resOne.y.CompareTo(resTwo.y));
 
+
+
         monitorKeyList = new List<KeyCode>() { keyBinds["Monitor1"], keyBinds["Monitor2"], keyBinds["Monitor3"], keyBinds["Monitor4"] };
 
     }

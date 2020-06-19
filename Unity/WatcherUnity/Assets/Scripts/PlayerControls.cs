@@ -214,7 +214,7 @@ public class PlayerControls : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null) || Time.time > compTime + compSeconds )
+        if (Input.GetKeyDown(PGM.Instance.keyBinds["Interact"]) && usingComputer == true || (usingComputer && FindNearestComputer() == null) || (usingComputer && Time.time > compTime + compSeconds))
         {
             exitComputer = true;
 
