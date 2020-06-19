@@ -28,10 +28,14 @@ public class Tutorial : MonoBehaviour
     }
 
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && other.GetType() == typeof(CapsuleCollider))
         {
+            if (tutorialPanel != null)
+            {
+                Destroy(tutorialPanel);
+            }
 
             // Tutorial dialogue determined by an enum in the inspector
             // Actual dialogue is partially hard-coded, sorry
@@ -58,10 +62,15 @@ public class Tutorial : MonoBehaviour
                     break;
             }
 
+            tutorialText = tutorialText.Replace("Alpha", "");
+
             tutorialPanel = Instantiate(PGM.Instance.tutorialPanel, new Vector3(col.bounds.center.x, col.bounds.max.y, col.bounds.center.z), new Quaternion());
             tutorialPanel.GetComponentInChildren<TMP_Text>().text = tutorialText;
+            
+            
         }
 
+        
         if (transform.parent != null && PGM.Instance.player.objectBeingHeld == transform.parent.GetComponent<Rigidbody>())
         {
             displayMessage = false;
