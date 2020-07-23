@@ -118,8 +118,11 @@ public class PGM : MonoBehaviour
 
     public Resolution currentResolution;
 
+
+    public Resolution defScreenRes;
     public int screenAA = 1;
     public int cameraRes = 540;
+    public List<int> cameraResOptions = new List<int> { 270, 540, 1080, 1440 };
 
     [Header("Events Dialogue")]
     public List<string> eventsList;
@@ -137,7 +140,7 @@ public class PGM : MonoBehaviour
         { "Monitor2", KeyCode.Alpha2 },
         { "Monitor3", KeyCode.Alpha3 },
         { "Monitor4", KeyCode.Alpha4 },
-        { "MonitorBack", KeyCode.LeftShift }
+        { "ReverseMonitor", KeyCode.LeftShift }
     };
 
     public List<KeyCode> monitorKeyList;
@@ -153,6 +156,7 @@ public class PGM : MonoBehaviour
 
     [Header("Save Data")]
     public int saveSlot;
+    public int loadSlot;
     public int deleteSlot;
     public Dictionary<string, float[]> objectLocations;
     public float[] playerLocation = new float [] { 0, 0, 0 };
@@ -198,6 +202,8 @@ public class PGM : MonoBehaviour
 
         monitorKeyList = new List<KeyCode>() { keyBinds["Monitor1"], keyBinds["Monitor2"], keyBinds["Monitor3"], keyBinds["Monitor4"] };
 
+        defScreenRes.x = Screen.currentResolution.width;
+        defScreenRes.y = Screen.currentResolution.height;
     }
 
     private void Start()

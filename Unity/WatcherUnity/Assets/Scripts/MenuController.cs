@@ -75,7 +75,7 @@ public class MenuController : MonoBehaviour
         monitor2Key = controlsMenu.transform.Find("Monitor2").GetComponent<TMP_Text>();
         monitor3Key = controlsMenu.transform.Find("Monitor3").GetComponent<TMP_Text>();
         monitor4Key = controlsMenu.transform.Find("Monitor4").GetComponent<TMP_Text>();
-        monitorBackKey = controlsMenu.transform.Find("MonitorBack").GetComponent<TMP_Text>();
+        monitorBackKey = controlsMenu.transform.Find("ReverseMonitor").GetComponent<TMP_Text>();
 
         changeKeyDialogue = controlsMenu.transform.Find("ChangeKey").GetComponent<TMP_Text>();
 

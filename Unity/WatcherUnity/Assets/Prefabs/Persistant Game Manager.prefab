@@ -104,6 +104,7 @@ MonoBehaviour:
   inactiveCameras: []
   camerasCanSee: []
   allCameras: []
+  visibleCameras: []
   highlightColour:
     serializedVersion: 2
     rgba: 63231
@@ -111,8 +112,8 @@ MonoBehaviour:
   testLevel: POC
   computerScene: ComPuzzleDisplay
   eventsScene: EventsDisplay
-  mainMenuScene: MenuDesk
-  pauseScene: PauseMenu
+  mainMenuScene: MainMenu
+  pauseScene: PauseMenu2
   menuDeskScene: Main Menu
   loadingScene: Loading
   currentPuzzle:
@@ -184,8 +185,12 @@ MonoBehaviour:
   currentResolution:
     x: 1920
     y: 1080
+  defScreenRes:
+    x: 0
+    y: 0
   screenAA: 1
   cameraRes: 540
+  cameraResOptions: 0e0100001c02000038040000a0050000
   eventsList:
   - ' '
   - ' '
@@ -195,6 +200,7 @@ MonoBehaviour:
   - ' '
   monitorKeyList: 
   saveSlot: 0
+  loadSlot: 0
   deleteSlot: 0
   playerLocation:
   - 0
