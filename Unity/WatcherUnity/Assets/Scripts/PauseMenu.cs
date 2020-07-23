@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
             StartCoroutine(FadeAlpha(fadeObject));
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !subMenuOpen)
+        if (Input.GetKeyDown(KeyCode.Escape) && !subMenuOpen && SceneManager.GetActiveScene().name != PGM.Instance.mainMenuScene) 
         {
             ContinueGame();
         }
