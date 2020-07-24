@@ -179,10 +179,18 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadGame(int slot)
     {
+
         if (File.Exists(Application.persistentDataPath + "/savedata" + slot + ".gd"))
         {
-            PGM.Instance.LoadInGame(slot);
-            SaveLoad.Load(slot);
+            if (SceneManager.GetActiveScene().name == PGM.Instance.mainMenuScene)
+            {
+                PGM.Instance.LoadGame(slot);
+            }
+            else
+            {
+                PGM.Instance.LoadInGame(slot);
+                SaveLoad.Load(slot);
+            }
 
             loadWarning.SetActive(false);
         }

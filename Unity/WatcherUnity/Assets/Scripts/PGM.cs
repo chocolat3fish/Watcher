@@ -202,8 +202,8 @@ public class PGM : MonoBehaviour
 
         monitorKeyList = new List<KeyCode>() { keyBinds["Monitor1"], keyBinds["Monitor2"], keyBinds["Monitor3"], keyBinds["Monitor4"] };
 
-        defScreenRes.x = Screen.currentResolution.width;
-        defScreenRes.y = Screen.currentResolution.height;
+        defScreenRes.x = Screen.resolutions[Screen.resolutions.Length - 1].width;
+        defScreenRes.y = Screen.resolutions[Screen.resolutions.Length - 1].height;
     }
 
     private void Start()

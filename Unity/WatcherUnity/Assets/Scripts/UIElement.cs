@@ -36,7 +36,7 @@ public class UIElement : MonoBehaviour
                 }
                 else
                 {
-                    text.text = Screen.fullScreenMode.ToString();
+                    text.text = "Windowed";
                 }
                 break;
 
