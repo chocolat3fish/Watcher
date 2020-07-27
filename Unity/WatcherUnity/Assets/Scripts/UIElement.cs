@@ -43,7 +43,7 @@ public class UIElement : MonoBehaviour
             case UIData.resolution:
                 //string[] resStrings = Screen.currentResolution.ToString().Split('@');
                 //text.text = resStrings[0];
-                text.text = $"{Screen.width} x {Screen.height}";
+                text.text = $"{Screen.width}x{Screen.height}";
                 break;
 
             case UIData.cameraResolution:

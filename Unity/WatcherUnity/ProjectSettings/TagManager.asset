@@ -12,6 +12,7 @@ TagManager:
   - Trigger
   - HandR
   - HandL
+  - UICamera
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - Computer
   - PostProcessing
-  - 
+  - UIPP
   - 
   - 
   - 

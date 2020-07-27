@@ -27,21 +27,23 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != PGM.Instance.mainMenuScene)
-        {
-            saveParent = GameObject.Find("ParentSave");
-        }
-        
-        loadParent = GameObject.Find("ParentLoad");
-        settingsParent = GameObject.Find("ParentSettings");
-        controlsParent = GameObject.Find("ParentControls");
+
 
         saveWarning.SetActive(false);
         loadWarning.SetActive(false);
         deleteWarning.SetActive(false);
         exitWarning.SetActive(false);
 
-        ToggleSubMenu("all");
+        loadParent = GameObject.Find("ParentLoad");
+        settingsParent = GameObject.Find("ParentSettings");
+        controlsParent = GameObject.Find("ParentControls");
+        if (SceneManager.GetActiveScene().name != PGM.Instance.mainMenuScene)
+        {
+            saveParent = GameObject.Find("ParentSave");
+            ToggleSubMenu("all");
+        }
+
+        
 
     }
 
