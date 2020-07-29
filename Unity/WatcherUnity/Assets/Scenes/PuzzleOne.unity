@@ -7914,8 +7914,8 @@ MonoBehaviour:
   animator: {fileID: 548502916}
   dialogue:
     lines:
-    - Oh, hello. I'm nearly done for the day, but there's a part i need to socket
-      into something I'm working on.
+    - Oh, hello. I'm nearly done for the day but there's a component I need for something
+      I'm working on.
     - Perhaps it got lost in storage? I guess if  you could find it for me and just
       drop it in this bin that'd be helpful.
     - Thanks for finding that, I guess.
