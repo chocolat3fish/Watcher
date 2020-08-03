@@ -50,7 +50,7 @@ public class Tutorial : MonoBehaviour
                     break;
 
                 case TutorialCom.camera:
-                    tutorialText = "You can toggle camera outputs with " + PGM.Instance.keyBinds["Monitor1"].ToString() + ", " + PGM.Instance.keyBinds["Monitor2"].ToString() + ", " + PGM.Instance.keyBinds["Monitor3"].ToString() + ", " + PGM.Instance.keyBinds["Monitor4"].ToString() + ".\nHolding " + PGM.Instance.keyBinds["MonitorBack"].ToString() + " will reverse the toggle direction";
+                    tutorialText = "You can toggle camera outputs with " + PGM.Instance.keyBinds["Monitor1"].ToString() + ", " + PGM.Instance.keyBinds["Monitor2"].ToString() + ", " + PGM.Instance.keyBinds["Monitor3"].ToString() + ", " + PGM.Instance.keyBinds["Monitor4"].ToString() + ".\nHolding " + PGM.Instance.keyBinds["ReverseMonitor"].ToString() + " will reverse the toggle direction";
                     break;
 
                 case TutorialCom.end:

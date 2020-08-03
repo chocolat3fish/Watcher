@@ -13,8 +13,16 @@ public class SaveLoad : MonoBehaviour
 
     public static void Save(int slot)
     {
-        saveData.puzzleManager = new Puzzle[PGM.Instance.puzzleManager.Length];
         FileStream file;
+
+        saveData.version = PGM.Instance.gameVersion;
+
+        saveData.puzzlesCompleted = PGM.Instance.puzzlesCompleted;
+
+        saveData.currentPuzzle = PGM.Instance.currentPuzzle;
+
+        saveData.puzzleManager = PGM.Instance.puzzleManager;
+        
         saveData.objectLocations = PGM.Instance.objectLocations;
 
         saveData.playerLocation = PGM.Instance.playerLocation;
@@ -41,7 +49,7 @@ public class SaveLoad : MonoBehaviour
         }
         bf.Serialize(file, saveData);
         
-        print("Saved");
+        //print("Saved");
         file.Close();
     }
 
@@ -58,18 +66,27 @@ public class SaveLoad : MonoBehaviour
             }
             catch (SerializationException)
             {
-                // will add something that allows for outdated saves
+                
+                if (saveData.version != PGM.Instance.gameVersion)
+                {
+                    // will add something that allows for outdated saves
+                }
                 print("load error");
                 file.Close();
             }
             // Saves data as the data in the save slot
+            PGM.Instance.gameVersion = saveData.version;
             PGM.Instance.objectLocations = saveData.objectLocations;
             PGM.Instance.playerLocation = saveData.playerLocation;
+            PGM.Instance.puzzlesCompleted = saveData.puzzlesCompleted;
+            PGM.Instance.currentPuzzle = saveData.currentPuzzle;
             PGM.Instance.puzzleManager = saveData.puzzleManager;
             PGM.Instance.computerStates = saveData.computerStates;
             PGM.Instance.cameraIndexes = saveData.cameraIndexes;
             PGM.Instance.eventsList = saveData.feedData;
-            print("loaded");
+
+            
+            //print("loaded");
             file.Close();
         }
 

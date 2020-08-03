@@ -65,11 +65,11 @@ public class MoveObject : MonoBehaviour
             switch (computer.activate)
             {
                 case true:
-                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove * Time.deltaTime * 100);
                     break;
 
                 case false:
-                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove * Time.deltaTime * 100);
                     break;
             }    
         }
@@ -80,18 +80,18 @@ public class MoveObject : MonoBehaviour
             switch (PGM.Instance.currentPuzzle.completed)
             {
                 case true:
-                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, openPosition, speedOfMove * Time.deltaTime * 100);
                     break;
 
                 case false:
-                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove);
+                    transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove * Time.deltaTime * 100);
                     break;
             }
 
             switch (PGM.Instance.exitedLevel)
             {
                 case true:
-                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove * 6);
+                    transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove * 6 * Time.deltaTime * 100);
                     break;
             }
     

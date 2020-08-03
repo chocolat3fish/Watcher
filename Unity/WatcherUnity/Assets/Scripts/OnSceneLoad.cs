@@ -8,6 +8,12 @@ public class OnSceneLoad : MonoBehaviour
 {
     void Start()
     {
+        Init();    
+    
+    }
+
+    public static void Init()
+    {
         // If on the desk scene, load the current puzzle (i.e. the first puzzle)
         if (SceneManager.GetActiveScene().name == PGM.Instance.deskScene && PGM.Instance.loadedPuzzle == false)
         {
@@ -24,9 +30,7 @@ public class OnSceneLoad : MonoBehaviour
         {
             PuzzleLoaded();
         }
-    
     }
-
 
     public static void NewLevel()
     {
@@ -37,6 +41,7 @@ public class OnSceneLoad : MonoBehaviour
             PGM.Instance.allCameras.Clear();
             PGM.Instance.visibleCameras.Clear();
             PGM.Instance.cameraIndexes = new List<int> { 0, 1, 2, 3 };
+
 
             foreach (CameraSwitcher cam in PGM.Instance.camSwitch)
             {
@@ -54,7 +59,7 @@ public class OnSceneLoad : MonoBehaviour
 
             PGM.Instance.loadedPuzzle = true;
 
-            PGM.Instance.playerLocation = new float[] { 0, 0, 0};
+            PGM.Instance.playerLocation = new float[] { 0, 0, 0 };
 
         }
 
@@ -128,6 +133,11 @@ public class OnSceneLoad : MonoBehaviour
 
         // Resolves an issue relating to paused timescale upon scene loading
         Time.timeScale = 1;
+
+    }
+
+    public static void ClearCameras()
+    {
 
     }
 }

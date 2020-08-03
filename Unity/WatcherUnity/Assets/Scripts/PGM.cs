@@ -10,6 +10,7 @@ public class PGM : MonoBehaviour
 {
     public static PGM Instance { get; private set; }
 
+    public float gameVersion = 1.1f;
 
     [Header("Camera Settings")]
     public float FOV;
@@ -161,7 +162,7 @@ public class PGM : MonoBehaviour
     public Dictionary<string, float[]> objectLocations;
     public float[] playerLocation = new float [] { 0, 0, 0 };
     public Dictionary<string, bool> computerStates = new Dictionary<string, bool>();
-    public List<int> cameraIndexes = new List<int> { 0, 1, 2, 3 };
+    public List<int> cameraIndexes = new List<int>() { 0, 1, 2, 3 };
     // Puzzle manager and feed as well
 
     public void AdjustDictionary(string key, int data)
