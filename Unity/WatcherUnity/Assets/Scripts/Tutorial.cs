@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class Tutorial : MonoBehaviour
 
     public TutorialCom tutorialCom;
 
+    public string spawnScene;
+
     public string tutorialText;
 
     private Collider col;
 
-    GameObject tutorialPanel;
+    public GameObject tutorialPanel;
 
     public bool displayMessage;
 
@@ -23,11 +26,18 @@ public class Tutorial : MonoBehaviour
     {
         col = GetComponent<Collider>();
 
-
+        spawnScene = PGM.Instance.currentLevel;
         
     }
 
-    
+    private void Update()
+    {
+        if (!SceneManager.GetSceneByName(spawnScene).isLoaded)
+        {
+            Destroy(tutorialPanel);
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && other.GetType() == typeof(CapsuleCollider))
@@ -87,4 +97,6 @@ public class Tutorial : MonoBehaviour
             Destroy(tutorialPanel);
         }
     }
+
+    
 }

@@ -40,6 +40,9 @@ public class PGM : MonoBehaviour
     public bool exitedLevel;
 
     [Header("Object Tracking")]
+
+    public ObjectManager objectManager;
+
     public PlayerControls player;
 
     public GameObject monitorsObject;
@@ -65,16 +68,6 @@ public class PGM : MonoBehaviour
     public RenderTexture monitorScreen;
     public RenderTexture puzzleScreen;
     public RenderTexture hiddenScreen;
-
-
-    [Header("Cameras")]
-    public GameObject primaryCamera;
-    public Camera activeCamera;
-    public List<Camera> inactiveCameras;
-    public List<Camera> camerasCanSee;
-    public List<Camera> allCameras;
-
-    public List<Camera> visibleCameras;
 
 
 
@@ -225,11 +218,7 @@ public class PGM : MonoBehaviour
     {
   
 
-        // only runs it once because start and awake are too early for some reason and it has to be in update
-        if (sortedCameras == false && allCameras.Count > 0)
-        {
-            SortCameras();
-        }
+        
 
         if (currentPuzzle.completed)
         {
@@ -297,17 +286,7 @@ public class PGM : MonoBehaviour
     }
 
 
-    public void SortCameras()
-    {
-        // Sorts all of the cameras by the inspector-defined priority value
-        allCameras.Sort(delegate (Camera a, Camera b)
-        {
-            return a.GetComponent<PlayerCamera>().priority.CompareTo(b.GetComponent<PlayerCamera>().priority);
-        });
-
-        sortedCameras = true;
-    }
-
+   
     public void SaveGame(int slot)
     {
         // Removes the saved object locations
@@ -358,19 +337,45 @@ public class PGM : MonoBehaviour
     // For loading from pause
     public void LoadInGame(int slot)
     {
-        // No scene reloading, just loads the data, and moves things already in the scene, then pauses time.
+        // removes overlay text that shouldn't be present
+        foreach (Tutorial canv in FindObjectsOfType<Tutorial>())
+        {
+            Destroy(canv.tutorialPanel);
+        }
+
+        foreach (NPCManager npc in FindObjectsOfType<NPCManager>())
+        {
+            Destroy(npc.subtitlePanel);
+        }
+
+        // // No scene reloading, just loads the data, and moves things already in the scene, then pauses time.
+        // Nevermind, now has scene reloading
         // Inelegant solution, but it works
         SaveLoad.Load(slot);
+        if (currentPuzzle.sceneName != currentLevel)
+        {
+            loadedPuzzle = false;
+            levelToLoad = currentPuzzle.sceneName;
+            OnSceneLoad.NewLevel();   
+        }
+
+        objectManager.allCameras.Clear();
+        objectManager.FindCameras();
+
         OnSceneLoad.PuzzleLoaded();
+
         // Forces the cameras to switch to saved indexes
+
         if (cameraIndexes.Count == 4)
         {
-            visibleCameras.Clear();
+            
+            objectManager.visibleCameras.Clear();
             foreach (CameraSwitcher cam in camSwitch)
             {
                 cam.currentIndex = cameraIndexes[Array.IndexOf(camSwitch, cam)];
                 cam.screenMaterial.material = screenMaterials[cam.currentIndex];
-                visibleCameras.Add(allCameras[cam.currentIndex]);
+
+                objectManager.visibleCameras.Add(objectManager.allCameras[cam.currentIndex]);
             }
         }
 
@@ -383,10 +388,11 @@ public class PGM : MonoBehaviour
                 {
                     obj.transform.localPosition = obj.openPosition;
                 }
-            }
-            
-        }
-        Time.timeScale = 0;
+            }   
+        }     
+
         
+
+        Time.timeScale = 0;  
     }
 }

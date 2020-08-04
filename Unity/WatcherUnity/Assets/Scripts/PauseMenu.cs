@@ -192,9 +192,11 @@ public class PauseMenu : MonoBehaviour
             {
                 PGM.Instance.LoadInGame(slot);
                 SaveLoad.Load(slot);
+                ContinueGame();
             }
 
             loadWarning.SetActive(false);
+            
         }
     }
 

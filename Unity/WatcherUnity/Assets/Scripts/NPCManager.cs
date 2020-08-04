@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NPCManager : MonoBehaviour
 {
@@ -14,14 +15,16 @@ public class NPCManager : MonoBehaviour
 
     public NPCDialogue dialogue;
 
-    GameObject subtitlePanel;
+    public GameObject subtitlePanel;
 
     public int prevIndex;
+
 
    
     void Start()
     {
         animator = GetComponent<Animator>();
+
 
         // The player idle animation doesn't need a switch case because it's the default animator value
         switch (idleAnim)

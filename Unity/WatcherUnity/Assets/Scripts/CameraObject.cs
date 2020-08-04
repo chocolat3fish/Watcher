@@ -25,7 +25,7 @@ public class CameraObject : MonoBehaviour
     {
         // Looks toward the player (as defined by the nearest camera) to mimic the actual camera.
         
-        if (PGM.Instance.camerasCanSee.Contains(nearestCamera)) //&& nearestCamera.GetComponent<PlayerCamera>().watchTargetObject == false)
+        if (PGM.Instance.objectManager.camerasCanSee.Contains(nearestCamera)) //&& nearestCamera.GetComponent<PlayerCamera>().watchTargetObject == false)
         {
             //transform.LookAt(cameraScript.player.transform.position);
             Quaternion rotateToPlayer = Quaternion.LookRotation(cameraScript.player.transform.position - transform.position);
