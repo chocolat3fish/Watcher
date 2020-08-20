@@ -2896,7 +2896,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 1
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &119239975
 BoxCollider:
@@ -5765,7 +5767,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 2
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &322637785
 BoxCollider:
@@ -5993,7 +5997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &345100255
 BoxCollider:
@@ -7197,7 +7203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &420453029
 BoxCollider:
@@ -7862,7 +7870,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &538763772
 BoxCollider:
@@ -7922,7 +7932,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &544223573
 BoxCollider:
@@ -8109,6 +8121,7 @@ MonoBehaviour:
       pathProgress: 1
     currentIndex: 0
     requirementIndex: 0
+  subtitlePanel: {fileID: 0}
   prevIndex: 0
 --- !u!23 &548502918
 MeshRenderer:
@@ -11578,7 +11591,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh127986
+  m_Name: pb_Mesh1053982
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12969,7 +12982,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &1090660970
 BoxCollider:
@@ -13029,7 +13044,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &1124873686
 BoxCollider:
@@ -23281,7 +23298,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &1300233369
 BoxCollider:
@@ -27519,7 +27538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &1629715543
 BoxCollider:
@@ -40938,7 +40959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 4
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &1845972813
 BoxCollider:
@@ -41799,6 +41822,7 @@ MonoBehaviour:
       pathProgress: 2
     currentIndex: 0
     requirementIndex: 0
+  subtitlePanel: {fileID: 0}
   prevIndex: 0
 --- !u!95 &1906314369 stripped
 Animator:
@@ -42204,7 +42228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &1999608581
 BoxCollider:
@@ -44303,7 +44329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialCom: 0
+  spawnScene: 
   tutorialText: 
+  tutorialPanel: {fileID: 0}
   displayMessage: 0
 --- !u!65 &2105866380
 BoxCollider:

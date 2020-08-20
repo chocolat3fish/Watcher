@@ -112,6 +112,17 @@ public class OnSceneLoad : MonoBehaviour
             }
         }
 
+
+
+        foreach (ComputerControl computer in PGM.Instance.computers)
+        {
+            if (PGM.Instance.computerStates.ContainsKey(computer.name))
+            {
+                computer.activate = PGM.Instance.computerStates[computer.name];
+            }
+                
+        }
+
         MoveObject[] movables = FindObjectsOfType<MoveObject>();
         foreach (MoveObject obj in movables)
         {
@@ -124,22 +135,9 @@ public class OnSceneLoad : MonoBehaviour
             }
         }
 
-        foreach (ComputerControl computer in PGM.Instance.computers)
-        {
-            if (PGM.Instance.computerStates.ContainsKey(computer.name))
-            {
-                computer.activate = PGM.Instance.computerStates[computer.name];
-            }
-                
-        }
-
         // Resolves an issue relating to paused timescale upon scene loading
         Time.timeScale = 1;
 
     }
 
-    public static void ClearCameras()
-    {
-
-    }
 }

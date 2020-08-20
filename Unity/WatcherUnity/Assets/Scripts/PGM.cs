@@ -26,7 +26,7 @@ public class PGM : MonoBehaviour
     [Header("Booleans")]
     //public bool levelComplete;
     public bool loadedPuzzle;
-
+    
 
     public bool autoCameraSwitch;
     public bool manyCameras;
@@ -38,6 +38,8 @@ public class PGM : MonoBehaviour
     public bool exitWasOpen;
 
     public bool exitedLevel;
+
+    
 
     [Header("Object Tracking")]
 
@@ -328,6 +330,7 @@ public class PGM : MonoBehaviour
     // For loading from menu
     public void LoadGame(int slot)
     {
+        
         // Loads game, sets the current puzzle, and then loads the desk scene
         SaveLoad.Load(slot);
         currentPuzzle = puzzleManager[puzzlesCompleted];
@@ -337,6 +340,7 @@ public class PGM : MonoBehaviour
     // For loading from pause
     public void LoadInGame(int slot)
     {
+        
         // removes overlay text that shouldn't be present
         foreach (Tutorial canv in FindObjectsOfType<Tutorial>())
         {
@@ -388,10 +392,8 @@ public class PGM : MonoBehaviour
                 {
                     obj.transform.localPosition = obj.openPosition;
                 }
-            }   
-        }     
-
-        
+            }
+        }
 
         Time.timeScale = 0;  
     }

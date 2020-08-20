@@ -26,7 +26,7 @@ public class MoveObject : MonoBehaviour
     public float speedOfMove;
 
     public bool invertDirection;
-    
+
 
     private void Start()
     {
@@ -56,12 +56,14 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // determines the requirement for moving
+        Move();
+    }
 
-        // If a computer has to be activated
+    public void Move()
+    {
         if (computerTrigger)
         {
-            
+
             switch (computer.activate)
             {
                 case true:
@@ -71,9 +73,9 @@ public class MoveObject : MonoBehaviour
                 case false:
                     transform.localPosition = Vector2.MoveTowards(transform.localPosition, originalPosition, speedOfMove * Time.deltaTime * 100);
                     break;
-            }    
+            }
         }
-                   
+
         // If puzzle has to be complete
         if (completeTrigger)
         {
@@ -94,7 +96,7 @@ public class MoveObject : MonoBehaviour
                     transform.localPosition = Vector2.Lerp(transform.localPosition, originalPosition, speedOfMove * 6 * Time.deltaTime * 100);
                     break;
             }
-    
+
         }
     }
 }
