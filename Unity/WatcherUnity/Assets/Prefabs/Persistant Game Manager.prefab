@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4124269ce38f4e92aaf53f2fb7a604c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameVersion: 1.1
   FOV: 90
   maxFOV: 90
   minFOV: 20
@@ -55,6 +56,7 @@ MonoBehaviour:
   sortedCameras: 0
   exitWasOpen: 0
   exitedLevel: 0
+  objectManager: {fileID: 0}
   player: {fileID: 0}
   monitorsObject: {fileID: 0}
   computerBeingUsed: {fileID: 0}
@@ -99,12 +101,6 @@ MonoBehaviour:
   monitorScreen: {fileID: 8400000, guid: 9d67e6134d22b4d729e37a768740521f, type: 2}
   puzzleScreen: {fileID: 8400000, guid: 61447df54ab5c4dfaa8c0e0ccf8765b5, type: 2}
   hiddenScreen: {fileID: 8400000, guid: 7dd128c4a0f054651829ac3c6304d4be, type: 2}
-  primaryCamera: {fileID: 0}
-  activeCamera: {fileID: 0}
-  inactiveCameras: []
-  camerasCanSee: []
-  allCameras: []
-  visibleCameras: []
   highlightColour:
     serializedVersion: 2
     rgba: 63231
@@ -141,6 +137,12 @@ MonoBehaviour:
   - puzzleNumber: 1
     sceneName: PuzzleTwo
     pathTriggers:
+    - pathTriggers: 1
+      pathProgress: 0
+      pathComplete: 0
+    - pathTriggers: 1
+      pathProgress: 0
+      pathComplete: 0
     - pathTriggers: 1
       pathProgress: 0
       pathComplete: 0
