@@ -17,6 +17,7 @@ public class ExitTrigger : MonoBehaviour
             PGM.Instance.AddEvents("levelComplete");
 
             PGM.Instance.loadedPuzzle = false;
+            
             OnSceneLoad.NewLevel();
 
         } 

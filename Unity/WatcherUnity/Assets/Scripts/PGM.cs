@@ -12,6 +12,7 @@ public class PGM : MonoBehaviour
 
     public float gameVersion = 1.1f;
 
+
     [Header("Camera Settings")]
     public float FOV;
     public float maxFOV;
@@ -26,7 +27,7 @@ public class PGM : MonoBehaviour
     [Header("Booleans")]
     //public bool levelComplete;
     public bool loadedPuzzle;
-    
+    public bool firstPuzzleLoaded;
 
     public bool autoCameraSwitch;
     public bool manyCameras;
@@ -38,6 +39,8 @@ public class PGM : MonoBehaviour
     public bool exitWasOpen;
 
     public bool exitedLevel;
+
+    public bool isNewLevel;
 
     
 
@@ -51,7 +54,7 @@ public class PGM : MonoBehaviour
 
     public ComputerControl computerBeingUsed;
 
-    public PickupManager[] puzzleObjects;
+    //public PickupManager[] puzzleObjects;
 
     public GameObject tutorialPanel;
     public GameObject subtitlePanel;
@@ -180,7 +183,8 @@ public class PGM : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }
+        }  
+        
         currentPuzzle = puzzleManager[puzzlesCompleted];
 
         objectLocations = new Dictionary<string, float[]>();
@@ -212,6 +216,8 @@ public class PGM : MonoBehaviour
             SceneManager.LoadSceneAsync(currentPuzzle.sceneName, LoadSceneMode.Additive);
         }
         */
+
+        
 
     }
 
@@ -297,7 +303,7 @@ public class PGM : MonoBehaviour
         computerStates.Clear();
 
         // Adds the current locations of important objects
-        foreach (PickupManager obj in puzzleObjects)
+        foreach (PickupManager obj in objectManager.puzzleObjects)
         {
             float[] objectVectors = new float[] { obj.transform.position.x, obj.transform.position.y, obj.transform.position.z };
             objectLocations.Add(obj.name,  objectVectors);

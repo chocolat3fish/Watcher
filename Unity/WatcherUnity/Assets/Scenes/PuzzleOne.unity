@@ -24348,6 +24348,7 @@ MonoBehaviour:
   camerasCanSee: []
   allCameras: []
   visibleCameras: []
+  puzzleObjects: []
 --- !u!4 &1420985025
 Transform:
   m_ObjectHideFlags: 0

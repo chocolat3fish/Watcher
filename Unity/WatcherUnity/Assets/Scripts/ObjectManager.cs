@@ -13,13 +13,15 @@ public class ObjectManager : MonoBehaviour
 
     public List<Camera> visibleCameras;
 
+    public List<PickupManager> puzzleObjects;
+
     // Start is called before the first frame update
     void Awake()
     {
         PGM.Instance.objectManager = GetComponent<ObjectManager>();
 
-
         FindCameras();
+        FindObjects();
 
     }
 
@@ -51,6 +53,14 @@ public class ObjectManager : MonoBehaviour
             allCameras.Add(camera.GetComponent<Camera>());
         }
         SortCameras();
+    }
+
+    public void FindObjects()
+    {
+        foreach(PickupManager pickup in FindObjectsOfType<PickupManager>())
+        {
+            puzzleObjects.Add(pickup.GetComponent<PickupManager>());
+        }
     }
 
 }

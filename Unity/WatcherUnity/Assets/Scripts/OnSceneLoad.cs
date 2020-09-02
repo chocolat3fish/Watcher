@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class OnSceneLoad : MonoBehaviour
 {
+
     void Start()
     {
         Init();    
@@ -15,13 +16,16 @@ public class OnSceneLoad : MonoBehaviour
     public static void Init()
     {
         // If on the desk scene, load the current puzzle (i.e. the first puzzle)
-        if (SceneManager.GetActiveScene().name == PGM.Instance.deskScene && PGM.Instance.loadedPuzzle == false)
+        if (SceneManager.GetActiveScene().name == PGM.Instance.deskScene && PGM.Instance.loadedPuzzle == false && PGM.Instance.firstPuzzleLoaded == false)
         {
             PGM.Instance.monitorsObject = GameObject.Find("ManyMonitors");
             SceneManager.LoadSceneAsync(PGM.Instance.currentPuzzle.sceneName, LoadSceneMode.Additive);
             PGM.Instance.objectManager = FindObjectOfType<ObjectManager>();
             PGM.Instance.loadedPuzzle = true;
+            PGM.Instance.firstPuzzleLoaded = true;
+
             NewLevel();
+            
             //SceneManager.LoadSceneAsync(PGM.Instance.eventsScene, LoadSceneMode.Additive);
         }
 
@@ -31,6 +35,7 @@ public class OnSceneLoad : MonoBehaviour
         {
             PuzzleLoaded();
         }
+        
     }
 
     public static void NewLevel()
@@ -41,6 +46,10 @@ public class OnSceneLoad : MonoBehaviour
             PGM.Instance.allCompleted = false;
             PGM.Instance.objectManager.allCameras.Clear();
             PGM.Instance.objectManager.visibleCameras.Clear();
+            PGM.Instance.objectManager.puzzleObjects.Clear();
+
+            PGM.Instance.objectLocations.Clear();
+
             PGM.Instance.cameraIndexes = new List<int> { 0, 1, 2, 3 };
 
 
@@ -53,17 +62,16 @@ public class OnSceneLoad : MonoBehaviour
 
             PGM.Instance.sortedCameras = false;
             PGM.Instance.exitedLevel = false;
-            
+
             SceneManager.UnloadSceneAsync(PGM.Instance.currentLevel);
             SceneManager.LoadSceneAsync(PGM.Instance.levelToLoad, LoadSceneMode.Additive);
 
-
             PGM.Instance.loadedPuzzle = true;
+            PGM.Instance.objectManager = FindObjectOfType<ObjectManager>();
 
             PGM.Instance.playerLocation = new float[] { 0, 0, 0 };
 
         }
-        
 
         PGM.Instance.currentPuzzle = PGM.Instance.puzzleManager[PGM.Instance.puzzlesCompleted];
 
@@ -80,15 +88,16 @@ public class OnSceneLoad : MonoBehaviour
         PGM.Instance.objectManager = FindObjectOfType<ObjectManager>();
 
         PGM.Instance.player = FindObjectOfType<PlayerControls>();
-        PGM.Instance.puzzleObjects = FindObjectsOfType<PickupManager>();
+        
 
         PGM.Instance.camSwitch = FindObjectsOfType<CameraSwitcher>();
         PGM.Instance.computers = FindObjectsOfType<ComputerControl>();
 
+        
         // Moves all of the puzzle objects in the level into the right place as determined by the save data
         if (PGM.Instance.objectLocations.Count != 0)
         {
-            foreach (PickupManager obj in PGM.Instance.puzzleObjects)
+            foreach (PickupManager obj in PGM.Instance.objectManager.puzzleObjects)
             {
                 obj.transform.position = new Vector3(PGM.Instance.objectLocations[obj.name][0], PGM.Instance.objectLocations[obj.name][1], PGM.Instance.objectLocations[obj.name][2]);
             }

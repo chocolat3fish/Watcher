@@ -75,6 +75,8 @@ public class PlayerControls : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
+        PGM.Instance.player = this;
+
 
         canMove = true;
         // "disables" the layer for picking up objects, so that the top half of the idle animation doesn't override anything else
